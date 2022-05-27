@@ -6,7 +6,7 @@ function App() {
   const [message, setMessage] = useState([]);
 
   useEffect(() => {
-    fetch("/hello",
+    fetch("/api/hello",
         {
             headers: {
                 'Content-Type': 'application/json',
