@@ -6,7 +6,13 @@ function App() {
   const [message, setMessage] = useState([]);
 
   useEffect(() => {
-    fetch("/hello")
+    fetch("/hello",
+        {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        })
         .then((response) => {
           return response.json();
         })
