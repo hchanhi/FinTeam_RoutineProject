@@ -1,10 +1,10 @@
-package com.example.fin_team_pillgood_project;
+package com.pg;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class FinTeamPillGoodProjectApplicationTests {
+class FillgoodprojectApplicationTests {
 
     @Test
     void contextLoads() {

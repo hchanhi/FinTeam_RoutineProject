@@ -1,13 +1,13 @@
-package com.example.fin_team_pillgood_project;
+package com.pg;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FinTeamPillGoodProjectApplication {
+public class FillgoodprojectApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(FinTeamPillGoodProjectApplication.class, args);
+        SpringApplication.run(FillgoodprojectApplication.class, args);
     }
 
 }
