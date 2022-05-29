@@ -42,10 +42,10 @@ function App() {
             {message.map((text, index) => <li key={`${index}-${text}`}>{text}</li>)}
           </ul>
           
-          <Link to={"/user"}><h4>유저</h4></Link>
-          <Link to={"/alarm"}><h4>알람</h4></Link>
-          <Link to={"/reward"}><h4>리워드</h4></Link>
-          <Link to={"/mypage"}><h4>마이페이지</h4></Link>
+          <Link to={"/user"}><span>유저</span></Link><br/><br/>
+          <Link to={"/alarm"}><span>알람</span></Link><br/><br/>
+          <Link to={"/reward"}><span>리워드</span></Link><br/><br/>
+          <Link to={"/mypage"}><span>마이페이지</span></Link><br/><br/>
 
       </div>
   );
