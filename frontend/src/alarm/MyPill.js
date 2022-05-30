@@ -1,14 +1,15 @@
 import './MyPill.css';
 import {Card, Button} from "react-bootstrap";
 import {useState} from "react";
+import {Link} from "react-router-dom";
 
 function MyPill(){
 
-    let [card, setCard]= useState([1,2,3]);
+    let [card, setCard]= useState([1,2,3,4]);
 
 
     return(
-        <div>
+        <div style={{marginTop:'30px'}}>
             {card.map(function(card,index){
                 return(
                     <div>
@@ -29,7 +30,12 @@ function MyPill(){
                     </div>
                 );
             })}
-
+            <div>
+                <Link to={'/addpill'} style={{textDecoration:'none'}}><Button variant="warning" className="addBtn">영양제 추가</Button></Link>
+            </div>
+            <br/>
+            <br/>
+            <br/>
         </div>
     );
 }
