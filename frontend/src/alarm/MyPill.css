@@ -7,3 +7,9 @@
 .cardBtn{
     margin : 5px;
 }
+
+.addBtn{
+    font-size: 20px;
+    margin: auto;
+    display: block;
+}
