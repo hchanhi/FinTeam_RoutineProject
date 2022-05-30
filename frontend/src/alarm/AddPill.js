@@ -3,7 +3,7 @@ import {InputGroup, FormControl, Card} from "react-bootstrap";
 
 function AddPill(){
     return(
-        <div>
+        <div className="page">
             <br/>
             <br/>
             <br/>
