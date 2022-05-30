@@ -11,8 +11,8 @@ import { Container, Navbar, Nav } from 'react-bootstrap';
 function App() {
 
   return (
-      <div className={'AppDiv'}>
-          <Navbar bg="dark" variant="dark">
+      <div className="AppDiv">
+          <Navbar bg="dark" variant="dark" className="mainHeader">
               <Container>
                   <Navbar.Brand>Pill Good</Navbar.Brand>
                   <Nav className="me-auto">
@@ -33,13 +33,17 @@ function App() {
               <Route path="/mypage" element={<div><Mypage /></div>}/>
           </Routes>
 
-
-          <Link to={"/"}><span>메인</span></Link><br/><br/>
-          <Link to={"/user"}><span>유저</span></Link><br/><br/>
-          <Link to={"/alarm"}><span>알람</span></Link><br/><br/>
-          <Link to={"/reward"}><span>리워드</span></Link><br/><br/>
-          <Link to={"/mypage"}><span>마이페이지</span></Link><br/><br/>
-
+          <Navbar bg="dark" variant="dark" className="mainFooter">
+              <Container>
+                  <Nav className="me-auto" style={{margin: 'auto'}}>
+                      <Nav.Link href="/">메인</Nav.Link>
+                      <Nav.Link>랭킹</Nav.Link>
+                      <Nav.Link>등록</Nav.Link>
+                      <Nav.Link>뱃지</Nav.Link>
+                      <Nav.Link>유저</Nav.Link>
+                  </Nav>
+              </Container>
+          </Navbar>
       </div>
   );
 }
