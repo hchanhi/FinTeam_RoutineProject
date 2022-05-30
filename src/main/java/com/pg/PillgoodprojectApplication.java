@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FillgoodprojectApplication {
+public class PillgoodprojectApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(FillgoodprojectApplication.class, args);
+        SpringApplication.run(PillgoodprojectApplication.class, args);
     }
 
 }
