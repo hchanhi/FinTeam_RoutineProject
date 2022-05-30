@@ -1,4 +1,3 @@
-
 import './App.css';
 import { useEffect, useState} from "react";
 import { Routes, Route, Link} from "react-router-dom";
@@ -7,28 +6,25 @@ import Alarm from "./alarm/Alarm.js";
 import Reward from "./reward/Reward.js";
 import User from "./user/User.js";
 import Mypage from "./mypage/Mypage.js";
+import { Container, Navbar, Nav } from 'react-bootstrap';
 
 function App() {
-  const [message, setMessage] = useState([]);
-
-  useEffect(() => {
-    fetch("/api/hello",
-        {
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            }
-        })
-        .then((response) => {
-          return response.json();
-        })
-        .then(function (data) {
-          setMessage(data);
-        });
-  }, []);
 
   return (
-      <div>
+      <div className={'AppDiv'}>
+          <Navbar bg="dark" variant="dark">
+              <Container>
+                  <Navbar.Brand>Pill Good</Navbar.Brand>
+                  <Nav className="me-auto">
+                      <Nav.Link href="/">메인</Nav.Link>
+                      <Nav.Link>알람</Nav.Link>
+                      <Nav.Link>리워드</Nav.Link>
+                      <Nav.Link>유저</Nav.Link>
+                      <Nav.Link>로그인</Nav.Link>
+                  </Nav>
+              </Container>
+          </Navbar>
+
           <Routes>
               <Route path="/" element={<div><Main /></div>}/>
               <Route path="/user" element={<div><User /></div>}/>
@@ -37,11 +33,8 @@ function App() {
               <Route path="/mypage" element={<div><Mypage /></div>}/>
           </Routes>
 
-          <div>하단에 안녕하세요가 나오면 연결 된 것</div>
-          <ul>
-            {message.map((text, index) => <li key={`${index}-${text}`}>{text}</li>)}
-          </ul>
-          
+
+          <Link to={"/"}><span>메인</span></Link><br/><br/>
           <Link to={"/user"}><span>유저</span></Link><br/><br/>
           <Link to={"/alarm"}><span>알람</span></Link><br/><br/>
           <Link to={"/reward"}><span>리워드</span></Link><br/><br/>
