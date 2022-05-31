@@ -16,8 +16,9 @@ import Signup from "./user/Signup.js";
 function App() {
 
     return (
-        <div className="AppDiv">
+        <div className="App" >
             {/*헤더*/}
+
 
             <Header />
             {/*페이지*/}
