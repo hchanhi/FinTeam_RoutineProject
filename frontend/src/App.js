@@ -7,6 +7,7 @@ import Reward from "./reward/Reward.js";
 import User from "./user/User.js";
 import Mypage from "./mypage/Mypage.js";
 import AddPill from "./alarm/AddPill.js";
+import login from "/login.js";
 import { Container, Navbar, Nav } from 'react-bootstrap';
 
 function App() {
@@ -26,11 +27,11 @@ function App() {
           <Routes>
               <Route path="/" element={<div><Main /></div>}/>
               <Route path="/user" element={<div><User /></div>}/>
+              <Route path="/login" element={<div><login /></div>}/>
               <Route path="/alarm" element={<div><Alarm /></div>}/>
               <Route path="/reward" element={<div><Reward /></div>}/>
               <Route path="/mypage" element={<div><Mypage /></div>}/>
               <Route path="/addpill" element={<div><AddPill /></div>}/>
-
               <Route path="*" element={<div>404 Error Not found</div>}/>
           </Routes>
 
