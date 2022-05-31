@@ -1,0 +1,15 @@
+.card{
+    width: 18rem;
+    border-radius: 20px;
+    margin: 30px auto;
+}
+
+.cardBtn{
+    margin : 5px;
+}
+
+.addBtn{
+    font-size: 20px;
+    margin: auto;
+    display: block;
+}

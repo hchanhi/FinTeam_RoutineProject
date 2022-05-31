@@ -1,6 +1,25 @@
 .App {
   text-align: center;
 }
+.AppDiv{
+  width: 500px;
+  margin: 0 auto;
+  background-color:lemonchiffon;
+}
+
+.mainHeader{
+  position: fixed;
+  top:0;
+  width:500px;
+  z-index: 1;
+}
+
+.mainFooter{
+  position: fixed;
+  bottom:0;
+  width:500px;
+  z-index: 1;
+}
 
 .App-logo {
   height: 40vmin;

@@ -1,7 +1,11 @@
+import AddPill from "./AddPill";
+import MyPill from "./MyPill";
+
 function Alarm(){
     return(
         <div>
-            <h1>알람</h1>
+            <br/><br/>
+            <MyPill></MyPill>
         </div>
     );
 }
