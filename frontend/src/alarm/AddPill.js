@@ -14,29 +14,31 @@ function AddPill(){
     let [eattime1, setEattime1] = useState('');
     let [eattime2, setEattime2] = useState('');
     let [eattime3, setEattime3] = useState('');
-    let [checkday, setCheckday] = useState('');
     let [eatday, setEatday]=useState('');
     let [week, setWeek] = useState(['월', '화', '수', '목', '금', '토', '일']);
 
     function selectDay(e){
-        let copy = [...checkday,e];
-        setCheckday(copy);
-        setEatday(checkday);
+        let copy = [...eatday,e];
+        setEatday(copy);
     }
     function unselectDay(e){
-        let copy = [...checkday];
+        let copy = [...eatday];
         for(let i=0; i<copy.length;i++){
             if(copy[i]==e){
                 copy.splice(i,1);
                 i--;
             }
         }
-        setCheckday(copy);
-        setEatday(checkday);
+        setEatday(copy);
     }
 
-    let body ={name: pillname, nownumber:nownumber, eatnumber:eatnumber, eattime1:eattime1, eattime2:eattime2, eattime3:eattime3,
-    eatday: eatday }
+    let body ={ name: pillname,
+                nownumber:nownumber,
+                eatnumber:eatnumber,
+                eattime1:eattime1,
+                eattime2:eattime2,
+                eattime3:eattime3,
+                eatday: eatday }
 
     function addPill(){
         console.log(body);
@@ -69,7 +71,7 @@ function AddPill(){
                             <div className="mb-3">
                                 {week.map(function (week,index){
                                     return(
-                                        <div className="checkbox_area">
+                                        <div className="checkbox_area" key={index}>
                                         <span style={{margin:'15px'}}>{week}</span>
                                         <input key={index} type='checkbox' id={week} value={week} onChange={(e)=>
                                         { if(e.target.checked){selectDay(e.target.value)}
