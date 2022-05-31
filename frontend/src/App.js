@@ -9,6 +9,8 @@ import User from "./user/User.js";
 import Routine from "./routine/Routine.js";
 import Mypill from "./alarm/MyPill";
 import AddPill from "./alarm/AddPill";
+import Login from "./user/Login.js";
+import Signup from "./user/Signup.js";
 
 
 function App() {
@@ -26,6 +28,8 @@ function App() {
                 <Route path="/routine" element={<Routine />} />
                 <Route path="/mypill" element={<Mypill />} />
                 <Route path="/addpill" element={<AddPill/>}/>
+                <Route path="/login" element={<Login/>}/>
+                <Route path="/signup" element={<Signup/>}/>
 
                 <Route path="*" element={<div>404 Error Not found</div>} />
             </Routes>
