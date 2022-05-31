@@ -18,9 +18,7 @@ function Header() {
                 <Nav style={{ float: 'right', marginRight: '10px' }}>
                     <Nav.Link as={Link} to={"/login"}>로그인</Nav.Link>
 
-                    <Nav.Link to="/Join">
-                        회원가입
-                    </Nav.Link>
+                    <Nav.Link as={Link} to={"/Signup"}>회원가입</Nav.Link>
                 </Nav>
             </Container>
         </Navbar>
