@@ -60,3 +60,5 @@ spring:
     include: oauth
 
 application.yml
+
+pillgood-sdk.json
