@@ -1,24 +1,27 @@
 .App {
   text-align: center;
+  background-color: rgb(159, 228, 209);
 }
-.AppDiv{
+
+.AppDiv {
   width: 500px;
   margin: 0 auto;
-  background-color:lemonchiffon;
+  background-color: lemonchiffon;
 }
 
-.mainHeader{
+.mainHeader {
   position: fixed;
-  top:0;
-  width:500px;
-  z-index: 1;
+  top: 0;
+  width: 500px;
+
+
 }
 
-.mainFooter{
+.mainFooter {
   position: fixed;
-  bottom:0;
-  width:500px;
-  z-index: 1;
+  bottom: 0;
+  width: 500px;
+
 }
 
 .App-logo {
@@ -51,6 +54,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

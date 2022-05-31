@@ -77,6 +77,10 @@ gg:
     jwtRefreshExpirationInMs: 86400000
     jwtSecret: jwtsigntutorialasdfasdfasdfasdfasdf
 
+firebase:
+  sdk:
+    path: /firebase/pillgood-fa622-firebase-adminsdk-4ya99-55de61ade5.json
+
 
 
 
