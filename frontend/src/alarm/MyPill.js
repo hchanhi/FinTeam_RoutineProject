@@ -16,12 +16,14 @@ function MyPill(){
 
     return(
         <div style={{marginTop:'30px'}}>
+            <br/>
+            <br/>
             {card.map(function(card,index){
                 return(
                     <div key={index}>
                         <Card className="pillCard">
                             <Card.Body>
-                                <Card.Title>영양제1</Card.Title>
+                                <Card.Title>영양제{card}</Card.Title>
                                 <Card.Subtitle className="mb-2 text-muted">일2회/1정</Card.Subtitle>
                                 <Card.Text>
                                     현재 수량 : 30<br/>
