@@ -1,0 +1,24 @@
+.cardInput{
+    float: right;
+    width: 140px;
+}
+
+.btnArea{
+    text-align: center;
+}
+
+.cardBtn{
+    font-size: 20px;
+    display: inline-block;
+}
+
+.addCard{
+    width: 360px;
+    border-radius: 20px;
+    margin: 30px auto;
+}
+
+.page{
+    font-size: 17px;
+    height: 900px;
+}
