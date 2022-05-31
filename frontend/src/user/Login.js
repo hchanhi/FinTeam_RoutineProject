@@ -1,12 +1,14 @@
-function User(){
+
+
+function Login(){
     return(
         <div>
             <br/>
             <br/>
             <br/>
-            <h1>회원정보</h1>
+            <h1>로그인</h1>
         </div>
     );
 }
 
-export default User;
+export default Login;

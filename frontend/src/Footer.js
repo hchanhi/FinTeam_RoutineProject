@@ -32,23 +32,23 @@ function Footer() {
                 <Nav className="me-auto" style={{ margin: 'auto' }}>
 
                     <Wrapper>
-                        <FontAwesomeIcon style={{ color: "white" }} className='icon' icon={faAward} size="2x" />
+                        <Link to={'/reward'}><FontAwesomeIcon style={{ color: "white" }} className='icon' icon={faAward} size="2x" /></Link>
                         <Nav.Link as={Link} to={"/reward"}>리워드</Nav.Link>
                     </Wrapper>
                     <Wrapper>
-                        <FontAwesomeIcon style={{ color: "white" }} icon={faCapsules} size="2x" />
-                        <Nav.Link as={Link} to={"/alarm"}>영양제</Nav.Link>
+                        <Link to={'/mypill'}><FontAwesomeIcon style={{ color: "white" }} icon={faCapsules} size="2x" /></Link>
+                        <Nav.Link as={Link} to={"/mypill"}>영양제</Nav.Link>
                     </Wrapper>
                     <Wrapper>
-                        <FontAwesomeIcon style={{ color: "white" }} icon={faHouse} size="2x" />
+                        <Link to={'/'}><FontAwesomeIcon style={{ color: "white" }} icon={faHouse} size="2x" /></Link>
                         <div><Nav.Link as={Link} to={"/"}>메인</Nav.Link></div>
                     </Wrapper>
                     <Wrapper>
-                        <FontAwesomeIcon style={{ color: "white" }} icon={faArrowsRotate} size="2x" />
-                        <Nav.Link as={Link} to={"/myroutine"}>루틴</Nav.Link>
+                        <Link to={'/routine'}><FontAwesomeIcon style={{ color: "white" }} icon={faArrowsRotate} size="2x" /></Link>
+                        <Nav.Link as={Link} to={"/routine"}>루틴</Nav.Link>
                     </Wrapper>
                     <Wrapper>
-                        <FontAwesomeIcon style={{ color: "white" }} icon={faUserGear} size="2x" />
+                        <Link to={'/user'}><FontAwesomeIcon style={{ color: "white" }} icon={faUserGear} size="2x" /></Link>
                         <Nav.Link as={Link} to={"/user"}>회원정보</Nav.Link>
                     </Wrapper>
                 </Nav>
