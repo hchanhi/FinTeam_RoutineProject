@@ -14,25 +14,25 @@ import AddPill from "./alarm/AddPill.js";
 function App() {
 
     return (
-        <div className="AppDiv">
+        <div className="App" >
             {/*헤더*/}
+            <div className="AppDiv" >
+                <Header />
+                {/*페이지*/}
+                <Routes>
+                    <Route path="/" element={<Main />} />
+                    <Route path="/user" element={<User />} />
+                    <Route path="/alarm" element={<Alarm />} />
+                    <Route path="/reward" element={<Reward />} />
+                    <Route path="/mypage" element={<Mypage />} />
+                    <Route path="/addpill" element={<AddPill />} />
 
-            <Header />
-            {/*페이지*/}
-            <Routes>
-                <Route path="/" element={<Main />} />
-                <Route path="/user" element={<User />} />
-                <Route path="/alarm" element={<Alarm />} />
-                <Route path="/reward" element={<Reward />} />
-                <Route path="/mypage" element={<Mypage />} />
-                <Route path="/addpill" element={<AddPill />} />
+                    <Route path="*" element={<div>404 Error Not found</div>} />
+                </Routes>
 
-                <Route path="*" element={<div>404 Error Not found</div>} />
-            </Routes>
-
-            {/*푸터*/}
-            <Footer />
-
+                {/*푸터*/}
+                <Footer />
+            </div>
         </div>
     );
 }

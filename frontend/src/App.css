@@ -1,19 +1,22 @@
 .App {
   text-align: center;
-  background-color: rgb(159, 228, 209);
+  width: 100vw;
+  height: 100vh;
+
 }
 
 .AppDiv {
   width: 500px;
-  margin: 0 auto;
+
   background-color: lemonchiffon;
+  margin: 0 auto;
 }
 
 .mainHeader {
   position: fixed;
   top: 0;
   width: 500px;
-
+  z-index: 1;
 
 }
 
@@ -21,7 +24,7 @@
   position: fixed;
   bottom: 0;
   width: 500px;
-
+  z-index: 1;
 }
 
 .App-logo {
