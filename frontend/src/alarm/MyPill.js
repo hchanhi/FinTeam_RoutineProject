@@ -12,8 +12,8 @@ function MyPill(){
         <div style={{marginTop:'30px'}}>
             {card.map(function(card,index){
                 return(
-                    <div>
-                        <Card className="card">
+                    <div key={index}>
+                        <Card className="pillCard">
                             <Card.Body>
                                 <Card.Title>영양제1</Card.Title>
                                 <Card.Subtitle className="mb-2 text-muted">일2회/1정</Card.Subtitle>
