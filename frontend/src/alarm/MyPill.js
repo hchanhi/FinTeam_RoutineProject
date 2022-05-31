@@ -7,15 +7,23 @@ function MyPill(){
 
     let [card, setCard]= useState([1,2,3,4]);
 
+    function deletePill(index){
+        let copy = [...card];
+        copy.splice(index,1)
+        setCard(copy);
+    }
+
 
     return(
         <div style={{marginTop:'30px'}}>
+            <br/>
+            <br/>
             {card.map(function(card,index){
                 return(
                     <div key={index}>
                         <Card className="pillCard">
                             <Card.Body>
-                                <Card.Title>영양제1</Card.Title>
+                                <Card.Title>영양제{card}</Card.Title>
                                 <Card.Subtitle className="mb-2 text-muted">일2회/1정</Card.Subtitle>
                                 <Card.Text>
                                     현재 수량 : 30<br/>
@@ -24,7 +32,7 @@ function MyPill(){
                                     등록한 날짜 : 2022-05-30
                                 </Card.Text>
                                 <Button variant="outline-primary" className="cardBtn">수 정</Button>
-                                <Button variant="outline-danger" className="cardBtn">삭 제</Button>
+                                <Button variant="outline-danger" className="cardBtn" onClick={()=>{deletePill(index)}}>삭 제</Button>
                             </Card.Body>
                         </Card>
                     </div>
