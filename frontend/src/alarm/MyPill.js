@@ -7,6 +7,12 @@ function MyPill(){
 
     let [card, setCard]= useState([1,2,3,4]);
 
+    function deletePill(index){
+        let copy = [...card];
+        copy.splice(index,1)
+        setCard(copy);
+    }
+
 
     return(
         <div style={{marginTop:'30px'}}>
@@ -24,7 +30,7 @@ function MyPill(){
                                     등록한 날짜 : 2022-05-30
                                 </Card.Text>
                                 <Button variant="outline-primary" className="cardBtn">수 정</Button>
-                                <Button variant="outline-danger" className="cardBtn">삭 제</Button>
+                                <Button variant="outline-danger" className="cardBtn" onClick={()=>{deletePill(index)}}>삭 제</Button>
                             </Card.Body>
                         </Card>
                     </div>
