@@ -10,7 +10,7 @@ import Routine from "./routine/Routine.js";
 import Mypill from "./alarm/MyPill";
 import AddPill from "./alarm/AddPill";
 import Login from "./login/Login.js";
-import Signup from "./user/Signup.js";
+import Signup from "./login/Signup.js";
 
 
 function App() {

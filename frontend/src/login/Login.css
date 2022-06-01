@@ -85,10 +85,12 @@
       font-size:13px;
       margin-bottom:8px;
       text-decoration: underline;
+      cursor: pointer;
   }
 
   .signup{
     text-align: center;
     font-size:13px;
     text-decoration: underline;
+    cursor: pointer;
   }
