@@ -9,7 +9,7 @@ import User from "./user/User.js";
 import Routine from "./routine/Routine.js";
 import Mypill from "./alarm/MyPill";
 import AddPill from "./alarm/AddPill";
-import Login from "./user/Login.js";
+import Login from "./login/Login.js";
 import Signup from "./user/Signup.js";
 
 
@@ -25,6 +25,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Main />} />
                 <Route path="/user" element={<User />} />
+                <Route path="/login" element={<Login />} />
                 <Route path="/reward" element={<Reward />} />
                 <Route path="/routine" element={<Routine />} />
                 <Route path="/mypill" element={<Mypill />} />
