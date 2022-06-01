@@ -1,7 +1,10 @@
 function User(){
     return(
         <div>
-            <h1>유저</h1>
+            <br/>
+            <br/>
+            <br/>
+            <h1>회원정보</h1>
         </div>
     );
 }

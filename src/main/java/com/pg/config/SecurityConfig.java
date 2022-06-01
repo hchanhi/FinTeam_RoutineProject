@@ -78,11 +78,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.and()
 				.authorizeRequests()
 				.antMatchers("/api/auth/**","/api/main/**","/api/mypage/**").permitAll()
+				.antMatchers( "/api/studytime/recent").permitAll()
 				.antMatchers("/api/user/**", "/api/user/{id}/**").permitAll()
 				.antMatchers("/api/user/checkUsernameAvailability", "/api/user/checkEmailAvailability").permitAll()
+				.antMatchers( "/api/chat/**", "/api/diary/**", "/api/studylog/**", "/api/todo/**").permitAll()
 				.antMatchers("/user/**").permitAll()
-				.antMatchers("/fcm/**").permitAll()
-				.antMatchers(HttpMethod.GET, "/api/users/**").permitAll()
+				.antMatchers(HttpMethod.GET, "/api/users/**", "/api/chat/**", "/api/ws/**").permitAll()
 
 				// 위 경로 이외의 토큰을 사용하는 경우 접근할 수 있도록 한다.
 				.anyRequest().authenticated();
