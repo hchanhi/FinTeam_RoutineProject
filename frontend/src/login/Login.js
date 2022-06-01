@@ -77,7 +77,7 @@ function Login() {
     <div className="app">
       <div className="login-form">
         <div className="title">로그인</div>
-        {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
+         {renderForm}
         <div className="idpw">아이디 | 비밀번호 찾기</div>
         <div className="signup">회원가입 하기</div>
       </div>
