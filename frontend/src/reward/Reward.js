@@ -81,8 +81,8 @@ function Reward() {
                     {
                         bd.map(function (a, i) {
                             return (
-                                <h1 key={i}>{bd[i] == true ? <Badge><img src={require("../img/badge00" + (i + 1) + ".png")} /></Badge>
-                                    : <Badge><img src={require("../img/qBadge.png")} /></Badge>}</h1>
+                                <h1 key={i}>{bd[i] == true ? <Badge><img src={require("../img/badge00" + (i + 1) + ".png").default} /></Badge>
+                                    : <Badge><img src={require("../img/qBadge.png").default} /></Badge>}</h1>
 
                             );
                         })
