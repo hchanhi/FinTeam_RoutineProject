@@ -15,7 +15,9 @@ function MyPill(){
 
 
     return(
-        <div style={{marginTop:'30px'}}>
+        <div className="page">
+            <div className="page2">
+            <br/>
             <br/>
             <br/>
             {card.map(function(card,index){
@@ -45,6 +47,7 @@ function MyPill(){
             <br/>
             <br/>
             <br/>
+            </div>
         </div>
     );
 }
