@@ -1,7 +1,7 @@
 import './App.css';
 import { useEffect, useState } from "react";
 import { initializeApp } from "firebase/app";
-import { getMessaging,getToken, onMessage } from "firebase/messaging";
+import { getMessaging, getToken, onMessage } from "firebase/messaging";
 import { Routes, Route, Link, Router } from "react-router-dom";
 import Header from './Header.js';
 import Footer from './Footer.js';
@@ -10,13 +10,14 @@ import Reward from "./reward/Reward.js";
 import User from "./user/User.js";
 import Mypage from "./mypage/Mypage.js";
 import AddPill from "./alarm/AddPill.js";
-import MyPill from "./alarm/MyPill.js"
-import Routine from "./routine/Routine.js"
-import Login from "./login/Login.js"
-import Signup from "./login/Signup.js"
-import Login2 from "./login/Login2"
+import MyPill from "./alarm/MyPill.js";
+import Routine from "./routine/Routine.js";
+import Login from "./login/Login.js";
+import Signup from "./login/Signup.js";
+import Login2 from "./login/Login2";
+import { isAuth, getNickName } from './jwtCheck.js';
 
-const config =  {
+const config = {
     apiKey: "AIzaSyApcyEQg322SpdhimM9wMfQLuIn90BDZT4",
     authDomain: "pillgood-fa622.firebaseapp.com",
     projectId: "pillgood-fa622",
@@ -56,11 +57,24 @@ onMessage(messaging, (payload) => {
 
 function App() {
 
+    let [userNickName, setUserNickName] = useState('');
+    let [isLogin, setIsLogin] = useState(false);
+
+    useEffect(() => {
+        const token = JSON.parse(localStorage.getItem('accessToken'));
+
+        if (isAuth(token)) {
+            setUserNickName(getNickName(token));
+            setIsLogin(true);
+        } else {
+            setIsLogin(false);
+        }
+    }, [isLogin]);
     return (
         <div className="AppDiv">
             {/*헤더*/}
 
-            <Header />
+            <Header userNickName={userNickName} setUserNickName={setUserNickName} />
             {/*페이지*/}
             <Routes>
                 <Route path="/" element={<Main />} />
@@ -72,7 +86,7 @@ function App() {
                 <Route path="/routine" element={<Routine />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
-                <Route path="/login2" element={<Login2 />} />
+                <Route path="/login2" element={<Login2 isLogin={isLogin} setIsLogin={setIsLogin} />} />
 
                 <Route path="*" element={<div>404 Error Not found</div>} />
             </Routes>
