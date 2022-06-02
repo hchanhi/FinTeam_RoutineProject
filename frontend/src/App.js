@@ -13,6 +13,7 @@ import Mypage from "./mypage/Mypage.js";
 import AddPill from "./alarm/AddPill.js";
 import MyPill from "./alarm/MyPill.js"
 import Routine from "./routine/Routine.js"
+import Login from "./login/Login.js"
 
 const config =  {
     apiKey: "AIzaSyApcyEQg322SpdhimM9wMfQLuIn90BDZT4",
@@ -69,6 +70,7 @@ function App() {
                 <Route path="/mypill" element={<MyPill />} />
                 <Route path="/addpill" element={<AddPill />} />
                 <Route path="/routine" element={<Routine />} />
+                <Route path="/login" element={<Login />} />
 
                 <Route path="*" element={<div>404 Error Not found</div>} />
             </Routes>
