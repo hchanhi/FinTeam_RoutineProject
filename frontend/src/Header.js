@@ -5,10 +5,10 @@ import { Container, Navbar, Nav } from 'react-bootstrap';
 
 
 
-function Header() {
+function Header(props) {
 
-
-
+    let nickName = props.userNickName;
+    console.log(nickName);
     return (
 
 
@@ -16,14 +16,22 @@ function Header() {
             <Container>
                 <Navbar.Brand style={{ color: "orange", fontSize: "23px", fontWeight: "600" }}>Pill Good</Navbar.Brand>
                 <Nav style={{ float: 'right', marginRight: '10px' }}>
-                    <Nav.Link as={Link} to={"/login"}>로그인</Nav.Link>
+                    {
+                        nickName ? (<div style={{ display: 'flex' }}>
+                            <Nav.Link as={Link} to={"/user"} >{nickName}</Nav.Link>
+                            <Nav.Link as={Link} to={"/"} onClick={() => {
+                                localStorage.clear();
+                                props.setUserNickName('');
+                            }} >로그아웃</Nav.Link>
+                        </div>) : (<div style={{ display: 'flex' }}><Nav.Link as={Link} to={"/login"} >로그인</Nav.Link>
 
-                    <Nav.Link to="/Join">
-                        회원가입
-                    </Nav.Link>
+                            <Nav.Link as={Link} to={"/Signup"} >회원가입</Nav.Link></div>)
+                    }
+
                 </Nav>
+
             </Container>
-        </Navbar>
+        </Navbar >
 
     );
 }
