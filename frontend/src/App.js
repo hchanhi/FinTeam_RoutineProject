@@ -8,11 +8,9 @@ import Footer from './Footer.js';
 import Main from "./Main.js";
 import Reward from "./reward/Reward.js";
 import User from "./user/User.js";
-import Mypage from "./mypage/Mypage.js";
 import AddPill from "./alarm/AddPill.js";
 import MyPill from "./alarm/MyPill.js";
 import Routine from "./routine/Routine.js";
-import Login from "./login/Login.js";
 import Signup from "./login/Signup.js";
 import Login2 from "./login/Login2";
 import { isAuth, getNickName } from './jwtCheck.js';
@@ -80,13 +78,11 @@ function App() {
                 <Route path="/" element={<Main />} />
                 <Route path="/user" element={<User />} />
                 <Route path="/reward" element={<Reward />} />
-                <Route path="/mypage" element={<Mypage />} />
                 <Route path="/mypill" element={<MyPill />} />
                 <Route path="/addpill" element={<AddPill />} />
                 <Route path="/routine" element={<Routine />} />
-                <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
-                <Route path="/login2" element={<Login2 isLogin={isLogin} setIsLogin={setIsLogin} />} />
+                <Route path="/login" element={<Login2 isLogin={isLogin} setIsLogin={setIsLogin} />} />
 
                 <Route path="*" element={<div>404 Error Not found</div>} />
             </Routes>
