@@ -6,7 +6,6 @@ import { Routes, Route, Link, Router } from "react-router-dom";
 import Header from './Header.js';
 import Footer from './Footer.js';
 import Main from "./Main.js";
-import Alarm from "./alarm/Alarm.js";
 import Reward from "./reward/Reward.js";
 import User from "./user/User.js";
 import Mypage from "./mypage/Mypage.js";
@@ -64,7 +63,6 @@ function App() {
             <Routes>
                 <Route path="/" element={<Main />} />
                 <Route path="/user" element={<User />} />
-                <Route path="/alarm" element={<Alarm />} />
                 <Route path="/reward" element={<Reward />} />
                 <Route path="/mypage" element={<Mypage />} />
                 <Route path="/mypill" element={<MyPill />} />

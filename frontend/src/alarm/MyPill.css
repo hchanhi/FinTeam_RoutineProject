@@ -13,3 +13,11 @@
     margin: auto;
     display: block;
 }
+
+.page{
+    height : 900px;
+}
+
+.page2{
+    background-color: lemonchiffon;
+}
