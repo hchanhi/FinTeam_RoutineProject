@@ -6,6 +6,7 @@ import { Card } from "react-bootstrap";
 import pill from './img/example.png';
 import './Main.css';
 import CheckPill from './CheckPill.js';
+import { getNickName } from './jwtCheck.js';
 
 let Wrapper = styled.div`
 margin: auto;
@@ -16,6 +17,8 @@ height: 880px;
 
 
 function Main() {
+    const token = JSON.parse(localStorage.getItem('accessToken'));
+    const nickname = getNickName(token);
 
     let [selectpill, setSelectpill] = useState(['영양제1', '영양제2', '영양제3']);
     let [pillstate, setPillstate] = useState(0);
@@ -29,7 +32,7 @@ function Main() {
             <br /><br />
             <h1>메인</h1>
             <Card className="mainCard">
-                <Card.Title>안녕하세요 user 님!</Card.Title>
+                <Card.Title>안녕하세요 {nickname} 님!</Card.Title>
                 <Card.Body>
                     <img src={pill} className="image" />
                     <Card.Subtitle className="mb-2 text-muted">
