@@ -17,15 +17,15 @@ function Header(props) {
                 <Navbar.Brand style={{ color: "orange", fontSize: "23px", fontWeight: "600" }}>Pill Good</Navbar.Brand>
                 <Nav style={{ float: 'right', marginRight: '10px' }}>
                     {
-                        nickName ? (<div style={{textAlign:'right'}}>
-                            <Nav.Link as={Link} to={"/user"} style={{display:'inline-block'}}>{nickName}</Nav.Link>
-                            <Nav.Link as={Link} to={"/"} onClick={()=>{
+                        nickName ? (<div style={{ display: 'flex' }}>
+                            <Nav.Link as={Link} to={"/user"} >{nickName}</Nav.Link>
+                            <Nav.Link as={Link} to={"/"} onClick={() => {
                                 localStorage.clear();
                                 props.setUserNickName('');
-                            }} style={{display:'inline-block'}}>로그아웃</Nav.Link>
-                            </div>) : (<div><Nav.Link as={Link} to={"/login"} style={{display:'inline-block'}}>로그인</Nav.Link>
+                            }} >로그아웃</Nav.Link>
+                        </div>) : (<div style={{ display: 'flex' }}><Nav.Link as={Link} to={"/login"} >로그인</Nav.Link>
 
-                                <Nav.Link as={Link} to={"/Signup"} style={{display:'inline-block'}}>회원가입</Nav.Link></div>)
+                            <Nav.Link as={Link} to={"/Signup"} >회원가입</Nav.Link></div>)
                     }
 
                 </Nav>
