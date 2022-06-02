@@ -4,8 +4,11 @@ import {Link} from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import {useState} from "react";
+import { getNickName } from '../jwtCheck.js';
 
 function AddPill(){
+    const token = JSON.parse(localStorage.getItem('accessToken'));
+    const nickname = getNickName(token);
 
     let navigate = useNavigate();
     let [pillname, setPillname] = useState('');
@@ -32,24 +35,23 @@ function AddPill(){
         setEatday(copy);
     }
 
-    let body ={ name: pillname,
-                nownumber:nownumber,
-                eatnumber:eatnumber,
-                eattime1:eattime1,
-                eattime2:eattime2,
-                eattime3:eattime3,
-                eatday: eatday }
+    let body ={
+        supplementsName: pillname,
+        quantity:nownumber,
+        singleDose:eatnumber,
+        nickname :nickname
+        }
 
-    function addPill(){
-        console.log(body);
-        // axios.post('', data)
-        //     .then(function(res){
-        //
-        // })
-        //     .catch(function(res){
-        //
-        // })
-    }
+    function addPill() {
+        axios.post("api/supplements/add", body)
+            .then(function(res){
+            console.log('성공');
+            navigate('/mypill');
+        })
+        .catch(function(res){
+            console.log('실패');
+        })};
+
 
     return(
         <div className="page">

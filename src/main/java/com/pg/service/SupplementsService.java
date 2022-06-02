@@ -32,4 +32,8 @@ public class SupplementsService {
         return supplementsRepository.findAllByUser(user);
     }
 
+    public void deleteById(Long id){
+        supplementsRepository.deleteById(id);
+    }
+
 }
