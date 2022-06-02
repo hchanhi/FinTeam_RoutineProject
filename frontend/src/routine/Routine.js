@@ -7,7 +7,7 @@ function Routine(){
     let [state, setState] = useState([]);
 
     return(
-        <div>
+        <div className="page">
             <br/>
             <br/>
             <br/>
