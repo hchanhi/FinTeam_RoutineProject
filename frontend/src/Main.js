@@ -7,6 +7,7 @@ import pill from './img/example.png';
 import './Main.css';
 import CheckPill from './CheckPill.js';
 import { getNickName } from './jwtCheck.js';
+import axios from "axios";
 
 let Wrapper = styled.div`
 margin: auto;
@@ -20,8 +21,26 @@ function Main() {
     const token = JSON.parse(localStorage.getItem('accessToken'));
     const nickname = getNickName(token);
 
-    let [selectpill, setSelectpill] = useState(['영양제1', '영양제2', '영양제3']);
+    let [selectpill, setSelectpill] = useState([]);
     let [pillstate, setPillstate] = useState(0);
+    let params = {nickname:nickname};
+    function mypill(){
+        axios.get("/api/supplements/list", {params})
+            .then(function(res){
+                console.log("성공");
+                setSelectpill(res.data);
+                console.log(res.data);
+            })
+            .catch(function(res){
+                console.log('실패');
+
+            })
+
+    }
+
+    useEffect(()=>{
+        mypill();
+    },[])
 
     function clickHandler(e) {
         setPillstate(e);
@@ -36,25 +55,24 @@ function Main() {
                 <Card.Body>
                     <img src={pill} className="image" />
                     <Card.Subtitle className="mb-2 text-muted">
-                        <span className={`pillname ${pillstate === 1 ? 'selected' : ''}`} onClick={() => { clickHandler(1); }}>영양제1</span>
-                        <span className={`pillname ${pillstate === 2 ? 'selected' : ''}`} onClick={() => { clickHandler(2); }}>영양제2</span>
-                        <span className={`pillname ${pillstate === 3 ? 'selected' : ''}`} onClick={() => { clickHandler(3); }}>영양제3</span>
+                    {selectpill.map(function(pill,index){
+                        return(
+                        <span key={index} className={`pillname ${pillstate === index ? 'selected' : ''}`} onClick={() => { clickHandler(index); }}>{pill.supplementsName}</span>
+                        );
+                    })}
                     </Card.Subtitle>
-                    {pillstate == 1 ?
-                        <Card.Text>
-                            남은 수량 : 30<br />
-                            알람 시간 : 14:00<br />
-                        </Card.Text> : null}
-                    {pillstate == 2 ?
-                        <Card.Text>
-                            남은 수량 : 50<br />
-                            알람 시간 : 18:00<br />
-                        </Card.Text> : null}
-                    {pillstate == 3 ?
-                        <Card.Text>
-                            남은 수량 : 80<br />
-                            알람 시간 : 20:00<br />
-                        </Card.Text> : null}
+                    {selectpill.map(function(pill,index){
+                        return(
+                            <div>
+                            {pillstate == index ?
+                                <Card.Text key={index}>
+                                    남은 수량 : {pill.quantity}<br />
+                                    알람 시간 : 14:00<br />
+                                </Card.Text> : null}
+                            </div>
+                        );
+                    })}
+
 
 
                 </Card.Body>
