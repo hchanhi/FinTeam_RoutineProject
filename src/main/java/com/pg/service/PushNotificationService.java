@@ -90,10 +90,11 @@ public class PushNotificationService {
             2. token
             3. condition -> multiple topic
          */
-        jMessage.addProperty("topic", "news");
-        //jMessage.addProperty("token", /* your test device token */);
+//        jMessage.addProperty("topic", "news");
+        jMessage.addProperty("token", "cGCf3zHa1OEjSc_RWKavJY:APA91bGDqeT44vdod4jdiue_AQwZl9qnnjZD5PNPs09pFrQlNtlQfdf2F3pEyioNzKYMDEX5rMLYVSub_Ip2j5TY4P0Fp8BJhD8Cv-mfcxdKVnIcOwhR51kOeb_FniOA7ZT6BvepIngN");
 
         JsonObject jFcm = new JsonObject();
+
         jFcm.add(MESSAGE_KEY, jMessage);
 
         return jFcm;
