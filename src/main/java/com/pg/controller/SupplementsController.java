@@ -28,4 +28,8 @@ public class SupplementsController {
         return supplementsService.findAllByUser(nickname);
     }
 
+    @GetMapping("/supplements/delete")
+    public void deleteSupplements(@RequestParam Long id){
+        supplementsService.deleteById(id);
+    }
 }

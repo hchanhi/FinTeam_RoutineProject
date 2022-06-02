@@ -46,7 +46,7 @@ function AddPill(){
         axios.post("api/supplements/add", body)
             .then(function(res){
             console.log('성공');
-            navigate('/');
+            navigate('/mypill');
         })
         .catch(function(res){
             console.log('실패');

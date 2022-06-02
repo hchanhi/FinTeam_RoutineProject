@@ -1,7 +1,7 @@
 import './MyPill.css';
 import {Card, Button} from "react-bootstrap";
 import {useEffect, useState} from "react";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {getNickName} from "../jwtCheck";
 import axios from "axios";
 
@@ -9,15 +9,11 @@ function MyPill(){
     const token = JSON.parse(localStorage.getItem('accessToken'));
     const nickname = getNickName(token);
     let [card, setCard]= useState([]);
+    let navigate = useNavigate();
+    let [state, setState]= useState(false);
 
-    function deletePill(index){
-        let copy = [...card];
-        copy.splice(index,1)
-        setCard(copy);
-    }
-
-    let params = {nickname:nickname};
     function mypill(){
+        let params = {nickname:nickname};
         axios.get("/api/supplements/list", {params})
             .then(function(res){
                 console.log("성공");
@@ -30,10 +26,24 @@ function MyPill(){
             })
 
     }
+    function deletePill(index){
+        let params = {id:(card[index]).id};
+        axios.get("/api/supplements/delete", {params})
+            .then(function(res){
+                console.log("성공");
+                setState(!state);
+            })
+            .catch(function(res){
+                console.log('실패');
+
+            })
+
+    }
 
     useEffect(()=>{
         mypill();
-    },[])
+    },[state])
+
 
     return(
         <div className="page">
