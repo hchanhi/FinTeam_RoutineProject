@@ -15,18 +15,7 @@ import {
 
 } from '@mui/material/';
 import Swal from 'sweetalert2';
-function Copyright(props) {
-    return (
-        <Typography variant="body2" color="text.secondary" align="center" {...props}>
-            {'Copyright © '}
-            <Link color="inherit" href="https://mui.com/">
-                Your Website
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
+
 
 
 const Resigter = (props) => {
@@ -56,15 +45,9 @@ const Resigter = (props) => {
 
                         confirmButtonText: '확인',
                         text: '로그인 되었습니다!😊',
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            props.setIsLogin(!props.isLogin);
-                            navigate('/');
-                        }
-
                     });
-
-
+                    props.setIsLogin(!props.isLogin);
+                    navigate('/');
                 }
             })
             .catch(function (err) {
@@ -197,7 +180,7 @@ const Resigter = (props) => {
                     </Grid>
                 </Box>
             </Box>
-            <Copyright sx={{ mt: 8, mb: 4 }} />
+
         </Container>
 
     );
