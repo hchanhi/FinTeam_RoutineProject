@@ -11,6 +11,7 @@ import Reward from "./reward/Reward.js";
 import User from "./user/User.js";
 import Mypage from "./mypage/Mypage.js";
 import AddPill from "./alarm/AddPill.js";
+import MyPill from "./alarm/MyPill.js"
 
 const config =  {
     apiKey: "AIzaSyApcyEQg322SpdhimM9wMfQLuIn90BDZT4",
@@ -64,6 +65,7 @@ function App() {
                 <Route path="/alarm" element={<Alarm />} />
                 <Route path="/reward" element={<Reward />} />
                 <Route path="/mypage" element={<Mypage />} />
+                <Route path="/mypill" element={<MyPill />} />
                 <Route path="/addpill" element={<AddPill />} />
 
                 <Route path="*" element={<div>404 Error Not found</div>} />
