@@ -109,8 +109,9 @@ const Resigter = (props) => {
 
     return (
 
-        <Container component="main" maxWidth="xs">
-
+        <Container component="main" maxWidth="xs" style={{height:'880px'}}>
+            <br/>
+            <br/>
             <Box
                 sx={{
                     marginTop: 8,
