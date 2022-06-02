@@ -15,6 +15,7 @@ import Routine from "./routine/Routine.js"
 import Login from "./login/Login.js"
 import Signup from "./login/Signup.js"
 import Login2 from "./login/Login2"
+import { isAuth, getNickName } from './jwtCheck';
 
 const config =  {
     apiKey: "AIzaSyApcyEQg322SpdhimM9wMfQLuIn90BDZT4",
@@ -32,7 +33,7 @@ const app = initializeApp(config);
 
 const messaging = getMessaging(app);
 
-getToken(messaging, { vapidKey: 'BEuI26QX9zbLMvI7leG5Lia2wYdCZ-B-7VYeLaOJ6TefStmo0pMB-iqulBi_eQ8MVRVn5Os4pJpSVYSOIK6lhRU' }).then((currentToken) => {
+    getToken(messaging, { vapidKey: 'BEuI26QX9zbLMvI7leG5Lia2wYdCZ-B-7VYeLaOJ6TefStmo0pMB-iqulBi_eQ8MVRVn5Os4pJpSVYSOIK6lhRU' }).then((currentToken) => {
     if (currentToken) {
         console.log('허가!');
         console.log(currentToken);
@@ -56,11 +57,25 @@ onMessage(messaging, (payload) => {
 
 function App() {
 
+    let [userNickName, setUserNickName] = useState('');
+    let [isLogin, setIsLogin] = useState(false);
+
+    useEffect(() => {
+        const token = JSON.parse(localStorage.getItem('accessToken'));
+
+        if (isAuth(token)) {
+            setUserNickName(getNickName(token));
+            setIsLogin(true);
+        } else {
+            setIsLogin(false);
+        }
+    }, [isLogin]);
+
     return (
         <div className="AppDiv">
             {/*헤더*/}
 
-            <Header />
+            <Header userNickName={userNickName} setuserNickName={{setUserNickName}}/>
             {/*페이지*/}
             <Routes>
                 <Route path="/" element={<Main />} />
@@ -70,9 +85,8 @@ function App() {
                 <Route path="/mypill" element={<MyPill />} />
                 <Route path="/addpill" element={<AddPill />} />
                 <Route path="/routine" element={<Routine />} />
-                <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
-                <Route path="/login2" element={<Login2 />} />
+                <Route path="/login" element={<Login2 isLogin={isLogin} setIsLogin={setIsLogin} />} />
 
                 <Route path="*" element={<div>404 Error Not found</div>} />
             </Routes>

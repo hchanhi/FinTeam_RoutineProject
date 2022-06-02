@@ -16,6 +16,7 @@ height: 880px;
 
 
 function Main() {
+    const token = JSON.parse(localStorage.getItem('accessToken'));
 
     let [selectpill, setSelectpill] = useState(['영양제1', '영양제2', '영양제3']);
     let [pillstate, setPillstate] = useState(0);
