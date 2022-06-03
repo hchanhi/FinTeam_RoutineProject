@@ -29,13 +29,17 @@ public class UserService {
     @Autowired
     RefreshTokenRepository refreshTokenRepository;
 
+    @Autowired
+    SupplementsRepository supplementsRepository;
+
     public User findBynickname(String nickname){
        return userRepository.findByNickname(nickname);
     }
 
     // 회원 정보 삭제
     public void deleteUser(Long id){
-
+        User user = userRepository.findById(id).get();
+        supplementsRepository.deleteAllByUser(user);
         //토큰
         refreshTokenRepository.deleteAllByUserId(id);
         userRepository.deleteById(id);

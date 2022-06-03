@@ -41,30 +41,33 @@ const User = (props) => {
     const [isPasswordConfirm, setIsPasswordConfirm] = useState(false);
 
 
-    const getUser = async () => {
-        const json = await axios.get('/api/users/' + userId, { params: { id: userId } });
-        setUser(json.data);
-        setNick(json.data.nickname);
-        setsState(false);
+    function getUser(){
+        axios.get('/api/users/' + userId, { params: { id: userId } })
+            .then(function(json){
+                setUser(json.data);
+                setNick(json.data.nickname);
+            })
+
+
     };
     useEffect(() => {
         getUser();
         if (!isAuth(token)) {
             Swal.fire({
                 confirmButtonColor: '#2fbe9f',
-
                 confirmButtonText: '확인',
                 text: '로그인 후 이용하실 수 있어요😥', // Alert 제목
 
             });
             navigate('/login');
         }
-    }, [state == true]);
+    }, []);
     let nicBody = {
         id: userId,
         nickname: nic
 
     };
+
 
     const handleSubmitNic = (e) => {
         e.preventDefault();
