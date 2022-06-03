@@ -175,7 +175,7 @@ const Resigter = (props) => {
 
                     </Grid>
                     <Grid item>
-                        <Link href="/join" variant="body2">
+                        <Link href="/signup" variant="body2">
                             {"계정이 없으신가요? 회원가입"}
                         </Link>
                     </Grid>
