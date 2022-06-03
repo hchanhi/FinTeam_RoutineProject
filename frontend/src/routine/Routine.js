@@ -67,8 +67,8 @@ function Routine(){
 
                                 </Card.Subtitle>
                                 <Card.Text>
-                                    남은 수량 : 30<br/>
-                                    알람 시간 : 14:00<br/>
+                                    내용<br/>
+                                    내용<br/>
                                 </Card.Text>
                             </Card.Body>
                         </Card>

@@ -76,7 +76,7 @@ function App() {
             {/*페이지*/}
             <Routes>
                 <Route path="/" element={<Main />} />
-                <Route path="/user" element={<User />} />
+                <Route path="/user" element={<User setUserNickName={setUserNickName}/>} />
                 <Route path="/reward" element={<Reward />} />
                 <Route path="/mypill" element={<MyPill />} />
                 <Route path="/addpill" element={<AddPill />} />
