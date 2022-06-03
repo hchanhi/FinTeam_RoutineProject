@@ -52,7 +52,7 @@ function Main() {
             <br /><br />
             <h1>메인</h1>
             <Card className="mainCard">
-                <Card.Title>안녕하세요 {nickname} 님!</Card.Title>
+                <Card.Title>{isAuth(token)!=false ? '안녕하세요'+ {nickname} +'님!' : '로그인 후 이용바랍니다.'}</Card.Title>
                 <Card.Body>
                     <img src={pill} className="image" />
                     <Card.Subtitle className="mb-2 text-muted">
