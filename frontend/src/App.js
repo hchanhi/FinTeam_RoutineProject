@@ -30,6 +30,7 @@ const messaging = getMessaging(app);
 
 getToken(messaging, { vapidKey: 'BEuI26QX9zbLMvI7leG5Lia2wYdCZ-B-7VYeLaOJ6TefStmo0pMB-iqulBi_eQ8MVRVn5Os4pJpSVYSOIK6lhRU' }).then((currentToken) => {
     if (currentToken) {
+        Topic(currentToken);
         console.log('허가!');
         console.log(currentToken);
         // Send the token to your server and update the UI if necessary
@@ -43,6 +44,29 @@ getToken(messaging, { vapidKey: 'BEuI26QX9zbLMvI7leG5Lia2wYdCZ-B-7VYeLaOJ6TefStm
     console.log('An error occurred while retrieving token. ', err);
     // ...
 });
+function subscribeTokenToTopic(token, topic) {
+    fetch('https://iid.googleapis.com/iid/v1/'+token+'/rel/topics/'+topic, {
+        method: 'POST',
+        headers: new Headers({
+
+            'Authorization': 'key='+'AAAAleNjFtY:APA91bG-PTYyM1IYJeMy0h1Cjvb9Y9Uww-4H7qOqTbmlLunuhhO3AbbG8rVvmu79pja_6FVG-oMKuNsLeTwQVR4VPIDnMM3nQOQj7RYqnAmc2phVBJUbFpc6ekrgTNnnro7_ujXg3Pnt'
+        })
+    }).then(response => {
+        if (response.status < 200 || response.status >= 400) {
+            throw 'Error subscribing to topic: '+response.status + ' - ' + response.text();
+        }
+        console.log('Subscribed to "'+topic+'"');
+    }).catch(error => {
+        console.error(error);
+    })
+}
+
+function Topic(Token){
+    subscribeTokenToTopic(Token, "ALL");
+
+}
+
+
 
 
 onMessage(messaging, (payload) => {

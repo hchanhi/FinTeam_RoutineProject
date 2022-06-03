@@ -1,7 +1,7 @@
 package com.pg.controller;
 
+import com.pg.payload.CommResponse;
 import com.pg.service.PushNotificationService;
-import io.netty.util.Constant;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -23,17 +23,20 @@ public class PushApiController {
     @PostMapping("/fcm")
     public ResponseEntity<?> reqFcm(
             @RequestParam(required = true) String title,
-            @RequestParam(required = true) String body
+            @RequestParam(required = true) String body,
+            @RequestParam(required = true) String topic
     ) {
 
         log.info("** title : {}",title);
         log.info("** body : {}",body);
+        log.info("** body : {}",topic);
+
 
         CommResponse res = new CommResponse();
 
         try {
 
-            PushNotificationService.sendCommonMessage(title, body);
+            PushNotificationService.sendCommonMessage(title, body, topic);
 //            res.setCdResult(Constant.SUCCESS);
 
         } catch(Exception e) {
@@ -45,12 +48,4 @@ public class PushApiController {
 
         return ResponseEntity.ok(res);
     }
-
-    @Data
-    public class CommResponse {
-        private String cdResult;
-        private String msgResult;
-    }
-
-
 }
