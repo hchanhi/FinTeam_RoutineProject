@@ -16,17 +16,18 @@ function Routine(){
 
     let params = {nickname:nickname};
     function mypill(){
-        axios.get("/api/supplements/list", {params})
-            .then(function(res){
-                console.log("성공");
-                setPill(res.data);
-                console.log(res.data);
-            })
-            .catch(function(res){
-                console.log('실패');
+        if(isAuth(token)!=false) {
+            axios.get("/api/supplements/list", {params})
+                .then(function (res) {
+                    console.log("성공");
+                    setPill(res.data);
+                    console.log(res.data);
+                })
+                .catch(function (res) {
+                    console.log('실패');
 
-            })
-
+                })
+        }
     }
     useEffect(()=>{
         if (!isAuth(token)) {
@@ -66,8 +67,8 @@ function Routine(){
 
                                 </Card.Subtitle>
                                 <Card.Text>
-                                    남은 수량 : 30<br/>
-                                    알람 시간 : 14:00<br/>
+                                    내용<br/>
+                                    내용<br/>
                                 </Card.Text>
                             </Card.Body>
                         </Card>

@@ -1,0 +1,149 @@
+.UserEditor {
+
+
+    padding: 20px;
+    width: 500px;
+
+
+}
+
+.UserEditor span {
+    margin-top: 1rem;
+    margin-left: 24%;
+}
+
+
+.UserEditor label {
+    margin-right: 10px;
+    width: 30%;
+}
+
+.UserEditor form {
+    text-align: left !important;
+}
+
+.UserEditor input {
+    padding-bottom: 5px;
+    text-align: left !important;
+    border: none;
+    border-bottom: 3px solid #2fbe9f;
+    outline: none;
+    background: none;
+    font-size: medium;
+    font-weight: 600;
+    width: 200px !important;
+}
+
+.UserEditor textarea {
+    padding: 10px;
+    height: 200px;
+    width: 100% !important;
+    border: 3px solid #2fbe9f;
+    border-radius: 20px;
+
+}
+
+.UserEditor select {
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.UserEditor button {
+    width: 60px;
+    cursor: pointer;
+    height: 40px;
+    background-color: #2fbe9f;
+    border: none;
+    border-radius: 10px;
+    color: #ececec;
+    font-weight: 600;
+}
+
+
+
+
+
+.userFlex {
+    display: flex;
+    position: relative;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+
+h2 {
+    text-align: left;
+}
+
+.btns {
+    text-align: right;
+
+
+}
+
+.saveBtn {
+    background-color: #2fbe9f;
+    border: none;
+    border-radius: 10px;
+    color: #ececec;
+    font-weight: 600;
+}
+
+.deleteBtn {
+    background-color: #fd565f;
+    border: none;
+    border-radius: 10px;
+    color: #ececec;
+    font-weight: 600;
+}
+
+.message {
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 24px;
+    letter-spacing: -1px;
+    width: 70%;
+    top: 50%;
+    position: absolute;
+
+
+}
+
+.modify {
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 24px;
+    letter-spacing: -1px;
+    width: 2%;
+    top: 130%;
+    right: 6%;
+    position: absolute;
+
+
+}
+
+
+.success {
+    display: none;
+}
+
+.error {
+    color: #fd565f;
+}
+
+.userDelBtn {
+    display: flex !important;
+    justify-content: flex-start !important;
+    text-align: none !important;
+    background: transparent !important;
+}
+
+.userDelBtn button {
+    background: transparent !important;
+    color: #fd565f;
+    text-decoration: underline;
+    padding: 0;
+    margin: 0;
+}

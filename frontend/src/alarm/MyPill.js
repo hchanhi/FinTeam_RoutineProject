@@ -14,18 +14,19 @@ function MyPill(){
     let [state, setState]= useState(false);
 
     function mypill(){
-        let params = {nickname:nickname};
-        axios.get("/api/supplements/list", {params})
-            .then(function(res){
-                console.log("성공");
-                setCard(res.data);
-                console.log(res.data);
-            })
-            .catch(function(res){
-                console.log('실패');
+        if(isAuth(token)!=false) {
+            let params = {nickname: nickname};
+            axios.get("/api/supplements/list", {params})
+                .then(function (res) {
+                    console.log("성공");
+                    setCard(res.data);
+                    console.log(res.data);
+                })
+                .catch(function (res) {
+                    console.log('실패');
 
-            })
-
+                })
+        }
     }
     function deletePill(index){
         let params = {id:(card[index]).id};

@@ -25,17 +25,18 @@ function Main() {
     let [pillstate, setPillstate] = useState(0);
     let params = {nickname:nickname};
     function mypill(){
-        axios.get("/api/supplements/list", {params})
-            .then(function(res){
-                console.log("성공");
-                setSelectpill(res.data);
-                console.log(res.data);
-            })
-            .catch(function(res){
-                console.log('실패');
+        if(isAuth(token)!=false) {
+            axios.get("/api/supplements/list", {params})
+                .then(function (res) {
+                    console.log("성공");
+                    setSelectpill(res.data);
+                    console.log(res.data);
+                })
+                .catch(function (res) {
+                    console.log('실패');
 
-            })
-
+                })
+        }
     }
 
     useEffect(()=>{
@@ -51,7 +52,7 @@ function Main() {
             <br /><br />
             <h1>메인</h1>
             <Card className="mainCard">
-                <Card.Title>안녕하세요 {nickname} 님!</Card.Title>
+                <Card.Title>{isAuth(token)!=false ? '안녕하세요'+ nickname +'님!' : '로그인 후 이용바랍니다.'}</Card.Title>
                 <Card.Body>
                     <img src={pill} className="image" />
                     <Card.Subtitle className="mb-2 text-muted">
