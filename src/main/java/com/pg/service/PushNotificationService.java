@@ -21,9 +21,9 @@ import java.util.Scanner;
 @Slf4j
 @Service
 public class PushNotificationService {
-    private static final String PROJECT_ID = "pillgood-fa622";
+    private static final String PROJECT_ID = "pillgood-138b1";
     private static final String BASE_URL = "https://fcm.googleapis.com";
-    private static final String FCM_SEND_ENDPOINT = "/v1/projects/pillgood-fa622/messages:send";
+    private static final String FCM_SEND_ENDPOINT = "/v1/projects/pillgood-138b1/messages:send";
     private static final String MESSAGING_SCOPE = "https://www.googleapis.com/auth/firebase.messaging";
     private static final String[] SCOPES = { MESSAGING_SCOPE };
     public static final String MESSAGE_KEY = "message";
