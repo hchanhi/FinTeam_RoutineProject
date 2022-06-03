@@ -28,7 +28,6 @@ const Signup = () => {
     const [passwordState, setPasswordState] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const [nameError, setNameError] = useState('');
-    const [birthError, setBirthError] = useState('');
     const [registerError, setRegisterError] = useState('');
     const navigate = useNavigate();
 
@@ -40,8 +39,8 @@ const Signup = () => {
 
 
     const onhandlePost = async (data) => {
-        const { birth, nickname, email, password } = data;
-        const postData = { birth, nickname, email, password };
+        const {nickname, email, password } = data;
+        const postData = {nickname, email, password };
 
         // post
 
@@ -94,7 +93,6 @@ const Signup = () => {
 
         const data = new FormData(e.currentTarget);
         const joinData = {
-            birth: data.get('birth'),
             nickname: data.get('nickname'),
             email: data.get('email'),
 
@@ -102,7 +100,7 @@ const Signup = () => {
             rePassword: data.get('rePassword'),
 
         };
-        const { email, nickname, password, rePassword, birth } = joinData;
+        const { email, nickname, password, rePassword} = joinData;
 
         // 이메일 유효성 체크
         // 이메일 유효성 체크
@@ -132,13 +130,7 @@ const Signup = () => {
         } else {
             setNameError('');
         }
-        // 생일 유효성 검사
-        const birthRegex = /^[0-9]{6}$/;
-        if (!birthRegex.test(birth)) {
-            setBirthError('생년월일을 6자리로 입력해주세요!');
-        } else {
-            setBirthError('');
-        }
+
 
 
         // 회원가입 동의 체크
@@ -148,7 +140,6 @@ const Signup = () => {
             passwordRegex.test(password) &&
             password === rePassword &&
             nameRegex.test(nickname) &&
-            birthRegex.test(birth) &&
             checked
         ) {
             onhandlePost(joinData);
@@ -227,18 +218,7 @@ const Signup = () => {
                                 />
                             </Grid>
                             <FormHelperText>{passwordError}</FormHelperText>
-                            <Grid item xs={12}>
-                                <TextField
-                                    required
-                                    fullWidth
-                                    type="text"
-                                    id="birth"
-                                    name="birth"
-                                    label="생년월일(6자리)"
-                                    error={birthError !== '' || false}
-                                />
-                            </Grid>
-                            <FormHelperText>{birthError}</FormHelperText>
+
                             <Grid item xs={12}>
                                 <FormControlLabel
                                     control={<Checkbox onChange={handleAgree} color="primary" />}

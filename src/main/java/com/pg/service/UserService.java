@@ -71,12 +71,8 @@ public class UserService {
 
     }
 
-    // 회원 생년월일 변경
-    public void updateBirth(Long id, String birth){
-        User user = userRepository.findById(id).get();
-        user.setBirth(birth);
-        userRepository.save(user);
-    }
+
+
     public String findNickname(Long id){
         return userRepository.findById(id).get().getNickname();
     }

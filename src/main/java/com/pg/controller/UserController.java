@@ -70,7 +70,7 @@ public class UserController {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User", "id", id));
 
-        UserProfile userProfile = new UserProfile(user.getId(), user.getNickname(), user.getEmail(), user.getBirth());
+        UserProfile userProfile = new UserProfile(user.getId(), user.getNickname(), user.getEmail());
 
         return userProfile;
     }
@@ -97,13 +97,6 @@ public class UserController {
     public void deleteUser(@RequestBody HashMap<String, Long> param){
         long id = param.get("id");
         userService.deleteUser(id);
-    }
-
-    @PostMapping("/user/{id}/birth")
-    public void editBirth(@RequestBody HashMap<String, String> param){
-        Long id = Long.parseLong(param.get("id"));
-        String birth = param.get("birth");
-        userService.updateBirth(id, birth);
     }
 
     // 비밀번호 찾기

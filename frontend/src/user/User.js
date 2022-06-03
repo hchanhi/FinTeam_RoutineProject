@@ -23,7 +23,6 @@ const User = (props) => {
 
     const [user, setUser] = useState([]);
     const [nic, setNick] = useState();
-    const [birth, setBirth] = useState();
     const [state, setsState] = useState();
     const [oldPas, setOldPas] = useState();
     const [newPas, setNewPas] = useState();
@@ -31,14 +30,12 @@ const User = (props) => {
 
     //오류메시지 상태저장
     const [nameMessage, setNameMessage] = useState('');
-    const [birthMessage, setBirthMessage] = useState('');
     const [passwordOldMessage, setPasswordOldMessage] = useState('');
     const [passwordNewMessage, setPasswordNewMessage] = useState('');
     const [passwordConfirmMessage, setPasswordConfirmMessage] = useState('');
 
     // 유효성 검사
     const [isName, setIsName] = useState(true);
-    const [isBirth, setIsBirth] = useState(true);
     const [isOldPassword, setIsOldPassword] = useState(false);
     const [isNewPassword, setIsNewPassword] = useState(false);
     const [isPasswordConfirm, setIsPasswordConfirm] = useState(false);
@@ -48,7 +45,6 @@ const User = (props) => {
         const json = await axios.get('/api/users/' + userId, { params: { id: userId } });
         setUser(json.data);
         setNick(json.data.nickname);
-        setBirth(json.data.birth);
         setsState(false);
     };
     useEffect(() => {
@@ -117,58 +113,9 @@ const User = (props) => {
                 .catch(function (err) {
                     console.log(err);
                 });
-
         }
-
-
-
     };
-    let birthBody = {
-        id: userId,
-        birth: birth
 
-    };
-    const handleSubmitBirth = (e) => {
-        e.preventDefault();
-
-        const birthRegex = /^[0-9]{6}$/;
-        if (!birthRegex.test(birth)) {
-            setBirthMessage('생년월일을 6자리로 입력해주세요!');
-            setIsBirth(false);
-        } else {
-            setIsBirth(true);
-            axios
-                .post('/api/user/' + userId + '/birth', birthBody)
-                .then(function (response) {
-                    Swal.fire({
-                        confirmButtonColor: '#2fbe9f',
-
-                        confirmButtonText: '확인',
-                        html: '생년월일이 수정되었습니다.<br>다시 로그인해주세요!😊', // Alert 제목
-
-                    }).then((re) => {
-                        if (re.isConfirmed) {
-                            localStorage.clear();
-                            props.setUserNickName('');
-                            navigate('/');
-                        }
-                    });
-
-
-
-
-                })
-                .catch(function (err) {
-                    console.log(err);
-
-                });
-
-        }
-
-
-
-
-    };
     let pasBody = {
         id: userId,
         oldPassword: oldPas,
@@ -298,20 +245,7 @@ const User = (props) => {
             setIsName(true);
         }
     }, []);
-    // 생년월일
-    const onChangeBirth = useCallback((e) => {
-        const birthRegex = /^[0-9]{6}$/;
-        const birthCurrent = e.target.value;
-        setBirth(birthCurrent);
 
-        if (!birthRegex.test(birthCurrent)) {
-            setBirthMessage('생년월일을 6자리로 입력해주세요!');
-            setIsBirth(false);
-        } else {
-
-            setIsBirth(true);
-        }
-    }, []);
     // 현재 비밀번호
     const onChangeOldPassword = useCallback((e) => {
         const passwordRegex = /^.{4,20}$/;

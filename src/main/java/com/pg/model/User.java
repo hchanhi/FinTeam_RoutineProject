@@ -27,8 +27,6 @@ public class User {
     private String email;
     @Column
     private String password;
-    @Column
-    private String birth;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(	name = "user_roles",
@@ -41,6 +39,5 @@ public class User {
         this.nickname = nickname;
         this.email = email;
         this.password = password;
-        this.birth = birth;
     }
 }
