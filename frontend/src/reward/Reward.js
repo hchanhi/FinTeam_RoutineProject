@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAward, faHouse, faCapsules, faArrowsRotate, faUserGear } from "@fortawesome/free-solid-svg-icons";
+import {getNickName, isAuth} from "../jwtCheck";
+import Swal from "sweetalert2";
+import {useNavigate} from "react-router-dom";
 
 let Badge = styled.div`
 
@@ -46,10 +49,28 @@ let Text = styled.div`
 `;
 
 function Reward() {
-
+    const token = JSON.parse(localStorage.getItem('accessToken'));
+    const nickname = getNickName(token);
 
     let [bd, setBd] = useState([true, false, true, true, true, false, false, false, false]);
     let [rt, setRt] = useState([1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1]);
+
+    let navigate = useNavigate();
+
+    useEffect(()=>{
+        if (!isAuth(token)) {
+            Swal.fire({
+                confirmButtonColor: '#2fbe9f',
+
+                confirmButtonText: '확인',
+                text: '로그인 후 이용하실 수 있어요😥', // Alert 제목
+
+            });
+            navigate('/login');
+        }
+    }, []);
+
+
     return (
         <div >
             <br /><br /><br />
