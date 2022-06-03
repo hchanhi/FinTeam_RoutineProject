@@ -114,7 +114,6 @@ public class AuthController {
 
         user.setEmail(signUpRequest.getEmail());
         user.setNickname(signUpRequest.getNickname());
-        user.setBirth(signUpRequest.getBirth());
         user.setPassword(signUpRequest.getPassword());
 
 
