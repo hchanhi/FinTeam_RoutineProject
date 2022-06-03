@@ -25,17 +25,18 @@ function Main() {
     let [pillstate, setPillstate] = useState(0);
     let params = {nickname:nickname};
     function mypill(){
-        axios.get("/api/supplements/list", {params})
-            .then(function(res){
-                console.log("성공");
-                setSelectpill(res.data);
-                console.log(res.data);
-            })
-            .catch(function(res){
-                console.log('실패');
+        if(isAuth(token)!=false) {
+            axios.get("/api/supplements/list", {params})
+                .then(function (res) {
+                    console.log("성공");
+                    setSelectpill(res.data);
+                    console.log(res.data);
+                })
+                .catch(function (res) {
+                    console.log('실패');
 
-            })
-
+                })
+        }
     }
 
     useEffect(()=>{
