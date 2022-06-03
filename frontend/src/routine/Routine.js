@@ -3,12 +3,15 @@ import './Routine.css';
 import {useState} from "react";
 import axios from "axios";
 import {useEffect} from "react";
-import {getNickName} from "../jwtCheck";
+import {getNickName, isAuth} from "../jwtCheck";
+import Swal from "sweetalert2";
+import {useNavigate} from "react-router-dom";
 
 function Routine(){
     const token = JSON.parse(localStorage.getItem('accessToken'));
     const nickname = getNickName(token);
     let [pill, setPill] = useState([1,2,3]);
+    let navigate = useNavigate();
 
 
     let params = {nickname:nickname};
@@ -25,7 +28,18 @@ function Routine(){
             })
 
     }
+    useEffect(()=>{
+        if (!isAuth(token)) {
+            Swal.fire({
+                confirmButtonColor: '#2fbe9f',
 
+                confirmButtonText: '확인',
+                text: '로그인 후 이용하실 수 있어요😥', // Alert 제목
+
+            });
+            navigate('/login');
+        }
+    }, []);
     useEffect(()=>{
         mypill();
     },[])

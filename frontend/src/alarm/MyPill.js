@@ -2,8 +2,9 @@ import './MyPill.css';
 import {Card, Button} from "react-bootstrap";
 import {useEffect, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
-import {getNickName} from "../jwtCheck";
+import {getNickName, isAuth} from "../jwtCheck";
 import axios from "axios";
+import Swal from 'sweetalert2';
 
 function MyPill(){
     const token = JSON.parse(localStorage.getItem('accessToken'));
@@ -39,6 +40,18 @@ function MyPill(){
             })
 
     }
+    useEffect(()=>{
+        if (!isAuth(token)) {
+            Swal.fire({
+                confirmButtonColor: '#2fbe9f',
+
+                confirmButtonText: '확인',
+                text: '로그인 후 이용하실 수 있어요😥', // Alert 제목
+
+            });
+            navigate('/login');
+        }
+    }, []);
 
     useEffect(()=>{
         mypill();

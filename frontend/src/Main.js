@@ -6,7 +6,7 @@ import { Card } from "react-bootstrap";
 import pill from './img/example.png';
 import './Main.css';
 import CheckPill from './CheckPill.js';
-import { getNickName } from './jwtCheck.js';
+import {getNickName, isAuth} from './jwtCheck.js';
 import axios from "axios";
 
 let Wrapper = styled.div`
