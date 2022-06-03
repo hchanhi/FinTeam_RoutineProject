@@ -77,7 +77,7 @@ public class PushNotificationService {
             System.out.println(response);
         }
     }
-    private static JsonObject buildNotificationMessage(String title, String body) {
+    private static JsonObject buildNotificationMessage(String title, String body, String topic) {
         JsonObject jNotification = new JsonObject();
         jNotification.addProperty("title", title);
         jNotification.addProperty("body", body);
@@ -90,8 +90,8 @@ public class PushNotificationService {
             2. token
             3. condition -> multiple topic
          */
-//        jMessage.addProperty("topic", "news");
-        jMessage.addProperty("token", "cGCf3zHa1OEjSc_RWKavJY:APA91bGDqeT44vdod4jdiue_AQwZl9qnnjZD5PNPs09pFrQlNtlQfdf2F3pEyioNzKYMDEX5rMLYVSub_Ip2j5TY4P0Fp8BJhD8Cv-mfcxdKVnIcOwhR51kOeb_FniOA7ZT6BvepIngN");
+        jMessage.addProperty("topic", topic);
+//        jMessage.addProperty("token", "cGCf3zHa1OEjSc_RWKavJY:APA91bGDqeT44vdod4jdiue_AQwZl9qnnjZD5PNPs09pFrQlNtlQfdf2F3pEyioNzKYMDEX5rMLYVSub_Ip2j5TY4P0Fp8BJhD8Cv-mfcxdKVnIcOwhR51kOeb_FniOA7ZT6BvepIngN");
 
         JsonObject jFcm = new JsonObject();
 
@@ -99,8 +99,8 @@ public class PushNotificationService {
 
         return jFcm;
     }
-    public static void sendCommonMessage(String title, String body) throws IOException {
-        JsonObject notificationMessage = buildNotificationMessage(title, body);
+    public static void sendCommonMessage(String title, String body, String topic) throws IOException {
+        JsonObject notificationMessage = buildNotificationMessage(title, body, topic);
         System.out.println("FCM request body for message using common notification object:");
         prettyPrint(notificationMessage);
         sendMessage(notificationMessage);
