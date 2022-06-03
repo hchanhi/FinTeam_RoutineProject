@@ -16,13 +16,13 @@ import Login2 from "./login/Login2";
 import { isAuth, getNickName } from './jwtCheck.js';
 
 const config = {
-    apiKey: "AIzaSyApcyEQg322SpdhimM9wMfQLuIn90BDZT4",
-    authDomain: "pillgood-fa622.firebaseapp.com",
-    projectId: "pillgood-fa622",
-    storageBucket: "pillgood-fa622.appspot.com",
-    messagingSenderId: "643765049046",
-    appId: "1:643765049046:web:9e4be72f3998028de45b77",
-    measurementId: "G-95F883RD6Z"
+    apiKey: "AIzaSyDIeKgdotnu9zvRvYNKnVry8Nuw6r7s7_8",
+    authDomain: "pillgood-138b1.firebaseapp.com",
+    projectId: "pillgood-138b1",
+    storageBucket: "pillgood-138b1.appspot.com",
+    messagingSenderId: "63398292257",
+    appId: "1:63398292257:web:bdf80d64a9a75d249d6c60",
+    measurementId: "G-6KFN50FF08"
 };
 const app = initializeApp(config);
 
@@ -31,7 +31,7 @@ const app = initializeApp(config);
 
 const messaging = getMessaging(app);
 
-getToken(messaging, { vapidKey: 'BEuI26QX9zbLMvI7leG5Lia2wYdCZ-B-7VYeLaOJ6TefStmo0pMB-iqulBi_eQ8MVRVn5Os4pJpSVYSOIK6lhRU' }).then((currentToken) => {
+getToken(messaging, { vapidKey: 'BOUH7VnfqJhHUd9CXxw1_QwjB_lScFbFAgPb9P-JOcNE8VavuYuOgSw5s9dLiTZfS0yYGv5RI1dCkYSeLxxvmmI' }).then((currentToken) => {
     if (currentToken) {
         Topic(currentToken);
         console.log('허가!');
@@ -52,7 +52,7 @@ function subscribeTokenToTopic(token, topic) {
         method: 'POST',
         headers: new Headers({
 
-            'Authorization': 'key='+'AAAAleNjFtY:APA91bG-PTYyM1IYJeMy0h1Cjvb9Y9Uww-4H7qOqTbmlLunuhhO3AbbG8rVvmu79pja_6FVG-oMKuNsLeTwQVR4VPIDnMM3nQOQj7RYqnAmc2phVBJUbFpc6ekrgTNnnro7_ujXg3Pnt'
+            'Authorization': 'key='+'AAAADsLVKyE:APA91bHI_UNkgq0sEAf5UcR01heTflDp8PDs8CI5Lpb3G8HHLUNv05N1STvF0OaAN_W0jVXoHTFdxO_KAkw4Gc5fdrvPxNfnzjtc9IpjJPxJz6fcHQUEpY9W-Lr7wJH-TpgII5O8_84E'
         })
     }).then(response => {
         if (response.status < 200 || response.status >= 400) {
