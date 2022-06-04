@@ -11,7 +11,9 @@ import com.pg.payload.request.RequestPushMessage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -22,6 +24,7 @@ import static com.pg.payload.request.RequestPushMessage.*;
 
 @Slf4j
 @Service
+@EnableScheduling
 public class NotificationScheduler {
 
     @Value("${firebase.create.scoped}")
@@ -54,6 +57,7 @@ public class NotificationScheduler {
         log.info("점심 식사 알림");
         pushAlarm(LUNCH_ALARM);
     }
+
 
     @Scheduled(cron = "0 0 19 * * ?")
     public void pushDinnerAlarm() throws FirebaseMessagingException {
