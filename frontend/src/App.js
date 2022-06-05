@@ -33,7 +33,8 @@ const messaging = getMessaging(app);
 
 getToken(messaging, { vapidKey: 'BOUH7VnfqJhHUd9CXxw1_QwjB_lScFbFAgPb9P-JOcNE8VavuYuOgSw5s9dLiTZfS0yYGv5RI1dCkYSeLxxvmmI' }).then((currentToken) => {
     if (currentToken) {
-        Topic(currentToken);
+        Topic1(currentToken);
+        Topic2(currentToken);
         console.log('허가!');
         console.log(currentToken);
         // Send the token to your server and update the UI if necessary
@@ -64,9 +65,11 @@ function subscribeTokenToTopic(token, topic) {
     })
 }
 
-function Topic(Token){
+function Topic1(Token) {
     subscribeTokenToTopic(Token, "ALL");
-
+}
+function Topic2(Token) {
+    subscribeTokenToTopic(Token, "MORNING");
 }
 
 
