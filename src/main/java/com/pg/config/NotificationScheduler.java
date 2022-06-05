@@ -30,9 +30,6 @@ public class NotificationScheduler {
     @Value("${firebase.create.scoped}")
     String fireBaseCreateScoped;
 
-    @Value("${firebase.topic}")
-    String topic;
-
     private FirebaseMessaging instance;
 
     @PostConstruct
@@ -64,6 +61,7 @@ public class NotificationScheduler {
         log.info("저녁 식사 알림");
         pushAlarm(DINNER_ALARM);
     }
+    
 
     private void pushAlarm(RequestPushMessage data) throws FirebaseMessagingException {
         Message message = getMessage(data);
@@ -73,7 +71,7 @@ public class NotificationScheduler {
     private Message getMessage(RequestPushMessage data) {
         Notification notification = Notification.builder().setTitle(data.getTitle()).setBody(data.getBody()).build();
         Message.Builder builder = Message.builder();
-        Message message = builder.setTopic(topic).setNotification(notification).build();
+        Message message = builder.setTopic(data.getTopic()).setNotification(notification).build();
         return message;
     }
 
