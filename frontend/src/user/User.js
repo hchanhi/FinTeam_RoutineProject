@@ -41,12 +41,12 @@ const User = (props) => {
     const [isPasswordConfirm, setIsPasswordConfirm] = useState(false);
 
 
-    function getUser(){
+    function getUser() {
         axios.get('/api/users/' + userId, { params: { id: userId } })
-            .then(function(json){
+            .then(function (json) {
                 setUser(json.data);
                 setNick(json.data.nickname);
-            })
+            });
 
 
     };
@@ -126,66 +126,66 @@ const User = (props) => {
 
     };
     const handleSubmitPas = useCallback((e) => {
-            e.preventDefault();
+        e.preventDefault();
 
-            const passwordRegex = /^.{4,20}$/;
-            if (!passwordRegex.test(oldPas)) {
-                setPasswordOldMessage('4~20글자를 입력해주세요!');
-                setIsOldPassword(false);
+        const passwordRegex = /^.{4,20}$/;
+        if (!passwordRegex.test(oldPas)) {
+            setPasswordOldMessage('4~20글자를 입력해주세요!');
+            setIsOldPassword(false);
 
-            } else if (!passwordRegex.test(newPas)) {
-                setPasswordNewMessage('4~20글자를 입력해주세요!');
-                setIsOldPassword(true);
-                setIsNewPassword(false);
-            } else if (passwordConfirm != newPas) {
-                setIsPasswordConfirm(false);
-                setPasswordConfirmMessage('비밀번호가 다릅니다!');
-                setIsOldPassword(true);
-                setIsNewPassword(true);
-            } else {
-                setIsOldPassword(true);
-                setIsNewPassword(true);
-                setIsPasswordConfirm(true);
-                axios
-                    .post('/api/user/' + userId + '/password', pasBody)
-                    .then(function (response) {
-                        if (response.data == false) {
-                            Swal.fire({
-                                confirmButtonColor: '#2fbe9f',
+        } else if (!passwordRegex.test(newPas)) {
+            setPasswordNewMessage('4~20글자를 입력해주세요!');
+            setIsOldPassword(true);
+            setIsNewPassword(false);
+        } else if (passwordConfirm != newPas) {
+            setIsPasswordConfirm(false);
+            setPasswordConfirmMessage('비밀번호가 다릅니다!');
+            setIsOldPassword(true);
+            setIsNewPassword(true);
+        } else {
+            setIsOldPassword(true);
+            setIsNewPassword(true);
+            setIsPasswordConfirm(true);
+            axios
+                .post('/api/user/' + userId + '/password', pasBody)
+                .then(function (response) {
+                    if (response.data == false) {
+                        Swal.fire({
+                            confirmButtonColor: '#2fbe9f',
 
-                                confirmButtonText: '확인',
-                                text: '비밀번호가 틀렸습니다!😢', // Alert 제목
+                            confirmButtonText: '확인',
+                            text: '비밀번호가 틀렸습니다!😢', // Alert 제목
 
-                            });
+                        });
 
-                        } else {
-                            Swal.fire({
-                                confirmButtonColor: '#2fbe9f',
+                    } else {
+                        Swal.fire({
+                            confirmButtonColor: '#2fbe9f',
 
-                                confirmButtonText: '확인',
-                                html: '비밀번호가 수정되었습니다.<br>다시 로그인해주세요!😊', // Alert 제목
+                            confirmButtonText: '확인',
+                            html: '비밀번호가 수정되었습니다.<br>다시 로그인해주세요!😊', // Alert 제목
 
-                            }).then((re) => {
-                                if (re.isConfirmed) {
-                                    localStorage.clear();
-                                    props.setUserNickName('');
-                                    navigate('/');
-                                }
-                            });
+                        }).then((re) => {
+                            if (re.isConfirmed) {
+                                localStorage.clear();
+                                props.setUserNickName('');
+                                navigate('/');
+                            }
+                        });
 
-                        }
-
-
-                    })
-                    .catch(function (err) {
-                        console.log(err);
-                    });
-
-            }
+                    }
 
 
+                })
+                .catch(function (err) {
+                    console.log(err);
+                });
 
-        }, [oldPas, newPas, passwordConfirm]
+        }
+
+
+
+    }, [oldPas, newPas, passwordConfirm]
     );
 
     let delBody = {
@@ -293,113 +293,113 @@ const User = (props) => {
         },
         [newPas]
     );
-    return (<div>
+    return (<div style={{ height: '100vh' }}>
 
-            <Container className="UserEditor">
+        <Container className="UserEditor">
 
-                <h2>회원정보🔎</h2>
-                <br></br>
-                <Box component="form" sx={{ mt: 3 }}>
-                    <div className="userFlex">
-                        <label>이메일</label>
-                        <input
-                            defaultValue={user.email}
-                            name="nickName"
-                            placeholder="작성자"
-                            type="text"
-                            readOnly
+            <h2>회원정보🔎</h2>
+            <br></br>
+            <Box component="form" sx={{ mt: 3 }}>
+                <div className="userFlex">
+                    <label>이메일</label>
+                    <input
+                        defaultValue={user.email}
+                        name="nickName"
+                        placeholder="작성자"
+                        type="text"
+                        readOnly
 
-                        />
+                    />
 
-                    </div>
-                    <h3>닉네임 수정</h3>
-                    <br></br>
-                    <div className="userFlex">
-                        <label>닉네임</label>
-                        <input
-                            defaultValue={nic}
-                            name="nickName"
-                            onChange={onChangeName}
-                            placeholder="닉네임"
-                            type="text"
-
-
-                        />
-                        {<span className={`message ${isName ? 'success' : 'error'}`}>{nameMessage}</span>}
-                        <div className='modify'>
-                            <button onClick={handleSubmitNic}>수정</button>
-                        </div>
-
-                    </div>
-
-                    <h3>비밀번호 수정</h3>
-                    <br></br>
-                    <div className="userFlex">
-                        <label>현재 비밀번호</label>
-                        <input
-                            defaultValue={oldPas}
-                            name="old"
-                            onChange={onChangeOldPassword}
-                            placeholder="현재 비밀번호"
-
-
-                            type="password"
-
-
-
-                        />
-                        {(
-                            <span className={`message ${isOldPassword ? 'success' : 'error'}`}>{passwordOldMessage}</span>
-                        )}
-                    </div>
-
-                    <div className="userFlex">
-                        <label>변경 비밀번호</label>
-                        <input
-                            defaultValue={newPas}
-                            name="new"
-                            onChange={onChangeNewPassword}
-                            placeholder="변경 비밀번호"
-
-
-                            type="password"
-
-
-
-                        />
-                        {(
-                            <span className={`message ${isNewPassword ? 'success' : 'error'}`}>{passwordNewMessage}</span>
-                        )}
-                    </div>
-
-                    <div className="userFlex">
-                        <label>변경 비밀번호 확인</label>
-                        <input
-                            defaultValue={passwordConfirm}
-                            onChange={onChangePasswordConfirm}
-                            name="confirm"
-                            placeholder="비밀번호 확인"
-                            type="password"
-
-
-                        />
-                        {(
-                            <span className={`message ${isPasswordConfirm ? 'success' : 'error'}`}>{passwordConfirmMessage}</span>
-                        )}
-                        <div className='modify'>
-                            <button onClick={handleSubmitPas}>수정</button>
-                        </div>
-                    </div>
-
-                </Box>
-
-
-
-                <div className="userDelBtn">
-                    <button onClick={handleSubmitDel}>탈퇴</button>
                 </div>
-            </Container>
-        </div>
+                <h3>닉네임 수정</h3>
+                <br></br>
+                <div className="userFlex">
+                    <label>닉네임</label>
+                    <input
+                        defaultValue={nic}
+                        name="nickName"
+                        onChange={onChangeName}
+                        placeholder="닉네임"
+                        type="text"
+
+
+                    />
+                    {<span className={`message ${isName ? 'success' : 'error'}`}>{nameMessage}</span>}
+                    <div className='modify'>
+                        <button onClick={handleSubmitNic}>수정</button>
+                    </div>
+
+                </div>
+
+                <h3>비밀번호 수정</h3>
+                <br></br>
+                <div className="userFlex">
+                    <label>현재 비밀번호</label>
+                    <input
+                        defaultValue={oldPas}
+                        name="old"
+                        onChange={onChangeOldPassword}
+                        placeholder="현재 비밀번호"
+
+
+                        type="password"
+
+
+
+                    />
+                    {(
+                        <span className={`message ${isOldPassword ? 'success' : 'error'}`}>{passwordOldMessage}</span>
+                    )}
+                </div>
+
+                <div className="userFlex">
+                    <label>변경 비밀번호</label>
+                    <input
+                        defaultValue={newPas}
+                        name="new"
+                        onChange={onChangeNewPassword}
+                        placeholder="변경 비밀번호"
+
+
+                        type="password"
+
+
+
+                    />
+                    {(
+                        <span className={`message ${isNewPassword ? 'success' : 'error'}`}>{passwordNewMessage}</span>
+                    )}
+                </div>
+
+                <div className="userFlex">
+                    <label>변경 비밀번호 확인</label>
+                    <input
+                        defaultValue={passwordConfirm}
+                        onChange={onChangePasswordConfirm}
+                        name="confirm"
+                        placeholder="비밀번호 확인"
+                        type="password"
+
+
+                    />
+                    {(
+                        <span className={`message ${isPasswordConfirm ? 'success' : 'error'}`}>{passwordConfirmMessage}</span>
+                    )}
+                    <div className='modify'>
+                        <button onClick={handleSubmitPas}>수정</button>
+                    </div>
+                </div>
+
+            </Box>
+
+
+
+            <div className="userDelBtn">
+                <button onClick={handleSubmitDel}>탈퇴</button>
+            </div>
+        </Container>
+    </div>
     );
 
 };
