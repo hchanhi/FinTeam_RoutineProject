@@ -9,6 +9,7 @@ function Header(props) {
 
     let nickName = props.userNickName;
     console.log(nickName);
+
     return (
 
 
