@@ -5,7 +5,7 @@ function PreMain() {
 
 
     return (
-        <div style={{ height: '1000vh' }}>
+        <div style={{ height: '100vh' }}>
             <br></br>
             <br></br>
             <br></br>
