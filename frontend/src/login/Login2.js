@@ -109,23 +109,23 @@ const Resigter = (props) => {
 
     return (
 
-        <Container component="main" maxWidth="xs" style={{height:'880px'}}>
+        <Container component="main" maxWidth="xs" style={{height:'1200px'}}>
             <br/>
             <br/>
             <Box
                 sx={{
-                    marginTop: 8,
+                    height:500,
+                    marginTop: 35,
                     display: 'flex',
                     flexDirection: 'column',
-
                     borderRadius: '10px',
-                    padding: '32px',
+                    padding: '60px 50px',
                     backgroundColor: '#fff',
                     boxShadow: ' 0 8px 20px 0 rgba(0, 0, 0, 0.15)'
                 }}
             >
 
-                <Typography component="h1" variant="h5" >
+                <Typography component="h1" variant="h3" color="gray" margin="0 auto" fontWeight="600">
                     로그인
                 </Typography>
                 <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 3 }}>
@@ -140,6 +140,7 @@ const Resigter = (props) => {
                             autoComplete="email"
                             autoFocus
                             error={emailError !== '' || false}
+                            sx={{ outline:"none" }}
                         />
                     </Grid>
                     <FormHelperText>{emailError}</FormHelperText>
@@ -162,20 +163,23 @@ const Resigter = (props) => {
                         type="submit"
                         fullWidth
                         variant="contained"
-                        sx={{ mt: 2, mb: 2 }}
+                        fontWeight="600"
+                        sx={{ mt: 3, mb: 3, ml:7, backgroundColor:"orange", fontSize:25, width:180}}
                     >
                         로그인
                     </Button>
                     <Grid container>
                         <Grid item xs>
-                            <Link href="/findPassword" variant="body2">
+                            <Link href="/findPassword" variant="body2" 
+                            sx={{ml:6.5, cursor:"pointer"}}>
                                 비밀번호를 잊어버리셨나요?
                             </Link>
                         </Grid>
 
                     </Grid>
                     <Grid item>
-                        <Link href="/signup" variant="body2">
+                        <Link href="/signup" variant="body2"
+                        sx={{ml:6.2}}>
                             {"계정이 없으신가요? 회원가입"}
                         </Link>
                     </Grid>
