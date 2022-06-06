@@ -150,23 +150,24 @@ const Signup = () => {
 
     return (
 
-        <Container component="main" maxWidth="xs" style={{height:'880px'}}>
+        <Container component="main" maxWidth="xs" style={{height:'1200px'}}>
             <br/>
             <br/>
             <Box
                 sx={{
+                    height:660,
                     marginTop: 8,
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
                     borderRadius: '10px',
-                    padding: '32px',
+                    padding: '60px 50px',
                     backgroundColor: '#fff',
                     boxShadow: ' 0 8px 20px 0 rgba(0, 0, 0, 0.15)'
                 }}
             >
 
-                <Typography component="h1" variant="h5" sx={{ mt: 3 }}>
+                <Typography component="h1" variant="h3" color="gray" fontWeight="600" sx={{ mt: 3, mb:3 }}>
                     회원가입
                 </Typography>
                 <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
@@ -183,6 +184,7 @@ const Signup = () => {
                                     name="email"
                                     label="이메일 주소"
                                     error={emailError !== '' || false}
+                                    style={{border:"0px"}}
                                 />
                             </Grid>
                             <FormHelperText>{emailError}</FormHelperText>
@@ -232,7 +234,7 @@ const Signup = () => {
                             type="submit"
                             fullWidth
                             variant="contained"
-                            sx={{ mt: 1 }}
+                            sx={{ mt: 1,mb: 3, ml:7.5, backgroundColor:"orange", fontSize:25, width:180 }}
                             size="large"
                         >
                             회원가입
