@@ -45,9 +45,14 @@ const Resigter = (props) => {
 
                         confirmButtonText: '확인',
                         text: '로그인 되었습니다!😊',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            props.setIsLogin(!props.isLogin);
+                            navigate('/');
+                            window.location.reload();
+                        }
                     });
-                    props.setIsLogin(!props.isLogin);
-                    navigate('/');
+
                 }
             })
             .catch(function (err) {
@@ -109,9 +114,9 @@ const Resigter = (props) => {
 
     return (
 
-        <Container component="main" maxWidth="xs" style={{height:'880px'}}>
-            <br/>
-            <br/>
+        <Container component="main" maxWidth="xs" style={{ height: '880px' }}>
+            <br />
+            <br />
             <Box
                 sx={{
                     marginTop: 8,

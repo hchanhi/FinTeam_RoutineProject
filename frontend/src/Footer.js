@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Container, Navbar, Nav } from 'react-bootstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -20,7 +20,7 @@ let Icon = styled.div`
 font-size:40px;
 
 `;
-function Footer() {
+const Footer = () => {
 
 
 
@@ -56,6 +56,6 @@ function Footer() {
         </Navbar>
 
     );
-}
 
+};
 export default Footer;

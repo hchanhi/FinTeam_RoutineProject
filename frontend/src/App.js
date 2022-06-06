@@ -2,10 +2,11 @@ import './App.css';
 import { useEffect, useState } from "react";
 import { initializeApp } from "firebase/app";
 import { getMessaging, getToken, onMessage } from "firebase/messaging";
-import { Routes, Route, Link, Router } from "react-router-dom";
+import { Routes, Route, Link, Router, Navigate } from "react-router-dom";
 import Header from './Header.js';
 import Footer from './Footer.js';
 import Main from "./Main.js";
+import PreMain from "./PreMain.js";
 import Reward from "./reward/Reward.js";
 import User from "./user/User.js";
 import AddPill from "./alarm/AddPill.js";
@@ -25,7 +26,6 @@ const config = {
     measurementId: "G-6KFN50FF08"
 };
 const app = initializeApp(config);
-
 
 
 
@@ -49,20 +49,20 @@ getToken(messaging, { vapidKey: 'BOUH7VnfqJhHUd9CXxw1_QwjB_lScFbFAgPb9P-JOcNE8Va
     // ...
 });
 function subscribeTokenToTopic(token, topic) {
-    fetch('https://iid.googleapis.com/iid/v1/'+token+'/rel/topics/'+topic, {
+    fetch('https://iid.googleapis.com/iid/v1/' + token + '/rel/topics/' + topic, {
         method: 'POST',
         headers: new Headers({
 
-            'Authorization': 'key='+'AAAADsLVKyE:APA91bHI_UNkgq0sEAf5UcR01heTflDp8PDs8CI5Lpb3G8HHLUNv05N1STvF0OaAN_W0jVXoHTFdxO_KAkw4Gc5fdrvPxNfnzjtc9IpjJPxJz6fcHQUEpY9W-Lr7wJH-TpgII5O8_84E'
+            'Authorization': 'key=' + 'AAAADsLVKyE:APA91bHI_UNkgq0sEAf5UcR01heTflDp8PDs8CI5Lpb3G8HHLUNv05N1STvF0OaAN_W0jVXoHTFdxO_KAkw4Gc5fdrvPxNfnzjtc9IpjJPxJz6fcHQUEpY9W-Lr7wJH-TpgII5O8_84E'
         })
     }).then(response => {
         if (response.status < 200 || response.status >= 400) {
-            throw 'Error subscribing to topic: '+response.status + ' - ' + response.text();
+            throw 'Error subscribing to topic: ' + response.status + ' - ' + response.text();
         }
-        console.log('Subscribed to "'+topic+'"');
+        console.log('Subscribed to "' + topic + '"');
     }).catch(error => {
         console.error(error);
-    })
+    });
 }
 
 function Topic1(Token) {
@@ -79,14 +79,14 @@ onMessage(messaging, (payload) => {
     console.log('Message received. ', payload);
     // ...
 });
-
+const token = JSON.parse(localStorage.getItem('accessToken'));
 function App() {
 
     let [userNickName, setUserNickName] = useState('');
     let [isLogin, setIsLogin] = useState(false);
 
     useEffect(() => {
-        const token = JSON.parse(localStorage.getItem('accessToken'));
+
 
         if (isAuth(token)) {
             setUserNickName(getNickName(token));
@@ -95,15 +95,20 @@ function App() {
             setIsLogin(false);
         }
     }, [isLogin]);
+    if (isAuth(token) == false) {
+        return <div className="AppDiv"> <Routes><Route path='/' element={<PreMain />} /><Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login2 isLogin={isLogin} setIsLogin={setIsLogin} />} /></Routes></div>;
+    };
     return (
         <div className="AppDiv">
             {/*헤더*/}
 
             <Header userNickName={userNickName} setUserNickName={setUserNickName} />
+
             {/*페이지*/}
             <Routes>
                 <Route path="/" element={<Main />} />
-                <Route path="/user" element={<User setUserNickName={setUserNickName}/>} />
+                <Route path="/user" element={<User setUserNickName={setUserNickName} />} />
                 <Route path="/reward" element={<Reward />} />
                 <Route path="/mypill" element={<MyPill />} />
                 <Route path="/addpill" element={<AddPill />} />

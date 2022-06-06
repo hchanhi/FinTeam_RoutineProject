@@ -6,7 +6,7 @@
 }
 
 .AppDiv {
-  width: 500px;
+  width: 480px;
 
   background-color: lemonchiffon;
   margin: 0 auto;
@@ -15,7 +15,7 @@
 .mainHeader {
   position: fixed;
   top: 0;
-  width: 500px;
+  width: 480px;
   z-index: 1;
 
 }
@@ -23,7 +23,7 @@
 .mainFooter {
   position: fixed;
   bottom: 0;
-  width: 500px;
+  width: 480px;
   z-index: 1;
 }
 
