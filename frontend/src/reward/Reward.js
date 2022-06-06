@@ -1,10 +1,10 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAward, faHouse, faCapsules, faArrowsRotate, faUserGear } from "@fortawesome/free-solid-svg-icons";
-import {getNickName, isAuth} from "../jwtCheck";
+import { faAward, faFlaskRoundPotion } from "@fortawesome/free-solid-svg-icons";
+import { getNickName, isAuth } from "../jwtCheck";
 import Swal from "sweetalert2";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 let Badge = styled.div`
 
@@ -41,8 +41,8 @@ justify-content:center
 `;
 let Text = styled.div`
 
-    margin-left:20px
-
+    margin-left:20px;
+  =
 
 
 
@@ -57,7 +57,7 @@ function Reward() {
 
     let navigate = useNavigate();
 
-    useEffect(()=>{
+    useEffect(() => {
         if (!isAuth(token)) {
             Swal.fire({
                 confirmButtonColor: '#2fbe9f',
@@ -72,12 +72,12 @@ function Reward() {
 
 
     return (
-        <div >
+        <div style={{ height: '100vh' }} >
             <br /><br /><br />
             <Text>
-                <h4>리워드 <FontAwesomeIcon style={{ color: "black" }} className='icon' icon={faAward} /></h4>
+                <h3 >리워드</h3>
                 <br />
-                <h3>루틴 필드</h3>
+                <h4>루틴 필드</h4>
             </Text>
 
             <div >
@@ -85,8 +85,11 @@ function Reward() {
                     {
                         rt.map(function (a, i) {
                             return (
-                                <h1 key={i}>{rt[i] == 1 ? <div style={{ width: '30px', height: '30px', backgroundColor: 'skyblue', marginLeft: '10px' }}></div> :
-                                    <div style={{ width: '30px', height: '30px', backgroundColor: 'grey', marginLeft: '10px' }}></div>}</h1>
+                                <h1 key={i}>{rt[i] == 1 ? <div style={{ width: '30px', height: '30px', marginLeft: '10px' }}>
+                                    <img src={require("../img/pill01.png").default} />
+                                </div> :
+                                    <div style={{ width: '30px', height: '30px', marginLeft: '10px' }}>
+                                        <img src={require("../img/pill02.png").default} /></div>}</h1>
                             );
                         })
 
@@ -94,7 +97,7 @@ function Reward() {
                 </Wrapper>
             </div>
             <Text>
-                <h3>뱃지</h3>
+                <h4>뱃지</h4>
             </Text>
 
             <div style={{ width: "300px", textAlign: "center" }}>
