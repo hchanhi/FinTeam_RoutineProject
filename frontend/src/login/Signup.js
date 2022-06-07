@@ -49,7 +49,7 @@ const Signup = () => {
             .then(function (response) {
                 console.log(response.status, '성공');
                 Swal.fire({
-                    confirmButtonColor: '#2fbe9f',
+                    confirmButtonColor: '#ffa500',
 
                     confirmButtonText: '확인',
 
@@ -73,7 +73,7 @@ const Signup = () => {
                 console.log(err.response.data.message);
                 if (err.response.status === 400) {
                     Swal.fire({
-                        confirmButtonColor: '#2fbe9f',
+                        confirmButtonColor: '#ffa500',
 
                         confirmButtonText: '확인',
 
@@ -81,7 +81,7 @@ const Signup = () => {
                     });
 
                 }
-                setRegisterError('회원가입에 실패하였습니다. 다시한번 확인해 주세요!');
+                setRegisterError('회원가입에 실패하였습니다!');
 
             });
     };
@@ -134,7 +134,13 @@ const Signup = () => {
 
 
         // 회원가입 동의 체크
-        if (!checked) alert('회원가입 약관에 동의해주세요!');
+        if (!checked) Swal.fire({
+            confirmButtonColor: '#ffa500',
+
+            confirmButtonText: '확인',
+
+            text: '회원가입 약관에 동의해주세요!😥', // Alert 내용
+        });
         if (
             emailRegex.test(email) &&
             passwordRegex.test(password) &&
@@ -247,7 +253,7 @@ const Signup = () => {
                         </Button>
 
                     </FormControl>
-                    <FormHelperText>{registerError}</FormHelperText>
+                    <FormHelperText style={{ textAlign: 'center' }}>{registerError}</FormHelperText>
                 </Box>
             </Box>
         </Container>

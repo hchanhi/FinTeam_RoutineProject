@@ -50,28 +50,7 @@ function AddPill(){
         });
     }
 
-    function unsubscribeTokenToTopic(token, topic) {
-        fetch('https://iid.googleapis.com/iid/v1:batchRemove', {
-            method: 'POST',
-            headers: new Headers({
-                'Content-Type': 'application/json',
-                'Authorization': 'key=' + 'AAAADsLVKyE:APA91bHI_UNkgq0sEAf5UcR01heTflDp8PDs8CI5Lpb3G8HHLUNv05N1STvF0OaAN_W0jVXoHTFdxO_KAkw4Gc5fdrvPxNfnzjtc9IpjJPxJz6fcHQUEpY9W-Lr7wJH-TpgII5O8_84E'
-            }),
-            body : JSON.stringify({
-                "to": "/topics/"+topic,
-                "registration_tokens": [token]
-            })
 
-
-        }).then(response => {
-            if (response.status < 200 || response.status >= 400) {
-                throw 'Error unsubscribing to topic: ' + response.status + ' - ' + response.text();
-            }
-            console.log('Unsubscribed to "' + topic + '"');
-        }).catch(error => {
-            console.error(error);
-        });
-    }
 
     function Topic1(Token) {
         subscribeTokenToTopic(Token, "MORNING");
@@ -119,11 +98,11 @@ function AddPill(){
                 getToken(messaging, {vapidKey: 'BOUH7VnfqJhHUd9CXxw1_QwjB_lScFbFAgPb9P-JOcNE8VavuYuOgSw5s9dLiTZfS0yYGv5RI1dCkYSeLxxvmmI'})
                     .then((currentToken) => {
                         if (currentToken) {
-                            if(body.slot=='아침'){
+                            if(body.slot=='MORNING'){
                                 Topic1(currentToken);
-                            } else if(body.slot=='점심'){
+                            } else if(body.slot=='LUNCH'){
                                 Topic2(currentToken);
-                            } else if(body.slot=='저녁'){
+                            } else if(body.slot=='DINNER'){
                                 Topic3(currentToken);
                             }
                             console.log('허가!');
@@ -172,9 +151,9 @@ function AddPill(){
                                 {/*    );*/}
                                 {/*})}*/}
 
-                                <input type="radio" name="time" value="아침" onChange={(e)=>{setEattime(e.target.value)}} /> 아침
-                                <input type="radio" name="time" value="점심" onChange={(e)=>{setEattime(e.target.value)}} /> 점심
-                                <input type="radio" name="time" value="저녁" onChange={(e)=>{setEattime(e.target.value)}} /> 저녁
+                                <input type="radio" name="time" value="MORNING" onChange={(e)=>{setEattime(e.target.value)}} /> 아침
+                                <input type="radio" name="time" value="LUNCH" onChange={(e)=>{setEattime(e.target.value)}} /> 점심
+                                <input type="radio" name="time" value="DINNER" onChange={(e)=>{setEattime(e.target.value)}} /> 저녁
                             </div>
                             <br/>
 

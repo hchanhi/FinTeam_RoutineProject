@@ -33,7 +33,7 @@ let WrapperBg = styled.div`
 display: flex;
 flex-direction: row;
 flex-wrap: wrap;
-width: 500px;
+width: 480px;
 justify-content:center
 
 
@@ -42,7 +42,9 @@ justify-content:center
 let Text = styled.div`
 
     margin-left:20px;
-  =
+  h5 {
+      color:orange
+  }
 
 
 
@@ -75,9 +77,13 @@ function Reward() {
         <div style={{ height: '100vh' }} >
             <br /><br /><br />
             <Text>
-                <h3 >리워드</h3>
-                <br />
-                <h4>루틴 필드</h4>
+                <h3 style={{
+                    textAlign: 'center', color: '#58CCFF', fontWeight: '600',
+                    textShadow: '-1px -1px 0 #000, 1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000'
+                }} >리 워 드</h3>
+
+                <h5>캡슐 테이블</h5>
+                <span style={{ fontSize: '15px', color: 'gray' }}>얼마나 꾸준히 영양제를 복용했는지 알 수 있어요!</span>
             </Text>
 
             <div >
@@ -96,8 +102,10 @@ function Reward() {
                     }
                 </Wrapper>
             </div>
+            <br />
             <Text>
-                <h4>뱃지</h4>
+                <h5>뱃지</h5>
+                <span style={{ fontSize: '15px', color: 'gray' }}>비밀 퀘스트를 달성하면 뱃지를 모을 수 있어요!</span>
             </Text>
 
             <div style={{ width: "300px", textAlign: "center" }}>

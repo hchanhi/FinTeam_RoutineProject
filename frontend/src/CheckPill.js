@@ -12,9 +12,7 @@ import { getNickName, isAuth } from "./jwtCheck";
 import axios from "axios";
 
 export default function CheckPill() {
-    const [amChecked, setAmChecked] = React.useState([1]);
-    const [noonChecked, setNoonChecked] = React.useState([1]);
-    const [pmChecked, setPmChecked] = React.useState([1]);
+    const [checked, setChecked] = React.useState([1]);
     const [pillCheck, setPillCheck] = React.useState([]);
     const token = JSON.parse(localStorage.getItem('accessToken'));
     const nickname = getNickName(token);
@@ -22,11 +20,11 @@ export default function CheckPill() {
 
     //아침
     const handleToggleAm = (amValue) => () => {
-        const currentIndex = amChecked.indexOf(amValue);
-        const newChecked = [...amChecked];
+        const currentIndex = checked.indexOf(amValue.supplementsName);
+        const newChecked = [...checked];
         let params = { nickname: nickname, supplementsName: amValue.supplementsName };
         if (currentIndex === -1) {
-            newChecked.push(amValue);
+            newChecked.push(amValue.supplementsName);
 
             console.log("체크 " + amValue.supplementsName);
             axios.post("/api/supplements/check", params)
@@ -56,17 +54,17 @@ export default function CheckPill() {
                 });
         }
 
-        setAmChecked(newChecked);
+        setChecked(newChecked);
 
     };
 
     //점심
     const handleToggleNoon = (noonValue) => () => {
-        const currentIndex = noonChecked.indexOf(noonValue);
-        const newChecked = [...noonChecked];
+        const currentIndex = checked.indexOf(noonValue.supplementsName);
+        const newChecked = [...checked];
         let params = { nickname: nickname, supplementsName: noonValue.supplementsName };
         if (currentIndex === -1) {
-            newChecked.push(noonValue);
+            newChecked.push(noonValue.supplementsName);
             console.log("체크 " + noonValue.supplementsName);
             axios.post("/api/supplements/check", params)
                 .then(function (res) {
@@ -94,13 +92,13 @@ export default function CheckPill() {
                 });
         }
 
-        setNoonChecked(newChecked);
+        setChecked(newChecked);
 
     };
     //저녁
     const handleTogglePm = (pmValue) => () => {
-        const currentIndex = pmChecked.indexOf(pmValue);
-        const newChecked = [...pmChecked];
+        const currentIndex = checked.indexOf(pmValue);
+        const newChecked = [...checked];
         let params = { nickname: nickname, supplementsName: pmValue.supplementsName };
         if (currentIndex === -1) {
             newChecked.push(pmValue);
@@ -130,7 +128,7 @@ export default function CheckPill() {
                 });
         }
 
-        setPmChecked(newChecked);
+        setChecked(newChecked);
     };
 
     function pill() {
@@ -150,9 +148,10 @@ export default function CheckPill() {
             });
 
     }
-
+    console.log(checked);
     useEffect(() => {
         pill();
+
     }, []);
 
     return (
@@ -176,7 +175,7 @@ export default function CheckPill() {
                         return (
                             <div>
                                 {
-                                    amValue.slot == "아침" ? <div>
+                                    amValue.slot == "MORNING" ? <div>
                                         <ListItem
                                             key={amValue}
                                             secondaryAction={
@@ -184,7 +183,7 @@ export default function CheckPill() {
 
                                                     edge="end"
                                                     onChange={handleToggleAm(amValue)}
-                                                    checked={amChecked.indexOf(amValue) !== -1}
+                                                    checked={checked.indexOf(amValue.supplementsName) !== -1}
                                                     inputProps={{ 'aria-labelledby': labelId }}
                                                     defaultChecked
                                                     sx={{
@@ -230,7 +229,7 @@ export default function CheckPill() {
                             <div>
 
                                 {
-                                    noonValue.slot == "점심" ? <div>
+                                    noonValue.slot == "LUNCH" ? <div>
                                         <ListItem
                                             key={noonValue}
                                             secondaryAction={
@@ -238,7 +237,7 @@ export default function CheckPill() {
 
                                                     edge="end"
                                                     onChange={handleToggleNoon(noonValue)}
-                                                    checked={noonChecked.indexOf(noonValue) !== -1}
+                                                    checked={checked.indexOf(noonValue.supplementsName) !== -1}
                                                     inputProps={{ 'aria-labelledby': labelId }}
                                                     defaultChecked
                                                     sx={{
@@ -284,7 +283,7 @@ export default function CheckPill() {
                                 <div>
                                     {
 
-                                        pmValue.slot == "저녁" ?
+                                        pmValue.slot == "DINNER" ?
                                             <div>
                                                 <ListItem
                                                     key={pmValue}
@@ -293,7 +292,7 @@ export default function CheckPill() {
 
                                                             edge="end"
                                                             onChange={handleTogglePm(pmValue)}
-                                                            checked={pmChecked.indexOf(pmValue) !== -1}
+                                                            checked={checked.indexOf(pmValue) !== -1}
                                                             inputProps={{ 'aria-labelledby': labelId }}
                                                             defaultChecked
                                                             sx={{

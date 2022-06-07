@@ -293,11 +293,25 @@ const User = (props) => {
         },
         [newPas]
     );
-    return (<div style={{ height: '100vh' }}>
+    return (<div style={{ height: '100vh', paddingTop: '130px' }}>
+        <h3 style={{
+            textAlign: 'center', color: '#58CCFF', fontWeight: '600',
+            textShadow: '-1px -1px 0 #000, 1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000'
+        }} >회원정보 수정</h3>
+        <br />
+        <Container className="UserEditor"
+            sx={{
+                height: 560,
+                width: 400,
+                display: 'flex',
+                flexDirection: 'column',
+                borderRadius: '10px',
+                padding: '10px 50px',
+                backgroundColor: '#fff',
+                boxShadow: ' 0 8px 20px 0 rgba(0, 0, 0, 0.15)'
+            }}>
 
-        <Container className="UserEditor">
 
-            <h2>회원정보🔎</h2>
             <br></br>
             <Box component="form" sx={{ mt: 3 }}>
                 <div className="userFlex">
@@ -305,25 +319,19 @@ const User = (props) => {
                     <input
                         defaultValue={user.email}
                         name="nickName"
-                        placeholder="작성자"
                         type="text"
                         readOnly
 
                     />
 
                 </div>
-                <h3>닉네임 수정</h3>
-                <br></br>
                 <div className="userFlex">
                     <label>닉네임</label>
                     <input
                         defaultValue={nic}
                         name="nickName"
                         onChange={onChangeName}
-                        placeholder="닉네임"
                         type="text"
-
-
                     />
                     {<span className={`message ${isName ? 'success' : 'error'}`}>{nameMessage}</span>}
                     <div className='modify'>
@@ -331,8 +339,6 @@ const User = (props) => {
                     </div>
 
                 </div>
-
-                <h3>비밀번호 수정</h3>
                 <br></br>
                 <div className="userFlex">
                     <label>현재 비밀번호</label>
@@ -340,13 +346,7 @@ const User = (props) => {
                         defaultValue={oldPas}
                         name="old"
                         onChange={onChangeOldPassword}
-                        placeholder="현재 비밀번호"
-
-
                         type="password"
-
-
-
                     />
                     {(
                         <span className={`message ${isOldPassword ? 'success' : 'error'}`}>{passwordOldMessage}</span>
@@ -359,13 +359,7 @@ const User = (props) => {
                         defaultValue={newPas}
                         name="new"
                         onChange={onChangeNewPassword}
-                        placeholder="변경 비밀번호"
-
-
                         type="password"
-
-
-
                     />
                     {(
                         <span className={`message ${isNewPassword ? 'success' : 'error'}`}>{passwordNewMessage}</span>
@@ -378,7 +372,6 @@ const User = (props) => {
                         defaultValue={passwordConfirm}
                         onChange={onChangePasswordConfirm}
                         name="confirm"
-                        placeholder="비밀번호 확인"
                         type="password"
 
 
@@ -386,7 +379,7 @@ const User = (props) => {
                     {(
                         <span className={`message ${isPasswordConfirm ? 'success' : 'error'}`}>{passwordConfirmMessage}</span>
                     )}
-                    <div className='modify'>
+                    <div className='modify2'>
                         <button onClick={handleSubmitPas}>수정</button>
                     </div>
                 </div>
@@ -398,6 +391,7 @@ const User = (props) => {
             <div className="userDelBtn">
                 <button onClick={handleSubmitDel}>탈퇴</button>
             </div>
+
         </Container>
     </div>
     );

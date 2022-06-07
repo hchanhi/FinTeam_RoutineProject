@@ -39,6 +39,9 @@ function App() {
     if (isAuth(token) == false) {
         return(
         <div className="AppDiv">
+            <Header userNickName={userNickName} setUserNickName={setUserNickName} />
+            <br/>
+            <br/>
             <Routes>
                 <Route path='/' element={<PreMain />} />
                 <Route path="/signup" element={<Signup />} />

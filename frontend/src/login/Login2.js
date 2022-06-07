@@ -11,9 +11,10 @@ import {
     Box,
     Typography,
     Container,
-    Link,
+
 
 } from '@mui/material/';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 
@@ -41,15 +42,13 @@ const Resigter = (props) => {
 
                 if (response.status === 200) {
                     Swal.fire({
-                        confirmButtonColor: '#2fbe9f',
-
+                        confirmButtonColor: '#ffa500',
                         confirmButtonText: '확인',
                         text: '로그인 되었습니다!😊',
                     }).then((result) => {
                         if (result.isConfirmed) {
                             props.setIsLogin(!props.isLogin);
                             navigate('/');
-                            window.location.reload();
                         }
                     });
 
@@ -58,7 +57,7 @@ const Resigter = (props) => {
             .catch(function (err) {
                 console.log(err);
                 Swal.fire({
-                    confirmButtonColor: '#2fbe9f',
+                    confirmButtonColor: '#ffa500',
 
                     confirmButtonText: '확인',
                     text: '이메일 혹은 비밀번호가 틀렸습니다!😥', // Alert 제목
@@ -177,21 +176,11 @@ const Resigter = (props) => {
                     >
                         로그인
                     </Button>
-                    <Grid container>
-                        <Grid item xs>
-                            <Link href="/findPassword" variant="body2"
-                                sx={{ ml: 7, cursor: "pointer" }}>
-                                비밀번호를 잊어버리셨나요?
-                            </Link>
-                        </Grid>
+                    <br/>
+                        <Link to={'/findPassword'}>비밀번호를 잊어버리셨나요?</Link>
+                    <br/>
+                        <Link to={'/signup'}>계정이 없으신가요? 회원가입</Link>
 
-                    </Grid>
-                    <Grid item>
-                        <Link href="/signup" variant="body2"
-                            sx={{ ml: 6.7 }}>
-                            {"계정이 없으신가요? 회원가입"}
-                        </Link>
-                    </Grid>
                 </Box>
             </Box>
 

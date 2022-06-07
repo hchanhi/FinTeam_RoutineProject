@@ -29,7 +29,7 @@ const Register = (props) => {
                     setEmail(res.data.message);
                     console.log(res.data.message);
                     Swal.fire({
-                        confirmButtonColor: '#2fbe9f',
+                        confirmButtonColor: '#ffa500',
                         confirmButtonText: '확인',
                         html: '인증되었습니다.<br>비밀번호를 변경해주세요!😊', // Alert 제목
 
@@ -37,7 +37,7 @@ const Register = (props) => {
 
                 } else {
                     Swal.fire({
-                        confirmButtonColor: '#2fbe9f',
+                        confirmButtonColor: '#ffa500',
                         confirmButtonText: '확인',
                         html: '비정상적인 접근입니다.😥', // Alert 제목
 
@@ -58,7 +58,7 @@ const Register = (props) => {
 
         if (!email) {
             Swal.fire({
-                confirmButtonColor: '#2fbe9f',
+                confirmButtonColor: '#ffa500',
                 confirmButtonText: '확인',
                 text: '비정상적인 접근입니다.😥'
             });
@@ -72,7 +72,7 @@ const Register = (props) => {
             })
             .then(() => {
                 Swal.fire({
-                    confirmButtonColor: '#2fbe9f',
+                    confirmButtonColor: '#ffa500',
                     confirmButtonText: '확인',
                     html: '비밀번호가 성공적으로 변경되었습니다.<br>변경된 비밀번호로 로그인해주세요!😊'
                 })
@@ -116,13 +116,17 @@ const Register = (props) => {
     };
 
     return (
-        <Container component="main" maxWidth="xs" style={{height:'900px'}}>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
+        <Container component="main" maxWidth="xs" style={{ height: '100vh' }}>
+            <br />
+            <br />
+            <div style={{ textAlign: 'center', color: 'gray' }}><span>꾸준한 영양제 복용을 위하여</span></div>
+            <h1 style={{
+                textAlign: 'center', color: '#58CCFF', fontWeight: '600',
+                textShadow: '-1px -1px 0 #000, 1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000'
+            }}>Pill Good</h1>
             <Box
                 sx={{
+                    marginTop: '150px',
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
@@ -135,7 +139,7 @@ const Register = (props) => {
                 <Typography component="h1" variant="h5">
                     비밀번호 변경
                 </Typography>
-                <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+                <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
                     <FormControl component="fieldset" variant="standard">
                         <Grid container spacing={2}>
                             <Grid item xs={12}>
@@ -169,7 +173,7 @@ const Register = (props) => {
                             type="submit"
                             fullWidth
                             variant="contained"
-                            sx={{ mt: 1 }}
+                            sx={{ mt: 2 }}
                             size="large"
                         >
                             비밀번호 변경

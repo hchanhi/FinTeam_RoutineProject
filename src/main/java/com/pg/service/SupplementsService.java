@@ -3,6 +3,7 @@ package com.pg.service;
 import com.pg.model.Supplements;
 import com.pg.model.User;
 import com.pg.repository.SupplementsRepository;
+import com.pg.repository.TakingLogRepository;
 import com.pg.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,7 @@ import java.util.List;
 public class SupplementsService {
     final private SupplementsRepository supplementsRepository;
     final private UserRepository userRepository;
+    final private TakingLogRepository takingLogRepository;
 
     public Supplements addSupplements(String supplementsName, int quantity, int singleDose, String slot, String nickname){
         User user = userRepository.findByNickname(nickname);
@@ -37,6 +39,7 @@ public class SupplementsService {
     }
 
     public void deleteById(Long id){
+        takingLogRepository.deleteAllBySupplementsId(id);
         supplementsRepository.deleteById(id);
     }
 

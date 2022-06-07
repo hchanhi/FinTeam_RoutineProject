@@ -13,7 +13,7 @@ let Wrapper = styled.div`
 margin: auto;
 marginTop: 50px;
 width: 90%;
-height: 880px;
+height: 100vh;
 `;
 
 
@@ -24,6 +24,8 @@ function Main() {
     let [selectpill, setSelectpill] = useState([]);
     let [pillstate, setPillstate] = useState(0);
     let params = { nickname: nickname };
+
+
     function mypill() {
         if (isAuth(token) != false) {
             axios.get("/api/supplements/list", { params })
@@ -78,7 +80,7 @@ function Main() {
                                 {pillstate == index ?
                                     <Card.Text key={index}>
                                         남은 수량 : {pill.quantityLeft}<br />
-                                        알람 시간 : 14:00<br />
+                                        알람 시간 : {pill.slot == 'MORNING' ? '아침': pill.slot == 'LUNCH' ? '점심':'저녁'}<br />
                                     </Card.Text> : null}
                             </div>
                         );

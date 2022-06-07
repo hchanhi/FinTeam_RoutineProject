@@ -6,6 +6,7 @@ import com.pg.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -15,5 +16,10 @@ import java.util.List;
 public interface TakingLogRepository extends JpaRepository<TakingLog, Long> {
     TakingLog findByUserAndSupplements(User user, Supplements supplements);
 
+
     List<TakingLog> findAllBycreatedDateIsBetweenAndUser(LocalDateTime start, LocalDateTime end, User user);
+
+    @Transactional
+    void deleteAllBySupplementsId(Long supplementsId);
+
 }

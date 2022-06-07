@@ -1,10 +1,5 @@
 .UserEditor {
-
-
-    padding: 20px;
-    width: 500px;
-
-
+    width: 350px;
 }
 
 .UserEditor span {
@@ -15,7 +10,8 @@
 
 .UserEditor label {
     margin-right: 10px;
-    width: 30%;
+    width: 40%;
+    font-size: 18px;
 }
 
 .UserEditor form {
@@ -26,7 +22,7 @@
     padding-bottom: 5px;
     text-align: left !important;
     border: none;
-    border-bottom: 3px solid #2fbe9f;
+    border-bottom: 3px solid black;
     outline: none;
     background: none;
     font-size: medium;
@@ -53,15 +49,19 @@
     width: 60px;
     cursor: pointer;
     height: 40px;
-    background-color: #2fbe9f;
+    background-color:orange;
     border: none;
     border-radius: 10px;
     color: #ececec;
     font-weight: 600;
 }
 
-
-
+.title{
+    text-align: center;
+    font-weight: 600;
+    font-size:40px;
+    color:gray;
+}
 
 
 .userFlex {
@@ -95,7 +95,7 @@ h2 {
     background-color: #fd565f;
     border: none;
     border-radius: 10px;
-    color: #ececec;
+    color: #fff;
     font-weight: 600;
 }
 
@@ -118,7 +118,18 @@ h2 {
     letter-spacing: -1px;
     width: 2%;
     top: 130%;
-    right: 6%;
+    right: 15%;
+    position: absolute;
+}
+
+.modify2 {
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 24px;
+    letter-spacing: -1px;
+    width: 2%;
+    top: 220%;
+    right: 15%;
     position: absolute;
 
 
@@ -141,9 +152,12 @@ h2 {
 }
 
 .userDelBtn button {
-    background: transparent !important;
-    color: #fd565f;
-    text-decoration: underline;
-    padding: 0;
-    margin: 0;
+    width: 60px;
+    cursor: pointer;
+    height: 40px;
+    background-color:rgb(255, 0, 0);
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 600;
 }

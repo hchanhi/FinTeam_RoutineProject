@@ -29,7 +29,7 @@ const FindPassword = () => {
             .then(function (res) {
                 if (res.data.success == true) {
                     Swal.fire({
-                        confirmButtonColor: '#2fbe9f',
+                        confirmButtonColor: 'orange',
                         confirmButtonText: '확인',
                         html: res.data.message, // Alert 제목
 
@@ -43,7 +43,7 @@ const FindPassword = () => {
 
                 } else if (res.data.success == false) {
                     Swal.fire({
-                        confirmButtonColor: '#2fbe9f',
+                        confirmButtonColor: '#ffa500',
                         confirmButtonText: '확인',
                         html: '회원에 등록되지 않은 이메일입니다😰<br>다시 시도해주세요!', // Alert 제목
 
@@ -51,7 +51,7 @@ const FindPassword = () => {
 
                 } else {
                     Swal.fire({
-                        confirmButtonColor: '#2fbe9f',
+                        confirmButtonColor: '#ffa500',
                         confirmButtonText: '확인',
                         html: res.data.message, // Alert 제목
 
@@ -66,7 +66,7 @@ const FindPassword = () => {
                 console.log(err.response.data.message);
                 if (err.response.status === 400) {
                     Swal.fire({
-                        confirmButtonColor: '#2fbe9f',
+                        confirmButtonColor: '#ffa500',
                         confirmButtonText: '확인',
                         html: err.response.data.message, // Alert 제목
 
@@ -83,7 +83,6 @@ const FindPassword = () => {
 
         const data = new FormData(e.currentTarget);
         const email = data.get('email');
-
         // 이메일 유효성 체크
         // 이메일 유효성 체크
         const emailRegex = /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
@@ -99,14 +98,18 @@ const FindPassword = () => {
 
     return (
 
-        <Container component="main" maxWidth="xs" style={{height:'900px'}}>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
+        <Container component="main" maxWidth="xs" style={{ height: '100vh' }}>
+            <br />
+            <br />
+
+            <div style={{ textAlign: 'center', color: 'gray' }}><span>꾸준한 영양제 복용을 위하여</span></div>
+            <h1 style={{
+                textAlign: 'center', color: '#58CCFF', fontWeight: '600',
+                textShadow: '-1px -1px 0 #000, 1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000'
+            }}>Pill Good</h1>
             <Box
                 sx={{
-                    marginTop: '60px',
+                    marginTop: '150px',
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
@@ -120,7 +123,7 @@ const FindPassword = () => {
                 <Typography component="h1" variant="h5">
                     비밀번호를 잊어버리셨나요?
                 </Typography>
-                <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+                <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
                     <FormControl component="fieldset" variant="standard">
                         <Grid container spacing={2}>
 
@@ -146,7 +149,7 @@ const FindPassword = () => {
                             type="submit"
                             fullWidth
                             variant="contained"
-                            sx={{ mt: 1 }}
+                            sx={{ mt: 2 }}
                             size="large"
                         >
                             비밀번호 찾기
