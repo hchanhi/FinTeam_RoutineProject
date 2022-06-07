@@ -11,7 +11,7 @@ import java.util.List;
 public interface SupplementsRepository extends JpaRepository<Supplements, Long> {
     List<Supplements> findAllByUser(User user);
 
-    Supplements findSupplementsBySupplementsName(String supplementsName);
+    Supplements findBySupplementsNameAndUser(String supplementsName, User user);
 
     void deleteAllByUser(User user);
 }

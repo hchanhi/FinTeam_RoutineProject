@@ -16,15 +16,15 @@ public class TakingLogController {
     @PostMapping("/supplements/check")
     public TakingLog supplementsCheck(@RequestBody HashMap<String,String> params){
         String nickname = params.get("nickname");
-        String supplementName = params.get("supplementName");
+        String supplementsName = params.get("supplementsName");
 
-        return takingLogService.addTakingLog(nickname, supplementName);
+        return takingLogService.addTakingLog(nickname, supplementsName);
     }
 
     @DeleteMapping("/supplements/uncheck")
     public void supplementsUncheck(@RequestBody HashMap<String,String> params){
         String nickname = params.get("nickname");
-        String supplementsName = params.get("supplementName");
+        String supplementsName = params.get("supplementsName");
 
         takingLogService.deleteTakingLog(nickname, supplementsName);
     }
