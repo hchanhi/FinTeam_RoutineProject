@@ -84,7 +84,6 @@ function Main() {
             </Card>
             <CheckPill />
 
-
         </Wrapper>
     );
 }
