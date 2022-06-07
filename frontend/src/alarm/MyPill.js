@@ -5,6 +5,8 @@ import {Link, useNavigate} from "react-router-dom";
 import {getNickName, isAuth} from "../jwtCheck";
 import axios from "axios";
 import Swal from 'sweetalert2';
+import {getMessaging, getToken, onMessage} from "firebase/messaging";
+import {initializeApp} from "firebase/app";
 
 function MyPill(){
     const token = JSON.parse(localStorage.getItem('accessToken'));
@@ -12,6 +14,24 @@ function MyPill(){
     let [card, setCard]= useState([]);
     let navigate = useNavigate();
     let [state, setState]= useState(false);
+
+
+    const config = {
+        apiKey: "AIzaSyDIeKgdotnu9zvRvYNKnVry8Nuw6r7s7_8",
+        authDomain: "pillgood-138b1.firebaseapp.com",
+        projectId: "pillgood-138b1",
+        storageBucket: "pillgood-138b1.appspot.com",
+        messagingSenderId: "63398292257",
+        appId: "1:63398292257:web:bdf80d64a9a75d249d6c60",
+        measurementId: "G-6KFN50FF08"
+    };
+    const app = initializeApp(config);
+    const messaging = getMessaging(app);
+
+    onMessage(messaging, (payload) => {
+        console.log('Message received. ', payload);
+        // ...
+    });
 
     function mypill(){
         if(isAuth(token)!=false) {
@@ -30,9 +50,15 @@ function MyPill(){
     }
     function deletePill(index){
         let params = {id:(card[index]).id};
-        axios.get("/api/supplements/delete", {params})
+        let slot = card[index].slot;
+        getToken(messaging, {vapidKey: 'BOUH7VnfqJhHUd9CXxw1_QwjB_lScFbFAgPb9P-JOcNE8VavuYuOgSw5s9dLiTZfS0yYGv5RI1dCkYSeLxxvmmI'})
+            .then((currentToken) =>{
+                unsubscribeTokenToTopic(currentToken, slot);
+            });
+                axios.get("/api/supplements/delete", {params})
             .then(function(res){
-                console.log("성공");
+                console.log("구독취소성공");
+
                 setState(!state);
             })
             .catch(function(res){
@@ -41,6 +67,30 @@ function MyPill(){
             })
 
     }
+
+    function unsubscribeTokenToTopic(token, topic) {
+        fetch('https://iid.googleapis.com/iid/v1:batchRemove', {
+            method: 'POST',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                'Authorization': 'key=' + 'AAAADsLVKyE:APA91bHI_UNkgq0sEAf5UcR01heTflDp8PDs8CI5Lpb3G8HHLUNv05N1STvF0OaAN_W0jVXoHTFdxO_KAkw4Gc5fdrvPxNfnzjtc9IpjJPxJz6fcHQUEpY9W-Lr7wJH-TpgII5O8_84E'
+            }),
+            body : JSON.stringify({
+                "to": "/topics/"+topic,
+                "registration_tokens": [token]
+            })
+
+
+        }).then(response => {
+            if (response.status < 200 || response.status >= 400) {
+                throw 'Error unsubscribing to topic: ' + response.status + ' - ' + response.text();
+            }
+            console.log('Unsubscribed to "' + topic + '"');
+        }).catch(error => {
+            console.error(error);
+        });
+    }
+
     useEffect(()=>{
         if (!isAuth(token)) {
             Swal.fire({
