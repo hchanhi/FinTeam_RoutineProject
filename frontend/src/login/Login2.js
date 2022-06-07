@@ -114,24 +114,27 @@ const Resigter = (props) => {
 
     return (
 
-        <Container component="main" maxWidth="xs" style={{height:'1000px'}}>
-            <br/>
-            <br/>
-
+        <Container component="main" maxWidth="xs" style={{ height: '100vh' }}>
+            <br />
+            <br />
+            <div style={{ textAlign: 'center', color: 'gray' }}><span>꾸준한 영양제 복용을 위하여</span></div>
+            <h1 style={{
+                textAlign: 'center', color: '#58CCFF', fontWeight: '600',
+                textShadow: '-1px -1px 0 #000, 1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000'
+            }}>Pill Good</h1>
             <Box
                 sx={{
-                    height:500,
-                    marginTop: 25,
+                    marginTop: '150px',
                     display: 'flex',
                     flexDirection: 'column',
                     borderRadius: '10px',
-                    padding: '60px 50px',
+                    padding: '30px 50px',
                     backgroundColor: '#fff',
                     boxShadow: ' 0 8px 20px 0 rgba(0, 0, 0, 0.15)'
                 }}
             >
 
-                <Typography component="h1" variant="h3" color="gray" margin="0 auto" fontWeight="600">
+                <Typography style={{ fontSize: '2rem' }} component="h3" variant="h3" color="gray" margin="0 auto" fontWeight="600">
                     로그인
                 </Typography>
                 <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 3 }}>
@@ -146,7 +149,7 @@ const Resigter = (props) => {
                             autoComplete="email"
                             autoFocus
                             error={emailError !== '' || false}
-                            sx={{ outline:"none" }}
+                            sx={{ outline: "none" }}
                         />
                     </Grid>
                     <FormHelperText>{emailError}</FormHelperText>
@@ -170,14 +173,14 @@ const Resigter = (props) => {
                         fullWidth
                         variant="contained"
                         fontWeight="600"
-                        sx={{ mt: 3, mb: 3, ml:7.5, backgroundColor:"orange", fontSize:25, width:180}}
+                        sx={{ mt: 3, mb: 3, ml: 7.5, backgroundColor: "orange", fontSize: 20, width: 180 }}
                     >
                         로그인
                     </Button>
                     <Grid container>
                         <Grid item xs>
                             <Link href="/findPassword" variant="body2"
-                            sx={{ml:7, cursor:"pointer"}}>
+                                sx={{ ml: 7, cursor: "pointer" }}>
                                 비밀번호를 잊어버리셨나요?
                             </Link>
                         </Grid>
@@ -185,7 +188,7 @@ const Resigter = (props) => {
                     </Grid>
                     <Grid item>
                         <Link href="/signup" variant="body2"
-                        sx={{ml:6.7}}>
+                            sx={{ ml: 6.7 }}>
                             {"계정이 없으신가요? 회원가입"}
                         </Link>
                     </Grid>
