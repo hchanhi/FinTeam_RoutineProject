@@ -16,7 +16,9 @@ flex-direction: column;
 a {
     padding-bottom:0
 }
-
+.nav-link {
+    color : #58CCFF !important
+}
 `;
 let Icon = styled.div`
 font-size:40px;

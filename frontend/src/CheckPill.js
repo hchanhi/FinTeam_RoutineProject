@@ -181,11 +181,18 @@ export default function CheckPill() {
                                             key={amValue}
                                             secondaryAction={
                                                 <Checkbox
-                                                    defaultChecked color="success"
+
                                                     edge="end"
                                                     onChange={handleToggleAm(amValue)}
                                                     checked={amChecked.indexOf(amValue) !== -1}
                                                     inputProps={{ 'aria-labelledby': labelId }}
+                                                    defaultChecked
+                                                    sx={{
+                                                        color: 'orange',
+                                                        '&.Mui-checked': {
+                                                            color: 'orange',
+                                                        },
+                                                    }}
                                                 />
                                             }
                                             disablePadding
@@ -228,11 +235,18 @@ export default function CheckPill() {
                                             key={noonValue}
                                             secondaryAction={
                                                 <Checkbox
-                                                    defaultChecked color="success"
+
                                                     edge="end"
                                                     onChange={handleToggleNoon(noonValue)}
                                                     checked={noonChecked.indexOf(noonValue) !== -1}
                                                     inputProps={{ 'aria-labelledby': labelId }}
+                                                    defaultChecked
+                                                    sx={{
+                                                        color: 'orange',
+                                                        '&.Mui-checked': {
+                                                            color: 'orange',
+                                                        },
+                                                    }}
                                                 />
                                             }
                                             disablePadding
@@ -276,11 +290,19 @@ export default function CheckPill() {
                                                     key={pmValue}
                                                     secondaryAction={
                                                         <Checkbox
-                                                            defaultChecked color="success"
+
                                                             edge="end"
                                                             onChange={handleTogglePm(pmValue)}
                                                             checked={pmChecked.indexOf(pmValue) !== -1}
                                                             inputProps={{ 'aria-labelledby': labelId }}
+                                                            defaultChecked
+                                                            sx={{
+                                                                color: 'orange',
+                                                                '&.Mui-checked': {
+                                                                    color: 'orange',
+                                                                },
+                                                            }}
+
                                                         />
                                                     }
                                                     disablePadding
