@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequiredArgsConstructor
@@ -26,6 +27,11 @@ public class TakingLogController {
     @GetMapping("/supplements/eatenlist")
     public List<Supplements> eantenList(String nickname){
         return takingLogService.selectEatenSupplements(nickname);
+    }
+
+    @GetMapping("/supplements/takinglog")
+    public List<String> takingLoglistByUser(String nickname){
+        return takingLogService.selectTakingLogByUser(nickname);
     }
 
     @DeleteMapping("/supplements/uncheck")

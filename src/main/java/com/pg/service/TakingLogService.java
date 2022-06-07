@@ -16,6 +16,8 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -49,6 +51,11 @@ public class TakingLogService {
         takingLogRepository.findAllBycreatedDateIsBetweenAndUser(startDatetime, endDatetime, user).forEach(e -> eatenSupplementsList.add(e.getSupplements()));
 
         return eatenSupplementsList;
+    }
+
+    public List<String> selectTakingLogByUser(String nickname) {
+        User user = userRepository.findByNickname(nickname);
+        return takingLogRepository.findByUser(user).stream().map(e -> e.getCreatedDate().format(DateTimeFormatter.ofPattern("yy-MM-dd"))).collect(Collectors.toSet()).stream().collect(Collectors.toList());
     }
 
     public void deleteTakingLog(String nickname, String supplementsName) {
