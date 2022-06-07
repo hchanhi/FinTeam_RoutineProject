@@ -28,7 +28,7 @@ export default function CheckPill() {
         if (currentIndex === -1) {
             newChecked.push(amValue);
 
-            console.log(amValue.supplementsName);
+            console.log("체크 " + amValue.supplementsName);
             axios.post("/api/supplements/check", params)
                 .then(function (res) {
                     console.log("성공");
@@ -42,7 +42,7 @@ export default function CheckPill() {
 
         } else {
             newChecked.splice(currentIndex, 1);
-            console.log("언체크" + amValue.supplementsName);
+            console.log("언체크 " + amValue.supplementsName);
             axios.delete("/api/supplements/uncheck", { data: params })
                 .then(function (res) {
                     console.log("성공");
@@ -67,7 +67,7 @@ export default function CheckPill() {
         let params = { nickname: nickname, supplementsName: noonValue.supplementsName };
         if (currentIndex === -1) {
             newChecked.push(noonValue);
-            console.log(noonValue.supplementsName);
+            console.log("체크 " + noonValue.supplementsName);
             axios.post("/api/supplements/check", params)
                 .then(function (res) {
                     console.log("성공");
@@ -80,7 +80,7 @@ export default function CheckPill() {
                 });
         } else {
             newChecked.splice(currentIndex, 1);
-            console.log("언체크" + noonValue.supplementsName);
+            console.log("언체크 " + noonValue.supplementsName);
             axios.delete("/api/supplements/uncheck", { data: params })
                 .then(function (res) {
                     console.log("성공");
@@ -101,12 +101,33 @@ export default function CheckPill() {
     const handleTogglePm = (pmValue) => () => {
         const currentIndex = pmChecked.indexOf(pmValue);
         const newChecked = [...pmChecked];
-
+        let params = { nickname: nickname, supplementsName: pmValue.supplementsName };
         if (currentIndex === -1) {
             newChecked.push(pmValue);
+            console.log("체크 " + pmValue.supplementsName);
+            axios.post("/api/supplements/check", params)
+                .then(function (res) {
+                    console.log("성공");
+                    console.log(res.data);
 
+                })
+                .catch(function (err) {
+                    console.log(err);
+
+                });
         } else {
             newChecked.splice(currentIndex, 1);
+            console.log("언체크 " + pmValue.supplementsName);
+            axios.delete("/api/supplements/uncheck", { data: params })
+                .then(function (res) {
+                    console.log("성공");
+                    console.log(res.data);
+
+                })
+                .catch(function (err) {
+                    console.log(err);
+
+                });
         }
 
         setPmChecked(newChecked);
