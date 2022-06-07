@@ -1,19 +1,20 @@
 import './MyPill.css';
-import {Card, Button} from "react-bootstrap";
-import {useEffect, useState} from "react";
-import {Link, useNavigate} from "react-router-dom";
-import {getNickName, isAuth} from "../jwtCheck";
+import { Card, Button } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { getNickName, isAuth } from "../jwtCheck";
 import axios from "axios";
 import Swal from 'sweetalert2';
 import {getMessaging, getToken, onMessage} from "firebase/messaging";
 import {initializeApp} from "firebase/app";
 
-function MyPill(){
+function MyPill() {
     const token = JSON.parse(localStorage.getItem('accessToken'));
     const nickname = getNickName(token);
-    let [card, setCard]= useState([]);
+    let [card, setCard] = useState([]);
     let navigate = useNavigate();
-    let [state, setState]= useState(false);
+    let [state, setState] = useState(false);
+
 
 
     const config = {
@@ -37,6 +38,7 @@ function MyPill(){
         if(isAuth(token)!=false) {
             let params = {nickname: nickname};
             axios.get("/api/supplements/list", {params})
+
                 .then(function (res) {
                     console.log("성공");
                     setCard(res.data);
@@ -45,9 +47,10 @@ function MyPill(){
                 .catch(function (res) {
                     console.log('실패');
 
-                })
+                });
         }
     }
+
     function deletePill(index){
         let params = {id:(card[index]).id};
         let slot = card[index].slot;
@@ -59,14 +62,16 @@ function MyPill(){
             .then(function(res){
                 console.log("구독취소성공");
 
+
                 setState(!state);
             })
-            .catch(function(res){
+            .catch(function (res) {
                 console.log('실패');
 
-            })
+            });
 
     }
+
 
     function unsubscribeTokenToTopic(token, topic) {
         fetch('https://iid.googleapis.com/iid/v1:batchRemove', {
@@ -92,6 +97,7 @@ function MyPill(){
     }
 
     useEffect(()=>{
+
         if (!isAuth(token)) {
             Swal.fire({
                 confirmButtonColor: '#2fbe9f',
@@ -104,14 +110,15 @@ function MyPill(){
         }
     }, []);
 
-    useEffect(()=>{
+    useEffect(() => {
         mypill();
-    },[state])
+    }, [state]);
 
 
-    return(
+    return (
         <div className="page">
             <div className="page2">
+
             <br/>
             <br/>
             <br/>
@@ -142,6 +149,7 @@ function MyPill(){
             <br/>
             <br/>
             <br/>
+
             </div>
         </div>
     );

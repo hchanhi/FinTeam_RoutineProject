@@ -12,7 +12,7 @@ function FindPw() {
             .then(res => {
                 if (res.success == true) {
                     Swal.fire({
-                        confirmButtonColor: '#2fbe9f',
+                        confirmButtonColor: '#ffa500',
                         confirmButtonText: '확인',
                         html: '비밀번호 변경이 완료되었습니다.<br>다시 로그인해주세요!😊', // Alert 제목
 
@@ -27,7 +27,7 @@ function FindPw() {
                 }
                 else if (res.message == '유효하지 않은 Key값입니다.')
                     Swal.fire({
-                        confirmButtonColor: '#2fbe9f',
+                        confirmButtonColor: '#ffa500',
                         confirmButtonText: '확인',
                         html: '잘못된 접근입니다!😢', // Alert 제목
 
