@@ -114,14 +114,14 @@ const Resigter = (props) => {
 
     return (
 
-        <Container component="main" maxWidth="xs" style={{height:'1200px'}}>
+        <Container component="main" maxWidth="xs" style={{height:'1000px'}}>
             <br/>
             <br/>
 
             <Box
                 sx={{
                     height:500,
-                    marginTop: 35,
+                    marginTop: 25,
                     display: 'flex',
                     flexDirection: 'column',
                     borderRadius: '10px',
@@ -176,7 +176,7 @@ const Resigter = (props) => {
                     </Button>
                     <Grid container>
                         <Grid item xs>
-                            <Link href="/findPassword" variant="body2" 
+                            <Link href="/findPassword" variant="body2"
                             sx={{ml:6.5, cursor:"pointer"}}>
                                 비밀번호를 잊어버리셨나요?
                             </Link>
