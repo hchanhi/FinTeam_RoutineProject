@@ -49,7 +49,6 @@ const Resigter = (props) => {
                         if (result.isConfirmed) {
                             props.setIsLogin(!props.isLogin);
                             navigate('/');
-                            window.location.reload();
                         }
                     });
 
