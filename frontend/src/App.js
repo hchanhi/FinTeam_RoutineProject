@@ -15,6 +15,8 @@ import Routine from "./routine/Routine.js";
 import Signup from "./login/Signup.js";
 import Login2 from "./login/Login2";
 import { isAuth, getNickName } from './jwtCheck.js';
+import FindPassword from "./login/FindPassword.js";
+import EditPassword from "./login/EditPassword.js";
 
 const config = {
     apiKey: "AIzaSyDIeKgdotnu9zvRvYNKnVry8Nuw6r7s7_8",
@@ -96,8 +98,17 @@ function App() {
         }
     }, [isLogin]);
     if (isAuth(token) == false) {
-        return <div className="AppDiv"> <Routes><Route path='/' element={<PreMain />} /><Route path="/signup" element={<Signup />} />
-            <Route path="/login" element={<Login2 isLogin={isLogin} setIsLogin={setIsLogin} />} /></Routes></div>;
+        return(
+        <div className="AppDiv">
+            <Routes>
+                <Route path='/' element={<PreMain />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/login" element={<Login2 isLogin={isLogin} setIsLogin={setIsLogin} />} />
+                <Route path="/findPassword" element={<FindPassword />} />
+                <Route path="/user/passwordChange/:key" element={<EditPassword setUserNickName={setUserNickName}/>} />
+            </Routes>
+        </div>
+    );
     };
     return (
         <div className="AppDiv">
@@ -115,6 +126,8 @@ function App() {
                 <Route path="/routine" element={<Routine />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/login" element={<Login2 isLogin={isLogin} setIsLogin={setIsLogin} />} />
+                <Route path="/findPassword" element={<FindPassword />} />
+                <Route path="/user/passwordChange/:key" element={<EditPassword setUserNickName={setUserNickName}/>} />
 
                 <Route path="*" element={<div>404 Error Not found</div>} />
             </Routes>
