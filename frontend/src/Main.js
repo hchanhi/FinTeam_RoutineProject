@@ -13,7 +13,7 @@ let Wrapper = styled.div`
 margin: auto;
 marginTop: 50px;
 width: 90%;
-height: 880px;
+height: 100vh;
 `;
 
 
