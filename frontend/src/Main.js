@@ -71,7 +71,7 @@ function Main() {
                             <div>
                                 {pillstate == index ?
                                     <Card.Text key={index}>
-                                        남은 수량 : {pill.quantity}<br />
+                                        남은 수량 : {pill.quantityLeft}<br />
                                         알람 시간 : 14:00<br />
                                     </Card.Text> : null}
                             </div>

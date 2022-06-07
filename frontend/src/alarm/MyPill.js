@@ -74,9 +74,8 @@ function MyPill(){
                                 <Card.Title>{card.supplementsName}</Card.Title>
                                 <Card.Subtitle className="mb-2 text-muted">1회/{card.singleDose}정</Card.Subtitle>
                                 <Card.Text>
-                                    현재 수량 : {card.quantity}<br/>
-                                    알림 시간 : 09:00 20:00<br/>
-                                    복용 주기 : 매일<br/>
+                                    현재 수량 : {card.quantityLeft}<br/>
+                                    알림 시간 : {card.slot}<br/>
                                     등록한 날짜 : {(card.supplementsCreated).substring(0,10)}
                                 </Card.Text>
                                 <Button variant="outline-primary" className="cardBtn">수 정</Button>
