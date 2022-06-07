@@ -50,29 +50,35 @@ function Routine(){
             <br/>
             <br/>
             <h1>내 루틴</h1>
+            <div>
+                <Card className="mainCard">
+                    <Card.Title>오늘 복용해야하는 영양제</Card.Title>
+                    <Card.Body>
+                        <Card.Subtitle className="mb-2 text-muted">
+                            {pill.map(function(pill,index) {
+                                return (
+                                    <div>
+                                    <span key={index}>{pill.supplementsName}</span>
+                                    </div>
+                                );
+                            })}
 
-
-                    <div>
-                        <Card className="mainCard">
-                            <Card.Title>오늘 복용해야하는 영양제</Card.Title>
-                            <Card.Body>
-                                <Card.Subtitle className="mb-2 text-muted">
-                                    {pill.map(function(pill,index) {
-                                        return (
-                                            <div>
-                                            <span key={index}>{pill.supplementsName}</span>
-                                            </div>
-                                        );
-                                    })}
-
-                                </Card.Subtitle>
-                                <Card.Text>
-                                    내용<br/>
-                                    내용<br/>
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                    </div>
+                        </Card.Subtitle>
+                        <Card.Text>
+                            내용<br/>
+                            내용<br/>
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+            </div>
+            <br/>
+            <br/>
+            <div>
+                <h1>현재 연속 일수</h1>
+                <span>내용</span>
+                <h1>내 최고 연속 일수</h1>
+                <span>내용</span>
+            </div>
         </div>
     );
 }
