@@ -1,11 +1,13 @@
 package com.pg.controller;
 
+import com.pg.model.Supplements;
 import com.pg.model.TakingLog;
 import com.pg.service.TakingLogService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -19,6 +21,11 @@ public class TakingLogController {
         String supplementsName = params.get("supplementsName");
 
         return takingLogService.addTakingLog(nickname, supplementsName);
+    }
+
+    @GetMapping("/supplements/eatenlist")
+    public List<Supplements> eantenList(String nickname){
+        return takingLogService.selectEatenSupplements(nickname);
     }
 
     @DeleteMapping("/supplements/uncheck")
