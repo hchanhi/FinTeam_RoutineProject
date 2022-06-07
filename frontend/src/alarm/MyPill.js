@@ -65,6 +65,7 @@ function MyPill(){
             <br/>
             <br/>
             <br/>
+                <br/>
             {card.map(function(card,index){
                 return(
                     <div key={index}>
