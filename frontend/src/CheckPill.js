@@ -14,6 +14,33 @@ export default function CheckPill() {
     const [amChecked, setAmChecked] = React.useState([1]);
     const [noonChecked, setNoonChecked] = React.useState([1]);
     const [pmChecked, setPmChecked] = React.useState([1]);
+    let [test, setTest] = useState([
+        {
+            id: '0',
+            content: '비타민D',
+            dated: '아침'
+        },
+        {
+            id: '1',
+            content: '비타민C',
+            dated: '아침'
+        },
+        {
+            id: '2',
+            content: '루테인',
+            dated: '아침'
+        },
+        {
+            id: '3',
+            content: '루테인',
+            dated: '점심'
+        },
+        {
+            id: '4',
+            content: '루테인',
+            dated: '저녁'
+        }
+    ]);
     //아침
     const handleToggleAm = (amValue) => () => {
         const currentIndex = amChecked.indexOf(amValue);
@@ -26,7 +53,9 @@ export default function CheckPill() {
         }
 
         setAmChecked(newChecked);
+        console.log(newChecked);
     };
+
     //점심
     const handleToggleNoon = (noonValue) => () => {
         const currentIndex = noonChecked.indexOf(noonValue);
@@ -34,11 +63,14 @@ export default function CheckPill() {
 
         if (currentIndex === -1) {
             newChecked.push(noonValue);
+            console.log(noonValue);
+            console.log('입력');
         } else {
             newChecked.splice(currentIndex, 1);
         }
 
         setNoonChecked(newChecked);
+        console.log(newChecked);
     };
     //저녁
     const handleTogglePm = (pmValue) => () => {
@@ -56,6 +88,24 @@ export default function CheckPill() {
     let [AmCheck, setAmCheck] = useState(['비타민D', '오메가3', '루테인']);
     let [NoonCheck, setNoonCheck] = useState(['비타민C', '오메가3', '루테인']);
     let [PmCheck, setPmCheck] = useState(['비타민C', '오메가3', '루테인']);
+    // const testCheck = () => {
+    //     for (var i = 0; i < test.length; i++) {
+    //         if (test.dated == "아침") {
+    //             setAmCheck(test.content);
+    //         }
+    //         else if (test.dated == '점심') {
+    //             setNoonCheck(test.content);
+    //         }
+    //         else {
+    //             setPmCheck(test.content);
+    //         }
+
+    //     }
+
+
+    // };
+    // console.log(AmCheck);
+    // useState(testCheck(), []);
     return (
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <Paper elevation={6} sx={{ width: '140px', maxWidth: 360, borderRadius: '30px' }}>
@@ -70,27 +120,34 @@ export default function CheckPill() {
                         }}
                     />
                     <Divider />
-                    {AmCheck.map((amValue) => {
+                    {test.map((amValue) => {
                         const labelId = `checkbox-list-secondary-label-${amValue}`;
                         return (
-                            <ListItem
-                                key={amValue}
-                                secondaryAction={
-                                    <Checkbox
-                                        defaultChecked color="success"
-                                        edge="end"
-                                        onChange={handleToggleAm(amValue)}
-                                        checked={amChecked.indexOf(amValue) !== -1}
-                                        inputProps={{ 'aria-labelledby': labelId }}
-                                    />
-                                }
-                                disablePadding
-                            >
-                                <ListItemButton>
+                            <div>
+                                {
+                                    amValue.dated == "아침" ? <div>
+                                        <ListItem
+                                            key={amValue}
+                                            secondaryAction={
+                                                <Checkbox
+                                                    defaultChecked color="success"
+                                                    edge="end"
+                                                    onChange={handleToggleAm(amValue)}
+                                                    checked={amChecked.indexOf(amValue) !== -1}
+                                                    inputProps={{ 'aria-labelledby': labelId }}
+                                                />
+                                            }
+                                            disablePadding
+                                        >
+                                            <ListItemButton>
 
-                                    <ListItemText id={labelId} primary={` ${amValue}`} />
-                                </ListItemButton>
-                            </ListItem>
+                                                <ListItemText id={labelId} primary={amValue.content} />
+                                            </ListItemButton>
+                                        </ListItem>
+                                    </div> :
+                                        <div></div>
+                                }
+                            </div>
                         );
                     })}
                 </List>
