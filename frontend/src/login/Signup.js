@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
-import './Signup.css'
+import './Signup.css';
 
 import {
     Button,
@@ -39,8 +39,8 @@ const Signup = () => {
 
 
     const onhandlePost = async (data) => {
-        const {nickname, email, password } = data;
-        const postData = {nickname, email, password };
+        const { nickname, email, password } = data;
+        const postData = { nickname, email, password };
 
         // post
 
@@ -100,7 +100,7 @@ const Signup = () => {
             rePassword: data.get('rePassword'),
 
         };
-        const { email, nickname, password, rePassword} = joinData;
+        const { email, nickname, password, rePassword } = joinData;
 
         // 이메일 유효성 체크
         // 이메일 유효성 체크
@@ -150,27 +150,33 @@ const Signup = () => {
 
     return (
 
-        <Container component="main" maxWidth="xs" style={{height:'1200px'}}>
-            <br/>
-            <br/>
+        <Container component="main" maxWidth="xs" style={{ height: '100vh' }}>
+            <br />
+            <br />
+            <div style={{ textAlign: 'center', color: 'gray' }}><span>꾸준한 영양제 복용을 위하여</span></div>
+            <h1 style={{
+                textAlign: 'center', color: '#58CCFF', fontWeight: '600',
+                textShadow: '-1px -1px 0 #000, 1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000'
+            }}>Pill Good</h1>
+
             <Box
                 sx={{
-                    height:680,
+
                     marginTop: 8,
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
                     borderRadius: '10px',
-                    padding: '60px 50px',
+                    padding: '30px 50px',
                     backgroundColor: '#fff',
                     boxShadow: ' 0 8px 20px 0 rgba(0, 0, 0, 0.15)'
                 }}
             >
 
-                <Typography component="h1" variant="h3" color="gray" fontWeight="600" sx={{ mt: 3, mb:3 }}>
+                <Typography style={{ fontSize: '2rem' }} component="h3" variant="h3" color="gray" fontWeight="600" sx={{ mt: 1, mb: 1 }}>
                     회원가입
                 </Typography>
-                <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+                <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 2 }}>
                     <FormControl component="fieldset" variant="standard">
                         <Grid container spacing={2}>
 
@@ -184,7 +190,7 @@ const Signup = () => {
                                     name="email"
                                     label="이메일 주소"
                                     error={emailError !== '' || false}
-                                    style={{border:"0px"}}
+                                    style={{ border: "0px" }}
                                 />
                             </Grid>
                             <FormHelperText>{emailError}</FormHelperText>
@@ -192,7 +198,7 @@ const Signup = () => {
 
                             <Grid item xs={12} >
                                 <TextField required fullWidth id="nickname" name="nickname" label="닉네임"
-                                           error={nameError !== '' || false} />
+                                    error={nameError !== '' || false} />
                             </Grid>
                             <FormHelperText>{nameError}</FormHelperText>
 
@@ -221,7 +227,7 @@ const Signup = () => {
                             </Grid>
                             <FormHelperText>{passwordError}</FormHelperText>
 
-                            <Grid item xs={12}>
+                            <Grid style={{ textAlign: 'center' }} item xs={12}>
                                 <FormControlLabel
                                     control={<Checkbox onChange={handleAgree} color="primary" />}
                                     label="회원가입 약관에 동의합니다."
@@ -234,7 +240,7 @@ const Signup = () => {
                             type="submit"
                             fullWidth
                             variant="contained"
-                            sx={{ mt:3,mb: 3, ml:7.5, backgroundColor:"orange", fontSize:25, width:180 }}
+                            sx={{ mt: 3, mb: 3, ml: 7.5, backgroundColor: "orange", fontSize: 20, width: 180 }}
                             size="large"
                         >
                             회원가입
