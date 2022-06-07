@@ -20,6 +20,7 @@ public class SupplementsService {
         Supplements supplements = new Supplements();
         supplements.setSupplementsName(supplementsName);
         supplements.setQuantity(quantity);
+        supplements.setQuantityLeft(quantity);
         supplements.setSingleDose(singleDose);
         supplements.setSlot(slot);
         supplements.setUser(user);

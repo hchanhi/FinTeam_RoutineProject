@@ -24,6 +24,8 @@ public class Supplements {
 
     private int quantity;
 
+    private int quantityLeft;
+
     private int singleDose;
 
     private String slot;
