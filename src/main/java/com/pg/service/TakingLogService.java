@@ -38,7 +38,7 @@ public class TakingLogService {
         supplements.setQuantityLeft(supplements.getQuantity() + supplements.getSingleDose());
         supplementsRepository.save(supplements);
 
-        TakingLog takingLog = takingLogRepository.findByUserAndSupplement(user, supplements);
+        TakingLog takingLog = takingLogRepository.findByUserAndSupplements(user, supplements);
         takingLogRepository.delete(takingLog);
     }
 }

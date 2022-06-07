@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TakingLogRepository extends JpaRepository<TakingLog, Long> {
-    TakingLog findByUserAndSupplement(User user, Supplements supplements);
+    TakingLog findByUserAndSupplements(User user, Supplements supplements);
 }
