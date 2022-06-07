@@ -13,7 +13,9 @@ justify-content:center;
 align-items:center;
 flex-direction: column;
 
-
+a {
+    padding-bottom:0
+}
 
 `;
 let Icon = styled.div`
@@ -28,7 +30,7 @@ const Footer = () => {
 
 
         <Navbar bg="dark" variant="dark" className="mainFooter">
-            <Container>
+            <Container style={{ paddingTop: '5px' }}>
                 <Nav className="me-auto" style={{ margin: 'auto' }}>
 
                     <Wrapper>

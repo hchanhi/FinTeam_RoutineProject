@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -8,7 +8,8 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Checkbox from '@mui/material/Checkbox';
 import Avatar from '@mui/material/Avatar';
 import { Divider, Paper } from '@mui/material';
-
+import { getNickName, isAuth } from "./jwtCheck";
+import axios from "axios";
 
 export default function CheckPill() {
     const [amChecked, setAmChecked] = React.useState([1]);
@@ -106,6 +107,24 @@ export default function CheckPill() {
     // };
     // console.log(AmCheck);
     // useState(testCheck(), []);
+    function mypill() {
+        const token = JSON.parse(localStorage.getItem('accessToken'));
+        const nickname = getNickName(token);
+        let params = { nickname: nickname };
+        axios.get("/api/supplements/list", { params })
+            .then(function (res) {
+                console.log("성공");
+                console.log(res.data);
+            })
+            .catch(function (res) {
+                console.log('실패');
+
+            });
+
+    }
+    useEffect(() => {
+        mypill();
+    }, []);
     return (
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <Paper elevation={6} sx={{ width: '140px', maxWidth: 360, borderRadius: '30px' }}>
