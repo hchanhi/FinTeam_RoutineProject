@@ -1,22 +1,22 @@
 import './MyPill.css';
-import {Card, Button} from "react-bootstrap";
-import {useEffect, useState} from "react";
-import {Link, useNavigate} from "react-router-dom";
-import {getNickName, isAuth} from "../jwtCheck";
+import { Card, Button } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { getNickName, isAuth } from "../jwtCheck";
 import axios from "axios";
 import Swal from 'sweetalert2';
 
-function MyPill(){
+function MyPill() {
     const token = JSON.parse(localStorage.getItem('accessToken'));
     const nickname = getNickName(token);
-    let [card, setCard]= useState([]);
+    let [card, setCard] = useState([]);
     let navigate = useNavigate();
-    let [state, setState]= useState(false);
+    let [state, setState] = useState(false);
 
-    function mypill(){
-        if(isAuth(token)!=false) {
-            let params = {nickname: nickname};
-            axios.get("/api/supplements/list", {params})
+    function mypill() {
+        if (isAuth(token) != false) {
+            let params = { nickname: nickname };
+            axios.get("/api/supplements/list", { params })
                 .then(function (res) {
                     console.log("성공");
                     setCard(res.data);
@@ -25,23 +25,23 @@ function MyPill(){
                 .catch(function (res) {
                     console.log('실패');
 
-                })
+                });
         }
     }
-    function deletePill(index){
-        let params = {id:(card[index]).id};
-        axios.get("/api/supplements/delete", {params})
-            .then(function(res){
+    function deletePill(index) {
+        let params = { id: (card[index]).id };
+        axios.get("/api/supplements/delete", { params })
+            .then(function (res) {
                 console.log("성공");
                 setState(!state);
             })
-            .catch(function(res){
+            .catch(function (res) {
                 console.log('실패');
 
-            })
+            });
 
     }
-    useEffect(()=>{
+    useEffect(() => {
         if (!isAuth(token)) {
             Swal.fire({
                 confirmButtonColor: '#2fbe9f',
@@ -54,44 +54,44 @@ function MyPill(){
         }
     }, []);
 
-    useEffect(()=>{
+    useEffect(() => {
         mypill();
-    },[state])
+    }, [state]);
 
 
-    return(
+    return (
         <div className="page">
             <div className="page2">
-            <br/>
-            <br/>
-            <br/>
-                <br/>
-            {card.map(function(card,index){
-                return(
-                    <div key={index}>
-                        <Card className="pillCard">
-                            <Card.Body>
-                                <Card.Title>{card.supplementsName}</Card.Title>
-                                <Card.Subtitle className="mb-2 text-muted">1회/{card.singleDose}정</Card.Subtitle>
-                                <Card.Text>
-                                    현재 수량 : {card.quantityLeft}<br/>
-                                    알림 시간 : {card.slot}<br/>
-                                    등록한 날짜 : {(card.supplementsCreated).substring(0,10)}
-                                </Card.Text>
-                                <Button variant="outline-primary" className="cardBtn">수 정</Button>
-                                <Button variant="outline-danger" className="cardBtn" onClick={()=>{deletePill(index)}}>삭 제</Button>
-                            </Card.Body>
-                        </Card>
-                    </div>
-                );
-            })}
-            <div>
-                <Link to={'/addpill'} style={{textDecoration:'none'}}><Button variant="warning" className="addBtn">영양제 추가</Button></Link>
-            </div>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
+                <br />
+                <br />
+                <br />
+                <br />
+                {card.map(function (card, index) {
+                    return (
+                        <div key={index}>
+                            <Card className="pillCard">
+                                <Card.Body>
+                                    <Card.Title>{card.supplementsName}</Card.Title>
+                                    <Card.Subtitle className="mb-2 text-muted">1회/{card.singleDose}정</Card.Subtitle>
+                                    <Card.Text>
+                                        현재 수량 : {card.quantityLeft}<br />
+                                        알림 시간 : {card.slot}<br />
+                                        등록한 날짜 : {(card.supplementsCreated).substring(0, 10)}
+                                    </Card.Text>
+                                    <Button variant="outline-primary" className="cardBtn">수 정</Button>
+                                    <Button variant="outline-danger" className="cardBtn" onClick={() => { deletePill(index); }}>삭 제</Button>
+                                </Card.Body>
+                            </Card>
+                        </div>
+                    );
+                })}
+                <div>
+                    <Link to={'/addpill'} style={{ textDecoration: 'none' }}><Button variant="warning" className="addBtn">영양제 추가</Button></Link>
+                </div>
+                <br />
+                <br />
+                <br />
+                <br />
             </div>
         </div>
     );

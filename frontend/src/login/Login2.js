@@ -41,8 +41,7 @@ const Resigter = (props) => {
 
                 if (response.status === 200) {
                     Swal.fire({
-                        confirmButtonColor: '#2fbe9f',
-
+                        confirmButtonColor: '#ffa500',
                         confirmButtonText: '확인',
                         text: '로그인 되었습니다!😊',
                     }).then((result) => {
@@ -58,7 +57,7 @@ const Resigter = (props) => {
             .catch(function (err) {
                 console.log(err);
                 Swal.fire({
-                    confirmButtonColor: '#2fbe9f',
+                    confirmButtonColor: '#ffa500',
 
                     confirmButtonText: '확인',
                     text: '이메일 혹은 비밀번호가 틀렸습니다!😥', // Alert 제목
