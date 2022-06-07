@@ -24,24 +24,36 @@ export default function CheckPill() {
     const handleToggleAm = (amValue) => () => {
         const currentIndex = amChecked.indexOf(amValue);
         const newChecked = [...amChecked];
-
+        let params = { nickname: nickname, supplementsName: amValue.supplementsName };
         if (currentIndex === -1) {
             newChecked.push(amValue);
-            let params = { nickname: nickname, supplementsName: amValue };
-            axios.get("/api/supplements/check", { params })
+
+            console.log(amValue.supplementsName);
+            axios.post("/api/supplements/check", params)
+                .then(function (res) {
+                    console.log("성공");
+                    console.log(res.data);
+
+                })
+                .catch(function (err) {
+                    console.log(err);
+
+                });
+
+        } else {
+            newChecked.splice(currentIndex, 1);
+            console.log("언체크" + amValue.supplementsName);
+            axios.delete("/api/supplements/uncheck", { data: params })
                 .then(function (res) {
                     console.log("성공");
                     console.log(res.data);
 
 
                 })
-                .catch(function (res) {
-                    console.log('실패');
+                .catch(function (err) {
+                    console.log(err);
 
                 });
-
-        } else {
-            newChecked.splice(currentIndex, 1);
         }
 
         setAmChecked(newChecked);
@@ -52,13 +64,34 @@ export default function CheckPill() {
     const handleToggleNoon = (noonValue) => () => {
         const currentIndex = noonChecked.indexOf(noonValue);
         const newChecked = [...noonChecked];
-
+        let params = { nickname: nickname, supplementsName: noonValue.supplementsName };
         if (currentIndex === -1) {
             newChecked.push(noonValue);
-            console.log(noonValue);
-            console.log('입력');
+            console.log(noonValue.supplementsName);
+            axios.post("/api/supplements/check", params)
+                .then(function (res) {
+                    console.log("성공");
+                    console.log(res.data);
+
+                })
+                .catch(function (err) {
+                    console.log(err);
+
+                });
         } else {
             newChecked.splice(currentIndex, 1);
+            console.log("언체크" + noonValue.supplementsName);
+            axios.delete("/api/supplements/uncheck", { data: params })
+                .then(function (res) {
+                    console.log("성공");
+                    console.log(res.data);
+
+
+                })
+                .catch(function (err) {
+                    console.log(err);
+
+                });
         }
 
         setNoonChecked(newChecked);
@@ -71,6 +104,7 @@ export default function CheckPill() {
 
         if (currentIndex === -1) {
             newChecked.push(pmValue);
+
         } else {
             newChecked.splice(currentIndex, 1);
         }
@@ -89,7 +123,7 @@ export default function CheckPill() {
 
 
             })
-            .catch(function (res) {
+            .catch(function (err) {
                 console.log('실패');
 
             });
@@ -103,11 +137,11 @@ export default function CheckPill() {
     return (
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
 
-            <Paper elevation={6} sx={{ width: '140px', maxWidth: 360, borderRadius: '30px' }}>
+            <Paper elevation={6} sx={{ width: '140px', maxWidth: 360, borderRadius: '20px' }}>
 
-                <List dense sx={{ width: '140px', maxWidth: 360, bgcolor: 'background.paper', borderRadius: '30px' }}>
+                <List dense sx={{ width: '140px', maxWidth: 360, bgcolor: 'background.paper', borderRadius: '20px' }}>
                     <ListItemText
-                        sx={{ my: 1, textAlign: 'center' }}
+                        sx={{ my: 0, textAlign: 'center' }}
                         primary="아침"
                         primaryTypographyProps={{
                             fontSize: 20,
@@ -115,7 +149,7 @@ export default function CheckPill() {
                             letterSpacing: 0,
                         }}
                     />
-                    <Divider />
+                    <Divider style={{ marginBottom: '5px' }} />
                     {pillCheck.map((amValue) => {
                         const labelId = `checkbox-list-secondary-label-${amValue}`;
                         return (
@@ -149,10 +183,10 @@ export default function CheckPill() {
                 </List>
             </Paper>
 
-            <Paper elevation={6} sx={{ width: '140px', maxWidth: 360, borderRadius: '30px' }}>
-                <List dense sx={{ width: '140px', maxWidth: 360, bgcolor: 'background.paper', borderRadius: '30px' }}>
+            <Paper elevation={6} sx={{ width: '140px', maxWidth: 360, borderRadius: '20px' }}>
+                <List dense sx={{ width: '140px', maxWidth: 360, bgcolor: 'background.paper', borderRadius: '20px' }}>
                     <ListItemText
-                        sx={{ my: 1, textAlign: 'center' }}
+                        sx={{ my: 0, textAlign: 'center' }}
                         primary="점심"
                         primaryTypographyProps={{
                             fontSize: 20,
@@ -160,7 +194,7 @@ export default function CheckPill() {
                             letterSpacing: 0,
                         }}
                     />
-                    <Divider />
+                    <Divider style={{ marginBottom: '5px' }} />
 
                     {pillCheck.map((noonValue) => {
                         const labelId = `checkbox-list-secondary-label-${noonValue}`;
@@ -195,10 +229,10 @@ export default function CheckPill() {
                     })}
                 </List>
             </Paper>
-            <Paper elevation={6} sx={{ width: '140px', maxWidth: 360, borderRadius: '30px' }}>
-                <List dense sx={{ width: '140px', maxWidth: 360, bgcolor: 'background.paper', borderRadius: '30px' }}>
+            <Paper elevation={6} sx={{ width: '140px', maxWidth: 360, borderRadius: '20px' }}>
+                <List dense sx={{ width: '140px', maxWidth: 360, bgcolor: 'background.paper', borderRadius: '20px' }}>
                     <ListItemText
-                        sx={{ my: 1, textAlign: 'center' }}
+                        sx={{ my: 0, textAlign: 'center' }}
                         primary="저녁"
                         primaryTypographyProps={{
                             fontSize: 20,
@@ -206,7 +240,7 @@ export default function CheckPill() {
                             letterSpacing: 0,
                         }}
                     />
-                    <Divider />
+                    <Divider style={{ marginBottom: '5px' }} />
                     {
 
                         pillCheck.map((pmValue) => {
