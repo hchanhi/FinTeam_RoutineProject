@@ -149,9 +149,24 @@ export default function CheckPill() {
 
     }
     console.log(checked);
+    function isCheck() {
+        let params = { nickname: nickname };
+        axios.get("/api/supplements/eatenlist", { data: params })
+            .then(function (res) {
+                console.log("성공");
+
+                console.log(res.data);
+
+
+            })
+            .catch(function (err) {
+                console.log('실패');
+
+            });
+    }
     useEffect(() => {
         pill();
-
+        isCheck();
     }, []);
 
     return (
