@@ -19,8 +19,9 @@ public class SupplementsController {
         String supplementsName=params.get("supplementsName");
         int quantity=Integer.parseInt(params.get("quantity"));
         int singleDose=Integer.parseInt(params.get("singleDose"));
+        String slot=params.get("slot");
         String nickname=params.get("nickname");
-        return supplementsService.addSupplements(supplementsName, quantity, singleDose, nickname);
+        return supplementsService.addSupplements(supplementsName, quantity, singleDose, slot, nickname);
     }
 
     @GetMapping("/supplements/list")
