@@ -14,6 +14,7 @@ import axios from "axios";
 export default function CheckPill() {
     const [checked, setChecked] = React.useState([1]);
     const [pillCheck, setPillCheck] = React.useState([]);
+    const [isChecked, setIsChecked] = React.useState([1]);
     const token = JSON.parse(localStorage.getItem('accessToken'));
     const nickname = getNickName(token);
 
@@ -97,11 +98,11 @@ export default function CheckPill() {
     };
     //저녁
     const handleTogglePm = (pmValue) => () => {
-        const currentIndex = checked.indexOf(pmValue);
+        const currentIndex = checked.indexOf(pmValue.supplementsName);
         const newChecked = [...checked];
         let params = { nickname: nickname, supplementsName: pmValue.supplementsName };
         if (currentIndex === -1) {
-            newChecked.push(pmValue);
+            newChecked.push(pmValue.supplementsName);
             console.log("체크 " + pmValue.supplementsName);
             axios.post("/api/supplements/check", params)
                 .then(function (res) {
@@ -150,12 +151,16 @@ export default function CheckPill() {
     }
     console.log(checked);
     function isCheck() {
-        let params = { nickname: nickname };
-        axios.get("/api/supplements/eatenlist", { data: params })
+        let body = { nickname: nickname };
+        axios.get("/api/supplements/eatenlist", { params: body })
             .then(function (res) {
-                console.log("성공");
+                console.log("체크드성공");
 
-                console.log(res.data);
+                for (var i = 0; i < res.data.length; i++) {
+                    if (checked[i + 1] != res.data[i].supplementsName) { checked.push(res.data[i].supplementsName); }
+                    console.log(res.data[i]);
+                }
+                console.log(res.data[0].supplementsName);
 
 
             })
@@ -167,8 +172,10 @@ export default function CheckPill() {
     useEffect(() => {
         pill();
         isCheck();
-    }, []);
 
+
+    }, []);
+    console.log(checked);
     return (
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
 
@@ -198,7 +205,7 @@ export default function CheckPill() {
 
                                                     edge="end"
                                                     onChange={handleToggleAm(amValue)}
-                                                    checked={checked.indexOf(amValue.supplementsName) !== -1}
+                                                    checked={checked.some(v => v == amValue.supplementsName) == true}
                                                     inputProps={{ 'aria-labelledby': labelId }}
                                                     defaultChecked
                                                     sx={{
@@ -252,7 +259,7 @@ export default function CheckPill() {
 
                                                     edge="end"
                                                     onChange={handleToggleNoon(noonValue)}
-                                                    checked={checked.indexOf(noonValue.supplementsName) !== -1}
+                                                    checked={checked.some(v => v == noonValue.supplementsName) == true}
                                                     inputProps={{ 'aria-labelledby': labelId }}
                                                     defaultChecked
                                                     sx={{
@@ -307,7 +314,7 @@ export default function CheckPill() {
 
                                                             edge="end"
                                                             onChange={handleTogglePm(pmValue)}
-                                                            checked={checked.indexOf(pmValue) !== -1}
+                                                            checked={checked.some(v => v == pmValue.supplementsName) == true}
                                                             inputProps={{ 'aria-labelledby': labelId }}
                                                             defaultChecked
                                                             sx={{
