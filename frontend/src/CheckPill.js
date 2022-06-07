@@ -176,7 +176,7 @@ export default function CheckPill() {
                         return (
                             <div>
                                 {
-                                    amValue.slot == "아침" ? <div>
+                                    amValue.slot == "MORNING" ? <div>
                                         <ListItem
                                             key={amValue}
                                             secondaryAction={
@@ -230,7 +230,7 @@ export default function CheckPill() {
                             <div>
 
                                 {
-                                    noonValue.slot == "점심" ? <div>
+                                    noonValue.slot == "LUNCH" ? <div>
                                         <ListItem
                                             key={noonValue}
                                             secondaryAction={
@@ -284,7 +284,7 @@ export default function CheckPill() {
                                 <div>
                                     {
 
-                                        pmValue.slot == "저녁" ?
+                                        pmValue.slot == "DINNER" ?
                                             <div>
                                                 <ListItem
                                                     key={pmValue}
