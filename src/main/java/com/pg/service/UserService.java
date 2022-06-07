@@ -1,6 +1,7 @@
 package com.pg.service;
 
 import com.pg.config.jwt.JwtTokenProvider;
+import com.pg.model.BaseTime;
 import com.pg.model.User;
 import com.pg.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
