@@ -54,7 +54,7 @@ function Main() {
         < Wrapper style={{ marginTop: "30px" }}>
             <br></br>
             <br></br>
-            <div style={{ textAlign: 'center', color: 'gray' }}><span>꾸준한 영양제 복용을 위하여</span></div>
+            <div style={{ textAlign: 'center', color: 'gray' }}><span>꾸준한 영양제 복용을 위한</span></div>
             <h1 style={{
                 textAlign: 'center', color: '#58CCFF', fontWeight: '600',
                 textShadow: '-1px -1px 0 #000, 1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000'

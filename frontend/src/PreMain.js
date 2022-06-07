@@ -1,28 +1,20 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
+import './PreMain.css';
 function PreMain() {
 
 
     return (
-        <div style={{ height: '100vh' }}>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <Link to="/login"><h2>로그인하러가기</h2></Link>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
+        <div className="splash" style={{ height: '100vh'}}>
+
+            <div className="top">
+                <h4 className="stitle">꾸준한 영양제 복용을 위한</h4>
+                <h2 className="btitle">PILL GOOD</h2>
+            </div>
+
+            <Link to="/login" style={{textDecoration: 'none'}}><h2 className="tologin">로그인 하러가기</h2></Link>
+            
         </div>
     );
 }
