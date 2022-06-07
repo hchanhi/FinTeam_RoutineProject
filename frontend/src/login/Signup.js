@@ -155,7 +155,7 @@ const Signup = () => {
             <br/>
             <Box
                 sx={{
-                    height:660,
+                    height:680,
                     marginTop: 8,
                     display: 'flex',
                     flexDirection: 'column',
@@ -234,7 +234,7 @@ const Signup = () => {
                             type="submit"
                             fullWidth
                             variant="contained"
-                            sx={{ mt: 1,mb: 3, ml:7.5, backgroundColor:"orange", fontSize:25, width:180 }}
+                            sx={{ mt:3,mb: 3, ml:7.5, backgroundColor:"orange", fontSize:25, width:180 }}
                             size="large"
                         >
                             회원가입

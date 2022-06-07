@@ -170,14 +170,14 @@ const Resigter = (props) => {
                         fullWidth
                         variant="contained"
                         fontWeight="600"
-                        sx={{ mt: 3, mb: 3, ml:7, backgroundColor:"orange", fontSize:25, width:180}}
+                        sx={{ mt: 3, mb: 3, ml:7.5, backgroundColor:"orange", fontSize:25, width:180}}
                     >
                         로그인
                     </Button>
                     <Grid container>
                         <Grid item xs>
                             <Link href="/findPassword" variant="body2"
-                            sx={{ml:6.5, cursor:"pointer"}}>
+                            sx={{ml:7, cursor:"pointer"}}>
                                 비밀번호를 잊어버리셨나요?
                             </Link>
                         </Grid>
@@ -185,7 +185,7 @@ const Resigter = (props) => {
                     </Grid>
                     <Grid item>
                         <Link href="/signup" variant="body2"
-                        sx={{ml:6.2}}>
+                        sx={{ml:6.7}}>
                             {"계정이 없으신가요? 회원가입"}
                         </Link>
                     </Grid>
