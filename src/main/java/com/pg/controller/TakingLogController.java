@@ -30,7 +30,7 @@ public class TakingLogController {
     }
 
     @GetMapping("/supplements/takinglog")
-    public List<String> takingLoglistByUser(String nickname){
+    public List<Integer> takingLoglistByUser(String nickname){
         return takingLogService.selectTakingLogByUser(nickname);
     }
 

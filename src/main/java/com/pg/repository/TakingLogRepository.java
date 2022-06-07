@@ -15,7 +15,7 @@ import java.util.List;
 @Repository
 public interface TakingLogRepository extends JpaRepository<TakingLog, Long> {
 
-    List<TakingLog> findByUser(User user);
+    List<TakingLog> findByUserOrderByCreatedDate(User user);
 
     TakingLog findByUserAndSupplements(User user, Supplements supplements);
 

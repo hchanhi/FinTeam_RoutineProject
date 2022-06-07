@@ -13,15 +13,14 @@ import java.sql.Timestamp;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Rule {
+public class Record extends BaseTime{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Timestamp time;
+    private int continuity;
 
-    @ManyToOne
-    private Supplements supplements;
+    private int maxContinuity;
 
     @ManyToOne
     private User user;
