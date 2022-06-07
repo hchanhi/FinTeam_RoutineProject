@@ -1,14 +1,14 @@
-.image{
+.image {
     width: 150px;
     float: left;
     margin-right: 30px;
 }
 
-.pillname:hover{
-    cursor:pointer;
+.pillname:hover {
+    cursor: pointer;
 }
 
 .selected {
-    color: rgb(0, 135, 135);
-    border-bottom: 5px solid rgb(0, 135, 135);
+    color: orange;
+    border-bottom: 5px solid orange;
 }

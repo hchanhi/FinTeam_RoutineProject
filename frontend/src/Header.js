@@ -19,7 +19,7 @@ function Header(props) {
                 <Nav style={{ float: 'right', marginRight: '10px' }}>
                     {
                         nickName ? (<div style={{ display: 'flex' }}>
-                            <Nav.Link as={Link} to={"/user"} >{nickName}</Nav.Link>
+                            <Nav.Link style={{ color: '#58CCFF' }} as={Link} to={"/user"} >{nickName}</Nav.Link>
                             <Nav.Link as={Link} to={"/"} onClick={() => {
                                 localStorage.clear();
                                 props.setUserNickName('');

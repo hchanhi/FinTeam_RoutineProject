@@ -1,23 +1,23 @@
-.pillCard{
+.pillCard {
     width: 18rem;
     border-radius: 20px;
     margin: 30px auto;
 }
 
-.cardBtn{
-    margin : 5px;
+.cardBtn {
+    margin: 5px;
 }
 
-.addBtn{
+.addBtn {
     font-size: 20px;
     margin: auto;
     display: block;
 }
 
-.page{
-    height : 900px;
+.page {
+    height: 900px;
 }
 
-.page2{
-    background-color: lemonchiffon;
+.page2 {
+    background-color: rgb(255, 238, 205);
 }
