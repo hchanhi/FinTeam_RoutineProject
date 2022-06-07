@@ -15,12 +15,13 @@ public class SupplementsService {
     final private SupplementsRepository supplementsRepository;
     final private UserRepository userRepository;
 
-    public Supplements addSupplements(String supplementsName, int quantity, int singleDose, String nickname){
+    public Supplements addSupplements(String supplementsName, int quantity, int singleDose, String slot, String nickname){
         User user = userRepository.findByNickname(nickname);
         Supplements supplements = new Supplements();
         supplements.setSupplementsName(supplementsName);
         supplements.setQuantity(quantity);
         supplements.setSingleDose(singleDose);
+        supplements.setSlot(slot);
         supplements.setUser(user);
         supplementsRepository.save(supplements);
 

@@ -26,6 +26,8 @@ public class Supplements {
 
     private int singleDose;
 
+    private String slot;
+
     @CreationTimestamp
     private Timestamp supplementsCreated;
 
