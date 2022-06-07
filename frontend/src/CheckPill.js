@@ -151,7 +151,7 @@ export default function CheckPill() {
     console.log(checked);
     useEffect(() => {
         pill();
-        checked.push("비타민C", "루테인");
+
     }, []);
 
     return (

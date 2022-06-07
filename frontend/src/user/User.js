@@ -293,21 +293,25 @@ const User = (props) => {
         },
         [newPas]
     );
-    return (<div style={{ height: '100vh', paddingTop:'200px' }}>
+    return (<div style={{ height: '100vh', paddingTop: '130px' }}>
+        <h3 style={{
+            textAlign: 'center', color: '#58CCFF', fontWeight: '600',
+            textShadow: '-1px -1px 0 #000, 1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000'
+        }} >회원정보 수정</h3>
+        <br />
+        <Container className="UserEditor"
+            sx={{
+                height: 560,
+                width: 400,
+                display: 'flex',
+                flexDirection: 'column',
+                borderRadius: '10px',
+                padding: '10px 50px',
+                backgroundColor: '#fff',
+                boxShadow: ' 0 8px 20px 0 rgba(0, 0, 0, 0.15)'
+            }}>
 
-        <Container className="UserEditor" 
-                sx={{
-                    height:680,
-                    width: 400,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    borderRadius: '10px',
-                    padding: '60px 50px',
-                    backgroundColor: '#fff',
-                    boxShadow: ' 0 8px 20px 0 rgba(0, 0, 0, 0.15)'
-                }}>
 
-            <h1 className="title">회원정보 수정</h1>
             <br></br>
             <Box component="form" sx={{ mt: 3 }}>
                 <div className="userFlex">
@@ -387,7 +391,7 @@ const User = (props) => {
             <div className="userDelBtn">
                 <button onClick={handleSubmitDel}>탈퇴</button>
             </div>
-            
+
         </Container>
     </div>
     );
