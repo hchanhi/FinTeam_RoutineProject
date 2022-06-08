@@ -161,9 +161,9 @@ export default function CheckPill() {
     return (
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
 
-            <Paper elevation={6} sx={{ width: '140px', maxWidth: 360, borderRadius: '20px' }}>
+            <Paper elevation={6} sx={{ width: '120px', maxWidth: 360, borderRadius: '20px' }}>
 
-                <List dense sx={{ width: '140px', maxWidth: 360, bgcolor: 'background.paper', borderRadius: '20px' }}>
+                <List dense sx={{ width: '120px', maxWidth: 360, bgcolor: 'background.paper', borderRadius: '20px' }}>
                     <ListItemText
                         sx={{ my: 0, textAlign: 'center' }}
                         primary="아침"
@@ -214,8 +214,8 @@ export default function CheckPill() {
                 </List>
             </Paper>
 
-            <Paper elevation={6} sx={{ width: '140px', maxWidth: 360, borderRadius: '20px' }}>
-                <List dense sx={{ width: '140px', maxWidth: 360, bgcolor: 'background.paper', borderRadius: '20px' }}>
+            <Paper elevation={6} sx={{ width: '120px', maxWidth: 360, borderRadius: '20px' }}>
+                <List dense sx={{ width: '120px', maxWidth: 360, bgcolor: 'background.paper', borderRadius: '20px' }}>
                     <ListItemText
                         sx={{ my: 0, textAlign: 'center' }}
                         primary="점심"
@@ -267,8 +267,8 @@ export default function CheckPill() {
                     })}
                 </List>
             </Paper>
-            <Paper elevation={6} sx={{ width: '140px', maxWidth: 360, borderRadius: '20px' }}>
-                <List dense sx={{ width: '140px', maxWidth: 360, bgcolor: 'background.paper', borderRadius: '20px' }}>
+            <Paper elevation={6} sx={{ width: '120px', maxWidth: 360, borderRadius: '20px' }}>
+                <List dense sx={{ width: '120px', maxWidth: 360, bgcolor: 'background.paper', borderRadius: '20px' }}>
                     <ListItemText
                         sx={{ my: 0, textAlign: 'center' }}
                         primary="저녁"

@@ -246,7 +246,7 @@ const Signup = () => {
                             type="submit"
                             fullWidth
                             variant="contained"
-                            sx={{ mt: 3, mb: 3, ml: 7.5, backgroundColor: "orange", fontSize: 20, width: 180 }}
+                            sx={{ mt: 2, mb: 2, ml: 5, backgroundColor: "orange", fontSize: 20, width: 180 }}
                             size="large"
                         >
                             회원가입

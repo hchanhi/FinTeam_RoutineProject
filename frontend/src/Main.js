@@ -40,7 +40,7 @@ function Main() {
         mypill();
         getRecord();
         getRanking();
-    },[]);
+    }, []);
 
     function clickHandler(e) {
         setPillstate(e);
@@ -49,25 +49,25 @@ function Main() {
         window.location.reload();
     }
 
-    function getRecord(){
-        axios.get("/api/supplements/record", {params})
-            .then(function(res){
+    function getRecord() {
+        axios.get("/api/supplements/record", { params })
+            .then(function (res) {
                 setRecord(res.data);
             })
-            .catch(function(res){
+            .catch(function (res) {
                 console.log('실패');
-            })
+            });
     }
 
-    function getRanking(){
+    function getRanking() {
         axios.get("/api/supplements/maxranking")
-            .then(function(res){
+            .then(function (res) {
                 setRanking(res.data);
                 console.log(res.data);
             })
-            .catch(function(res){
+            .catch(function (res) {
                 console.log('실패');
-            })
+            });
     }
 
     return (
@@ -84,17 +84,33 @@ function Main() {
             <Card className="mainCard">
 
                 <Card.Body>
-                    <Card.Title>{isAuth(token) != false ? '안녕하세요 ' + nickname + '님!' : '로그인 후 이용바랍니다.'}</Card.Title>
-                    <img src={pill} className="image" />
+                    <Card.Title>{isAuth(token) != false ? <span>안녕하세요  <span style={{ color: 'orange', fontWeight: '600' }}>{nickname}</span> 님!</span> : '로그인 후 이용바랍니다.'}</Card.Title>
+                    {selectpill.map(function (pill, index) {
+                        return (
+                            <div>
+                                {pillstate == index ?
+                                    <div >
+                                        {pill.quantityLeft >= 100 ?
+
+                                            <img src={require("./img/vitamin100.jpg").default} className="image" />
+                                            : pill.quantityLeft >= 50 ? <img src={require("./img/vitamin50.jpg").default} className="image" /> :
+                                                <img src={require("./img/vitamin30.jpg").default} className="image" />
+                                        }
+                                    </div>
+                                    : null}
+                            </div>
+                        );
+                    })}
+
                     <Card.Subtitle className="mb-2 text-muted">
                         {selectpill.map(function (pill, index) {
                             return (
-                                <span key={index} className={`pillname ${pillstate === index ? 'selected' : ''}`} onClick={() => { clickHandler(index); }}>{pill.supplementsName} </span>
+                                <span style={{ marginRight: '8px' }} key={index} className={`pillname ${pillstate === index ? 'selected' : ''}`} onClick={() => { clickHandler(index); }}>{pill.supplementsName}  </span>
                             );
                         })}
                     </Card.Subtitle>
 
-                    <br/>
+                    <br />
                     {selectpill.map(function (pill, index) {
                         return (
                             <div>
@@ -106,9 +122,9 @@ function Main() {
                             </div>
                         );
                     })}
-                    <br/>
+                    <br />
                     <div>
-                        <span>현재 연속 일수 : {record.continuity}</span><br/>
+                        <span>현재 연속 일수 : {record.continuity}</span><br />
                         <span>최고 연속 일수 : {record.maxContinuity}</span>
                     </div>
 
@@ -116,22 +132,26 @@ function Main() {
 
                 </Card.Body>
             </Card>
-            <br/>
+            <br />
             <CheckPill />
-            <br/>
-            <br/>
+            <br />
+            <br />
             <div>
-                <h2>랭킹 (현재 연속 일수)</h2>
-                <br/>
-                {ranking.map(function(rank,index){
-                    return(
-                        <div style={{fontSize:'20px'}}>
-                            <span key={index}>{(index+1) == 1? '🥇 ': (index+1) == 2? '🥈 ' : (index+1)== 3? '🥉 ' : (index+1)+'위 '}</span>&nbsp;&nbsp;
-                            <span>{rank.user.nickname}</span>&nbsp;&nbsp;&nbsp;&nbsp;
-                            <span>{rank.continuity} 일</span>
-                        </div>
-                    );
-                })}
+                <h4 style={{ color: 'orange' }}>🏆 랭킹</h4>
+                <span style={{ fontSize: '15px', color: 'gray' }}>꾸준히 루틴을 완료한 필굿러들의 명예의 전당!  </span>
+                <Card className="rankCard">
+                    <Card.Body>
+                        {ranking.map(function (rank, index) {
+                            return (
+                                <div style={{ fontSize: '20px' }}>
+                                    <span key={index}>{(index + 1) == 1 ? '🥇 ' : (index + 1) == 2 ? '🥈 ' : (index + 1) == 3 ? '🥉 ' : (index + 1) + '위 '}</span>&nbsp;&nbsp;
+                                    <span style={{ fontWeight: '600' }}>{rank.user.nickname}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <span style={{ fontSize: '15px', color: 'gray' }}>(연속일수 : {rank.continuity} 일)</span>
+                                </div>
+                            );
+                        })}
+                    </Card.Body>
+                </Card>
             </div>
         </Wrapper >
     );
