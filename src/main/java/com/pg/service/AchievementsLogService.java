@@ -23,12 +23,11 @@ public class AchievementsLogService {
     private final SupplementsRepository supplementsRepository;
     private final RecordRepository recordRepository;
 
-    public List<AchievementsLog> saveAchievementsLog(String nickname) {
+    public void saveAchievementsLog(String nickname) {
         User user = userRepository.findByNickname(nickname);
         Achievements achievements1 = achievementsRepository.findById(1L).get();
         Achievements achievements2 = achievementsRepository.findById(2L).get();
         Achievements achievements3 = achievementsRepository.findById(3L).get();
-        List<AchievementsLog> list = new ArrayList<>();
 
         AchievementsLog achievementsLog1 = achievementsLogRepository.findByUserAndAchievements(user, achievements1);
         AchievementsLog achievementsLog2 = achievementsLogRepository.findByUserAndAchievements(user, achievements2);
@@ -39,7 +38,6 @@ public class AchievementsLogService {
             achievementsLog1.setUser(user);
             achievementsLog1.setAchievements(achievements1);
             achievementsLogRepository.save(achievementsLog1);
-            list.add(achievementsLog1);
         }
 
         if(achievementsLog2 == null) {
@@ -49,7 +47,6 @@ public class AchievementsLogService {
                 achievementsLog2.setUser(user);
                 achievementsLog2.setAchievements(achievements2);
                 achievementsLogRepository.save(achievementsLog2);
-                list.add(achievementsLog2);
             }
         }
 
@@ -60,11 +57,9 @@ public class AchievementsLogService {
                 achievementsLog3.setUser(user);
                 achievementsLog3.setAchievements(achievements3);
                 achievementsLogRepository.save(achievementsLog3);
-                list.add(achievementsLog3);
             }
         }
 
-        return list;
     }
 
     public Boolean[] getAchievementList(String nickname) {

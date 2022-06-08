@@ -17,8 +17,8 @@ public class AcheivementsController {
     private final AchievementsLogService achievementsLogService;
 
     @PostMapping("/supplements/addbadge")
-    public List<AchievementsLog> addbadge(String nickname){
-        return achievementsLogService.saveAchievementsLog(nickname);
+    public void addbadge(String nickname){
+        achievementsLogService.saveAchievementsLog(nickname);
     }
 
     @GetMapping("/supplements/badgelist")
