@@ -24,5 +24,4 @@ public class Achievements {
 
     private String description;
 
-    private String Condition;
 }
