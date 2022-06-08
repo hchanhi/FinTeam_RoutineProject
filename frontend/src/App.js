@@ -17,40 +17,6 @@ import { isAuth, getNickName } from './jwtCheck.js';
 import FindPassword from "./login/FindPassword.js";
 import EditPassword from "./login/EditPassword.js";
 
-const config = {
-    apiKey: "AIzaSyDIeKgdotnu9zvRvYNKnVry8Nuw6r7s7_8",
-    authDomain: "pillgood-138b1.firebaseapp.com",
-    projectId: "pillgood-138b1",
-    storageBucket: "pillgood-138b1.appspot.com",
-    messagingSenderId: "63398292257",
-    appId: "1:63398292257:web:bdf80d64a9a75d249d6c60",
-    measurementId: "G-6KFN50FF08"
-};
-const app = initializeApp(config);
-
-const messaging = getMessaging(app);
-
-getToken(messaging, { vapidKey: 'BOUH7VnfqJhHUd9CXxw1_QwjB_lScFbFAgPb9P-JOcNE8VavuYuOgSw5s9dLiTZfS0yYGv5RI1dCkYSeLxxvmmI' }).then((currentToken) => {
-    if (currentToken) {
-        console.log('허가!');
-        console.log(currentToken);
-        // Send the token to your server and update the UI if necessary
-        // ...
-    } else {
-        // Show permission request UI
-        console.log('No registration token available. Request permission to generate one.');
-        // ...
-    }
-}).catch((err) => {
-    console.log('An error occurred while retrieving token. ', err);
-    // ...
-});
-
-onMessage(messaging, (payload) => {
-    console.log('Message received. ', payload);
-    // ...
-});
-
 
 function App() {
 
@@ -70,20 +36,20 @@ function App() {
         }
     }, [isLogin]);
     if (isAuth(token) == false) {
-        return(
-        <div className="AppDiv">
-            <Header userNickName={userNickName} setUserNickName={setUserNickName} />
-            <br/>
-            <br/>
-            <Routes>
-                <Route path='/' element={<PreMain />} />
-                <Route path="/signup" element={<Signup />} />
-                <Route path="/login" element={<Login2 isLogin={isLogin} setIsLogin={setIsLogin} />} />
-                <Route path="/findPassword" element={<FindPassword />} />
-                <Route path="/user/passwordChange/:key" element={<EditPassword setUserNickName={setUserNickName}/>} />
-            </Routes>
-        </div>
-    );
+        return (
+            <div className="AppDiv">
+                <Header userNickName={userNickName} setUserNickName={setUserNickName} />
+                <br />
+                <br />
+                <Routes>
+                    <Route path='/' element={<PreMain />} />
+                    <Route path="/signup" element={<Signup />} />
+                    <Route path="/login" element={<Login2 isLogin={isLogin} setIsLogin={setIsLogin} />} />
+                    <Route path="/findPassword" element={<FindPassword />} />
+                    <Route path="/user/passwordChange/:key" element={<EditPassword setUserNickName={setUserNickName} />} />
+                </Routes>
+            </div>
+        );
     };
     return (
         <div className="AppDiv">
@@ -101,7 +67,7 @@ function App() {
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/login" element={<Login2 isLogin={isLogin} setIsLogin={setIsLogin} />} />
                 <Route path="/findPassword" element={<FindPassword />} />
-                <Route path="/user/passwordChange/:key" element={<EditPassword setUserNickName={setUserNickName}/>} />
+                <Route path="/user/passwordChange/:key" element={<EditPassword setUserNickName={setUserNickName} />} />
 
                 <Route path="*" element={<div>404 Error Not found</div>} />
             </Routes>

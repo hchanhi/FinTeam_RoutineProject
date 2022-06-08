@@ -52,7 +52,7 @@ let Text = styled.div`
 function Reward() {
     const token = JSON.parse(localStorage.getItem('accessToken'));
     const nickname = getNickName(token);
-    let [bd, setBd] = useState([true, false, true, true, true, false, false, false, false]);
+    let [badge, setBadge] = useState([]);
     let [log, setLog] = useState([]);
     let navigate = useNavigate();
     function pilllog() {
@@ -70,9 +70,22 @@ function Reward() {
 
             });
     }
+    function getBadge() {
+        let body = { nickname: nickname };
+        axios.get("/api/supplements/badgelist", { params: body })
+            .then(function (res) {
+                console.log(res.data);
+                setBadge(res.data);
+            })
+            .catch(function (res) {
+                console.log('실패');
+
+            });
+    }
 
     useEffect(() => {
         pilllog();
+        getBadge();
         if (!isAuth(token)) {
             Swal.fire({
                 confirmButtonColor: '#2fbe9f',
@@ -126,9 +139,9 @@ function Reward() {
             <div style={{ textAlign: "center" }}>
                 <WrapperBg>
                     {
-                        bd.map(function (a, i) {
+                        badge.map(function (a, i) {
                             return (
-                                <h1 key={i}>{bd[i] === true ? <Badge><img style={{ width: '120px', height: '120px' }} src={require("../img/badge00" + (i + 1) + ".png").default} /></Badge>
+                                <h1 key={i}>{badge[i] === true ? <Badge><img style={{ width: '120px', height: '120px' }} src={require("../img/badge00" + (i + 1) + ".png").default} /></Badge>
                                     : <Badge><img style={{ width: '120px', height: '120px' }} src={require("../img/qBadge.png").default} /></Badge>}</h1>
 
                             );
