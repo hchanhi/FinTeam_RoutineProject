@@ -75,7 +75,6 @@ export default function CheckPill() {
                 .then(function (res) {
                     console.log("성공");
 
-
                 })
                 .catch(function (err) {
                     console.log(err);
@@ -96,8 +95,6 @@ export default function CheckPill() {
             axios.post("/api/supplements/check", params)
                 .then(function (res) {
                     console.log("성공");
-
-
                 })
                 .catch(function (err) {
                     console.log(err);
