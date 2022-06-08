@@ -1,42 +1,39 @@
-.splash{
+.splash {
     background-image: url(./img/KakaoTalk_20220608_035506112.jpg);
     background-repeat: no-repeat;
     background-size: 480px;
-    padding-top:570px;
-    width:auto;
+    padding-top: 500px;
+    width: auto;
 }
 
-.top{
-    width:100%;
-    margin-bottom: 120px;
+.top {
+    width: 100%;
+    margin-bottom: 80px;
 }
 
-.stitle{
+.stitle {
     text-align: center;
-    color:gray;
-    font-size:23px;
+    color: gray;
+    font-size: 23px;
 }
 
-.btitle{
+.btitle {
     text-align: center;
-    font-size:60px;
+    font-size: 60px;
     font-weight: bolder;
-    color:rgb(97, 97, 97);
+    color: rgb(97, 97, 97);
 }
 
-.tologin{
-    margin:0 auto;
-    width:250px;
-    height:60px;
+.tologin {
+    margin: 0 auto;
+    width: 250px;
+    height: 60px;
     font-size: 25px;
-    padding-top:13px;
+    padding-top: 13px;
     text-align: center;
-    color:white;
-    background-color:rgb(255, 186, 59);
-    border:1px solid rgb(255, 186, 59);
+    color: white;
+    background-color: rgb(255, 186, 59);
+    border: 1px solid rgb(255, 186, 59);
     border-radius: 15px;
     /* box-shadow : 5px 5px 20px 0 rgb(171, 171, 171); */
 }
-
-
-

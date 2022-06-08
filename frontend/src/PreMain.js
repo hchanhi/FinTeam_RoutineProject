@@ -6,7 +6,7 @@ function PreMain() {
 
 
     return (
-        <div className="splash" style={{ height: '95vh' }}>
+        <div className="splash" style={{ height: '100vh' }}>
 
             <div className="top">
                 <h4 className="stitle">꾸준한 영양제 복용을 위한</h4>
