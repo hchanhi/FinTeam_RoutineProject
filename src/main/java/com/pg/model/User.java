@@ -37,7 +37,7 @@ public class User extends BaseTime {
     private Set<Role> roles = new HashSet<>();
     public User() {
     }
-    public User(String email, String nickname, String password, String birth) {
+    public User(String email, String nickname, String password) {
         this.nickname = nickname;
         this.email = email;
         this.password = password;
