@@ -125,9 +125,9 @@ function Main() {
                 <br/>
                 {ranking.map(function(rank,index){
                     return(
-                        <div>
-                            <span key={index}>{(index+1) == 1? '🥇': (index+1) == 2? '🥈' : '🥉'}</span>
-                            <span>{rank.user.nickname}</span>
+                        <div style={{fontSize:'20px'}}>
+                            <span key={index}>{(index+1) == 1? '🥇 ': (index+1) == 2? '🥈 ' : (index+1)== 3? '🥉 ' : (index+1)+'위 '}</span>&nbsp;&nbsp;
+                            <span>{rank.user.nickname}</span>&nbsp;&nbsp;&nbsp;&nbsp;
                             <span>{rank.continuity} 일</span>
                         </div>
                     );
