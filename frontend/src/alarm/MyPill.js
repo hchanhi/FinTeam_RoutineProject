@@ -125,21 +125,23 @@ function MyPill() {
                     textAlign: 'center', color: '#58CCFF', fontWeight: '600',
                     textShadow: '-1px -1px 0 #000, 1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000'
                 }} >영 양 제</h3>
-                <br />
+
                 {card.map(function (card, index) {
                     return (
                         <div key={index}>
                             <Card className="pillCard">
                                 <Card.Body>
-                                    <Card.Title>{card.supplementsName}</Card.Title>
-                                    <Card.Subtitle className="mb-2 text-muted">1회/{card.singleDose}정</Card.Subtitle>
+                                    <Card.Title style={{ color: 'orange' }}>{card.supplementsName}</Card.Title>
+                                    <Card.Subtitle style={{ fontSize: '13px' }} className="mb-2 text-muted">1회/{card.singleDose}정</Card.Subtitle>
                                     <Card.Text>
                                         현재 수량 : {card.quantityLeft}<br />
                                         알림 시간 : {card.slot == 'MORNING' ? '아침' : card.slot == 'LUNCH' ? '점심' : '저녁'}<br />
                                         등록한 날짜 : {(card.supplementsCreated).substring(0, 10)}
                                     </Card.Text>
-                                    <Button variant="outline-primary" className="cardBtn">수 정</Button>
-                                    <Button variant="outline-danger" className="cardBtn" onClick={() => { deletePill(index); }}>삭 제</Button>
+                                    <div className='myPillBtn' style={{ textAlign: 'center' }}>
+
+                                        <Button variant="outline-warning" className="cardBtn" onClick={() => { deletePill(index); }}>삭 제</Button>
+                                    </div>
                                 </Card.Body>
                             </Card>
                         </div>

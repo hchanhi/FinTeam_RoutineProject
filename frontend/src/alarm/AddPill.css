@@ -1,28 +1,36 @@
-.cardInput{
+.cardInput {
     float: right;
     width: 140px;
 }
 
-.btnArea{
+.btnArea {
     text-align: center;
 }
 
-.cardBtn{
+.btnArea>.cardBtn {
     font-size: 20px;
     display: inline-block;
+    margin: 10px !important;
+
 }
 
-.addCard{
+.addCard {
     width: 360px;
     border-radius: 20px;
-    margin: 30px auto;
+    margin: 10px auto;
+    margin-top: 130px;
 }
 
-.page{
+.page {
     font-size: 17px;
     height: 900px;
 }
 
-.checkbox_area{
+.checkbox_area {
     display: inline-block;
+}
+
+.selectBtn {
+    display: flex;
+    justify-content: space-around;
 }
