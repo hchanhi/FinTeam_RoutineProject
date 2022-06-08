@@ -7,7 +7,6 @@ import com.pg.service.PrincipalDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -78,24 +77,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 				.and()
 				.authorizeRequests()
+				.antMatchers("/").permitAll()
 				.antMatchers("/api/auth/**","/api/main/**","/api/mypage/**").permitAll()
 				.antMatchers("/api/user/**", "/api/users/{id}/**").permitAll()
 				.antMatchers("/api/user/checkUsernameAvailability", "/api/user/checkEmailAvailability").permitAll()
-				.antMatchers( "/api/supplements/**", "/api/diary/**", "/api/studylog/**", "/api/todo/**").permitAll()
-				.antMatchers("/").permitAll()
+				.antMatchers( "/api/supplements/**").permitAll()
 				.antMatchers("/user/**").permitAll()
 				.antMatchers("/fcm/**").permitAll()
-				.antMatchers("/fcm/**").permitAll()
-				.antMatchers("https://iid.googleapis.com/iid/v1/**").permitAll()
-
+				.antMatchers("/static/**").permitAll()
 				// 위 경로 이외의 토큰을 사용하는 경우 접근할 수 있도록 한다.
 				.anyRequest().authenticated();
 		// JWT security filter 추가
 		http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
-	}
-	@Override
-	public void configure(WebSecurity web) throws Exception {
-		//web security 예외처리 해당 url은 인증이 없어도 접근 가능
-		web.ignoring().antMatchers("/static/js/**","/static/css/**","/static/img/**","/static/frontend/**");
 	}
 }
