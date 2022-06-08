@@ -2,7 +2,6 @@ import { React, useEffect, useState } from "react";
 
 import styled from "styled-components";
 import { Card } from "react-bootstrap";
-import pill from './img/test.png';
 import './Main.css';
 import CheckPill from './CheckPill.js';
 import { getNickName, isAuth } from './jwtCheck.js';
@@ -36,10 +35,22 @@ function Main() {
                 });
         }
     }
+    function addBadge() {
+        axios.post("/api/supplements/addbadge", params)
+            .then(function (res) {
+
+                console.log(res.data);
+            })
+            .catch(function (err) {
+                console.log('실패');
+                console.log(err);
+            });
+    }
     useEffect(() => {
         mypill();
         getRecord();
         getRanking();
+        addBadge();
     }, []);
 
     function clickHandler(e) {
@@ -69,6 +80,7 @@ function Main() {
                 console.log('실패');
             });
     }
+
 
     return (
 
