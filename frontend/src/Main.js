@@ -35,8 +35,8 @@ function Main() {
                 });
         }
     }
-    function addBadge() {
-        axios.post("/api/supplements/addbadge", params)
+    let addBadge = async () => {
+        await axios.post("/api/supplements/addbadge", { nickname: nickname })
             .then(function (res) {
 
                 console.log(res.data);
@@ -44,13 +44,15 @@ function Main() {
             .catch(function (err) {
                 console.log('실패');
                 console.log(err);
+                console.log(err.headers);
             });
-    }
+    };
     useEffect(() => {
         mypill();
+        addBadge();
         getRecord();
         getRanking();
-        addBadge();
+
     }, []);
 
     function clickHandler(e) {
