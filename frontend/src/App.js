@@ -11,7 +11,6 @@ import Reward from "./reward/Reward.js";
 import User from "./user/User.js";
 import AddPill from "./alarm/AddPill.js";
 import MyPill from "./alarm/MyPill.js";
-import Routine from "./routine/Routine.js";
 import Signup from "./login/Signup.js";
 import Login2 from "./login/Login2";
 import { isAuth, getNickName } from './jwtCheck.js';
@@ -65,7 +64,6 @@ function App() {
                 <Route path="/reward" element={<Reward />} />
                 <Route path="/mypill" element={<MyPill />} />
                 <Route path="/addpill" element={<AddPill />} />
-                <Route path="/routine" element={<Routine />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/login" element={<Login2 isLogin={isLogin} setIsLogin={setIsLogin} />} />
                 <Route path="/findPassword" element={<FindPassword />} />
