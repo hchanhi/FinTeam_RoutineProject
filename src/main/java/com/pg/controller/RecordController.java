@@ -56,4 +56,11 @@ public class RecordController {
     public List<Record> rank() {
         return recordService.ranking();
     }
+
+    @GetMapping("/supplements/maxranking")
+    public List<Record> maxrank() {
+        return recordService.maxraking();
+    }
+
+
 }

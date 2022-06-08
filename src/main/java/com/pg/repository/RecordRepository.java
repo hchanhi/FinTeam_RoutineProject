@@ -12,4 +12,7 @@ public interface RecordRepository extends JpaRepository<Record, Long> {
 
     @Query(value="select * from record order by continuity desc limit 5", nativeQuery = true)
     List<Record> recordRanking();
+
+    @Query(value="select * from record order by max_continuity desc limit 5",nativeQuery = true )
+    List<Record> recordMaxRanking();
 }
