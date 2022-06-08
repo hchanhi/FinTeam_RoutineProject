@@ -25,7 +25,7 @@ function Main() {
     let [ranking, setRanking] = useState([]);
 
     function mypill() {
-        if (isAuth(token) != false) {
+        if (isAuth(token) !== false) {
             axios.get("/api/supplements/list", { params })
                 .then(function (res) {
                     setSelectpill(res.data);
@@ -36,9 +36,9 @@ function Main() {
         }
     }
     let addBadge = async () => {
-        await axios.post("/api/supplements/addbadge", { nickname: nickname })
+        await axios.get("/api/supplements/addbadge", { params })
             .then(function (res) {
-
+                console.log('성공애드뱃지');
                 console.log(res.data);
             })
             .catch(function (err) {
@@ -98,11 +98,11 @@ function Main() {
             <Card className="mainCard">
 
                 <Card.Body>
-                    <Card.Title>{isAuth(token) != false ? <span>안녕하세요  <span style={{ color: 'orange', fontWeight: '600' }}>{nickname}</span> 님!</span> : '로그인 후 이용바랍니다.'}</Card.Title>
+                    <Card.Title>{isAuth(token) !== false ? <span>안녕하세요  <span style={{ color: 'orange', fontWeight: '600' }}>{nickname}</span> 님!</span> : '로그인 후 이용바랍니다.'}</Card.Title>
                     {selectpill.map(function (pill, index) {
                         return (
                             <div>
-                                {pillstate == index ?
+                                {pillstate === index ?
                                     <div >
                                         {pill.quantityLeft >= 100 ?
 
@@ -128,10 +128,10 @@ function Main() {
                     {selectpill.map(function (pill, index) {
                         return (
                             <div>
-                                {pillstate == index ?
+                                {pillstate === index ?
                                     <Card.Text key={index}>
                                         남은 수량 : {pill.quantityLeft}<br />
-                                        알람 시간 : {pill.slot == 'MORNING' ? '아침' : pill.slot == 'LUNCH' ? '점심' : '저녁'}<br />
+                                        알람 시간 : {pill.slot === 'MORNING' ? '아침' : pill.slot === 'LUNCH' ? '점심' : '저녁'}<br />
                                     </Card.Text> : null}
                             </div>
                         );
@@ -158,7 +158,7 @@ function Main() {
                         {ranking.map(function (rank, index) {
                             return (
                                 <div style={{ fontSize: '20px' }}>
-                                    <span key={index}>{(index + 1) == 1 ? '🥇 ' : (index + 1) == 2 ? '🥈 ' : (index + 1) == 3 ? '🥉 ' : (index + 1) + '위 '}</span>&nbsp;&nbsp;
+                                    <span key={index}>{(index + 1) === 1 ? '🥇 ' : (index + 1) === 2 ? '🥈 ' : (index + 1) === 3 ? '🥉 ' : (index + 1) + '위 '}</span>&nbsp;&nbsp;
                                     <span style={{ fontWeight: '600' }}>{rank.user.nickname}</span>&nbsp;&nbsp;&nbsp;&nbsp;
                                     <span style={{ fontSize: '15px', color: 'gray' }}>(연속일수 : {rank.continuity} 일)</span>
                                 </div>

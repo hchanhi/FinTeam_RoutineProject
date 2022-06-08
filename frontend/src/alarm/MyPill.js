@@ -6,7 +6,7 @@ import { getNickName, isAuth } from "../jwtCheck";
 import axios from "axios";
 import Swal from 'sweetalert2';
 
-import {getMessaging, getToken, onMessage} from "firebase/messaging";
+import { getToken, onMessage } from "firebase/messaging";
 import messaging from "../App";
 
 
@@ -24,7 +24,7 @@ function MyPill() {
     });
 
     function mypill() {
-        if (isAuth(token) != false) {
+        if (isAuth(token) !== false) {
             let params = { nickname: nickname };
             axios.get("/api/supplements/list", { params })
 
@@ -124,7 +124,7 @@ function MyPill() {
                                     <Card.Subtitle style={{ fontSize: '13px' }} className="mb-2 text-muted">1회/{card.singleDose}정</Card.Subtitle>
                                     <Card.Text>
                                         현재 수량 : {card.quantityLeft}<br />
-                                        알림 시간 : {card.slot == 'MORNING' ? '아침' : card.slot == 'LUNCH' ? '점심' : '저녁'}<br />
+                                        알림 시간 : {card.slot === 'MORNING' ? '아침' : card.slot === 'LUNCH' ? '점심' : '저녁'}<br />
                                         등록한 날짜 : {(card.supplementsCreated).substring(0, 10)}
                                     </Card.Text>
                                     <div className='myPillBtn' style={{ textAlign: 'center' }}>

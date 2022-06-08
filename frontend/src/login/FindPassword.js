@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
@@ -6,8 +5,6 @@ import {
     Button,
     TextField,
     FormControl,
-    FormControlLabel,
-    Checkbox,
     FormHelperText,
     Grid,
     Box,
@@ -27,7 +24,7 @@ const FindPassword = () => {
 
         axios.post('/api/user/password', { email: email })
             .then(function (res) {
-                if (res.data.success == true) {
+                if (res.data.success === true) {
                     Swal.fire({
                         confirmButtonColor: 'orange',
                         confirmButtonText: '확인',
@@ -41,7 +38,7 @@ const FindPassword = () => {
                     });
 
 
-                } else if (res.data.success == false) {
+                } else if (res.data.success === false) {
                     Swal.fire({
                         confirmButtonColor: '#ffa500',
                         confirmButtonText: '확인',
