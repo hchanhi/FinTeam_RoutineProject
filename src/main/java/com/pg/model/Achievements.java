@@ -24,4 +24,5 @@ public class Achievements {
 
     private String description;
 
+    private int needsCount;
 }
