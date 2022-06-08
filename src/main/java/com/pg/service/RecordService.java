@@ -38,4 +38,8 @@ public class RecordService {
     public List<Record> ranking() {
         return recordRepository.recordRanking();
     }
+
+    public List<Record> maxraking(){
+        return recordRepository.recordMaxRanking();
+    }
 }
