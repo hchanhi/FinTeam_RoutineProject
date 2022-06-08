@@ -12,6 +12,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -81,7 +82,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/api/user/**", "/api/users/{id}/**").permitAll()
 				.antMatchers("/api/user/checkUsernameAvailability", "/api/user/checkEmailAvailability").permitAll()
 				.antMatchers( "/api/supplements/**", "/api/diary/**", "/api/studylog/**", "/api/todo/**").permitAll()
-
+				.antMatchers("/").permitAll()
 				.antMatchers("/user/**").permitAll()
 				.antMatchers("/fcm/**").permitAll()
 				.antMatchers("/fcm/**").permitAll()
@@ -91,5 +92,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.anyRequest().authenticated();
 		// JWT security filter 추가
 		http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+	}
+	@Override
+	public void configure(WebSecurity web) throws Exception {
+		//web security 예외처리 해당 url은 인증이 없어도 접근 가능
+		web.ignoring().antMatchers("/static/js/**","/static/css/**","/static/img/**","/static/frontend/**");
 	}
 }
