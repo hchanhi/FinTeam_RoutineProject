@@ -1,13 +1,11 @@
 import { Form, Card, Button } from "react-bootstrap";
 import './AddPill.css';
-import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 
-import {useState} from "react";
-import {getNickName, isAuth} from '../jwtCheck.js';
-import {initializeApp} from "firebase/app";
-import {getMessaging, getToken, onMessage} from "firebase/messaging";
+import { useState } from "react";
+import { getNickName } from '../jwtCheck.js';
+import { getToken } from "firebase/messaging";
 import messaging from "../App";
 
 
@@ -52,20 +50,6 @@ function AddPill() {
         subscribeTokenToTopic(Token, "DINNER");
     }
 
-    // function selectDay(e){
-    //     let copy = [...eatday,e];
-    //     setEatday(copy);
-    // }
-    // function unselectDay(e){
-    //     let copy = [...eatday];
-    //     for(let i=0; i<copy.length;i++){
-    //         if(copy[i]==e){
-    //             copy.splice(i,1);
-    //             i--;
-    //         }
-    //     }
-    //     setEatday(copy);
-    // }
 
     let body = {
         supplementsName: pillname,
@@ -83,11 +67,11 @@ function AddPill() {
                 getToken(messaging, { vapidKey: 'BOUH7VnfqJhHUd9CXxw1_QwjB_lScFbFAgPb9P-JOcNE8VavuYuOgSw5s9dLiTZfS0yYGv5RI1dCkYSeLxxvmmI' })
                     .then((currentToken) => {
                         if (currentToken) {
-                            if (body.slot == 'MORNING') {
+                            if (body.slot === 'MORNING') {
                                 Topic1(currentToken);
-                            } else if (body.slot == 'LUNCH') {
+                            } else if (body.slot === 'LUNCH') {
                                 Topic2(currentToken);
-                            } else if (body.slot == 'DINNER') {
+                            } else if (body.slot === 'DINNER') {
                                 Topic3(currentToken);
                             }
                             console.log('허가!');

@@ -22,8 +22,7 @@ const User = (props) => {
 
 
     const [user, setUser] = useState([]);
-    const [nic, setNick] = useState();
-    const [state, setsState] = useState();
+    const [nic, setNick] = useState();;
     const [oldPas, setOldPas] = useState();
     const [newPas, setNewPas] = useState();
     const [passwordConfirm, setPasswordConfirm] = useState('');
@@ -84,7 +83,7 @@ const User = (props) => {
                 .post('/api/user/' + userId + '/nickname', nicBody)
 
                 .then(function (response) {
-                    if (response.data == false) {
+                    if (response.data === false) {
                         Swal.fire({
                             confirmButtonColor: '#ffa500',
 
@@ -137,7 +136,7 @@ const User = (props) => {
             setPasswordNewMessage('4~20글자를 입력해주세요!');
             setIsOldPassword(true);
             setIsNewPassword(false);
-        } else if (passwordConfirm != newPas) {
+        } else if (passwordConfirm !== newPas) {
             setIsPasswordConfirm(false);
             setPasswordConfirmMessage('비밀번호가 다릅니다!');
             setIsOldPassword(true);
@@ -149,7 +148,7 @@ const User = (props) => {
             axios
                 .post('/api/user/' + userId + '/password', pasBody)
                 .then(function (response) {
-                    if (response.data == false) {
+                    if (response.data === false) {
                         Swal.fire({
                             confirmButtonColor: '#ffa500',
 

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Container, Navbar, Nav } from 'react-bootstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAward, faHouse, faCapsules, faArrowsRotate, faUserGear } from "@fortawesome/free-solid-svg-icons";
+import { faAward, faHouse, faCapsules, faUserGear } from "@fortawesome/free-solid-svg-icons";
 
 let Wrapper = styled.div`
 width:80px;

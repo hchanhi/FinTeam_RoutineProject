@@ -1,8 +1,7 @@
 import './App.css';
 import { useEffect, useState } from "react";
-import { initializeApp } from "firebase/app";
-import { getMessaging, getToken, onMessage } from "firebase/messaging";
-import { Routes, Route, Link, Router, Navigate } from "react-router-dom";
+
+import { Routes, Route } from "react-router-dom";
 import Header from './Header.js';
 import Footer from './Footer.js';
 import Main from "./Main.js";
@@ -35,7 +34,7 @@ function App() {
             setIsLogin(false);
         }
     }, [isLogin]);
-    if (isAuth(token) == false) {
+    if (isAuth(token) === false) {
         return (
             <div className="AppDiv">
                 <Header userNickName={userNickName} setUserNickName={setUserNickName} />
