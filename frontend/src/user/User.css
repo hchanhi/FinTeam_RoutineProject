@@ -1,5 +1,5 @@
 .UserEditor {
-    width: 350px;
+    width: 350px !important;
 }
 
 .UserEditor span {
@@ -11,7 +11,7 @@
 .UserEditor label {
     margin-right: 10px;
     width: 40%;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .UserEditor form {
@@ -48,19 +48,19 @@
 .UserEditor button {
     width: 60px;
     cursor: pointer;
-    height: 40px;
-    background-color:orange;
+    height: 30px;
+    background-color: orange;
     border: none;
     border-radius: 10px;
     color: #ececec;
     font-weight: 600;
 }
 
-.title{
+.title {
     text-align: center;
     font-weight: 600;
-    font-size:40px;
-    color:gray;
+    font-size: 40px;
+    color: gray;
 }
 
 
@@ -113,23 +113,23 @@ h2 {
 
 .modify {
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 0.8rem;
     line-height: 24px;
     letter-spacing: -1px;
     width: 2%;
-    top: 130%;
-    right: 15%;
+    top: 128%;
+    right: 18%;
     position: absolute;
 }
 
 .modify2 {
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 0.8rem;
     line-height: 24px;
     letter-spacing: -1px;
     width: 2%;
-    top: 220%;
-    right: 15%;
+    top: 98%;
+    right: 18%;
     position: absolute;
 
 
@@ -154,10 +154,12 @@ h2 {
 .userDelBtn button {
     width: 60px;
     cursor: pointer;
-    height: 40px;
-    background-color:rgb(255, 0, 0);
+    height: 30px;
+    background-color: rgb(255, 0, 0);
     border: none;
     border-radius: 10px;
     color: #fff;
     font-weight: 600;
+    font-size: 12px;
+    margin-top: 40px;
 }

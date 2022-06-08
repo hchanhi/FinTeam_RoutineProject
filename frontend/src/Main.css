@@ -2,6 +2,7 @@
     width: 150px;
     float: left;
     margin-right: 30px;
+    margin-top: 10px;
 }
 
 .pillname:hover {
@@ -11,4 +12,9 @@
 .selected {
     color: orange;
     border-bottom: 5px solid orange;
+}
+
+.rankCard {
+    height: 250px;
+    background-color: #98e0ff;
 }

@@ -32,9 +32,9 @@ let WrapperBg = styled.div`
 display: flex;
 flex-direction: row;
 flex-wrap: wrap;
-width: 480px;
-justify-content:center
-
+width: 412px;
+justify-content:center;
+margin-top:20px;
 
 
 `;
@@ -88,13 +88,15 @@ function Reward() {
 
     return (
         <div style={{ height: '100vh' }} >
-            <br /><br /><br />
+            <br />
+            <br /><br />
+            < br />
             <Text>
                 <h3 style={{
                     textAlign: 'center', color: '#58CCFF', fontWeight: '600',
                     textShadow: '-1px -1px 0 #000, 1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000'
                 }} >리 워 드</h3>
-
+                <br />
                 <h5>캡슐 테이블</h5>
                 <span style={{ fontSize: '15px', color: 'gray' }}>얼마나 꾸준히 영양제를 복용했는지 알 수 있어요!</span>
             </Text>
@@ -121,13 +123,13 @@ function Reward() {
                 <span style={{ fontSize: '15px', color: 'gray' }}>비밀 퀘스트를 달성하면 뱃지를 모을 수 있어요!</span>
             </Text>
 
-            <div style={{ width: "300px", textAlign: "center" }}>
+            <div style={{ textAlign: "center" }}>
                 <WrapperBg>
                     {
                         bd.map(function (a, i) {
                             return (
-                                <h1 key={i}>{bd[i] === true ? <Badge><img src={require("../img/badge00" + (i + 1) + ".png").default} /></Badge>
-                                    : <Badge><img src={require("../img/qBadge.png").default} /></Badge>}</h1>
+                                <h1 key={i}>{bd[i] === true ? <Badge><img style={{ width: '120px', height: '120px' }} src={require("../img/badge00" + (i + 1) + ".png").default} /></Badge>
+                                    : <Badge><img style={{ width: '120px', height: '120px' }} src={require("../img/qBadge.png").default} /></Badge>}</h1>
 
                             );
                         })
