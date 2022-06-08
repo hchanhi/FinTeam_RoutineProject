@@ -1,5 +1,4 @@
 import { React, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 
 import styled from "styled-components";
 import { Card } from "react-bootstrap";
@@ -80,7 +79,7 @@ function Main() {
                                 {pillstate == index ?
                                     <Card.Text key={index}>
                                         남은 수량 : {pill.quantityLeft}<br />
-                                        알람 시간 : {pill.slot == 'MORNING' ? '아침': pill.slot == 'LUNCH' ? '점심':'저녁'}<br />
+                                        알람 시간 : {pill.slot == 'MORNING' ? '아침' : pill.slot == 'LUNCH' ? '점심' : '저녁'}<br />
                                     </Card.Text> : null}
                             </div>
                         );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Container, Navbar, Nav } from 'react-bootstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -20,10 +20,7 @@ a {
     color : #58CCFF !important
 }
 `;
-let Icon = styled.div`
-font-size:40px;
 
-`;
 const Footer = () => {
 
 

@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAward, faFlaskRoundPotion } from "@fortawesome/free-solid-svg-icons";
-import { getNickName, isAuth } from "../jwtCheck";
+import { isAuth } from "../jwtCheck";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
@@ -52,7 +50,6 @@ let Text = styled.div`
 
 function Reward() {
     const token = JSON.parse(localStorage.getItem('accessToken'));
-    const nickname = getNickName(token);
 
     let [bd, setBd] = useState([true, false, true, true, true, false, false, false, false]);
     let [rt, setRt] = useState([1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1]);
@@ -91,7 +88,7 @@ function Reward() {
                     {
                         rt.map(function (a, i) {
                             return (
-                                <h1 key={i}>{rt[i] == 1 ? <div style={{ width: '30px', height: '30px', marginLeft: '10px' }}>
+                                <h1 key={i}>{rt[i] === 1 ? <div style={{ width: '30px', height: '30px', marginLeft: '10px' }}>
                                     <img src={require("../img/pill01.png").default} />
                                 </div> :
                                     <div style={{ width: '30px', height: '30px', marginLeft: '10px' }}>
@@ -113,7 +110,7 @@ function Reward() {
                     {
                         bd.map(function (a, i) {
                             return (
-                                <h1 key={i}>{bd[i] == true ? <Badge><img src={require("../img/badge00" + (i + 1) + ".png").default} /></Badge>
+                                <h1 key={i}>{bd[i] === true ? <Badge><img src={require("../img/badge00" + (i + 1) + ".png").default} /></Badge>
                                     : <Badge><img src={require("../img/qBadge.png").default} /></Badge>}</h1>
 
                             );

@@ -1,20 +1,17 @@
 import * as React from 'react';
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Checkbox from '@mui/material/Checkbox';
-import Avatar from '@mui/material/Avatar';
 import { Divider, Paper } from '@mui/material';
-import { getNickName, isAuth } from "./jwtCheck";
+import { getNickName } from "./jwtCheck";
 import axios from "axios";
 
 export default function CheckPill() {
     const [checked, setChecked] = React.useState([1]);
     const [pillCheck, setPillCheck] = React.useState([]);
-    const [isChecked, setIsChecked] = React.useState([1]);
     const token = JSON.parse(localStorage.getItem('accessToken'));
     const nickname = getNickName(token);
 
@@ -26,12 +23,9 @@ export default function CheckPill() {
         let params = { nickname: nickname, supplementsName: amValue.supplementsName };
         if (currentIndex === -1) {
             newChecked.push(amValue.supplementsName);
-
-            console.log("체크 " + amValue.supplementsName);
             axios.post("/api/supplements/check", params)
                 .then(function (res) {
                     console.log("성공");
-                    console.log(res.data);
 
                 })
                 .catch(function (err) {
@@ -41,11 +35,9 @@ export default function CheckPill() {
 
         } else {
             newChecked.splice(currentIndex, 1);
-            console.log("언체크 " + amValue.supplementsName);
             axios.delete("/api/supplements/uncheck", { data: params })
                 .then(function (res) {
                     console.log("성공");
-                    console.log(res.data);
 
 
                 })
@@ -66,11 +58,10 @@ export default function CheckPill() {
         let params = { nickname: nickname, supplementsName: noonValue.supplementsName };
         if (currentIndex === -1) {
             newChecked.push(noonValue.supplementsName);
-            console.log("체크 " + noonValue.supplementsName);
+
             axios.post("/api/supplements/check", params)
                 .then(function (res) {
                     console.log("성공");
-                    console.log(res.data);
 
                 })
                 .catch(function (err) {
@@ -79,11 +70,10 @@ export default function CheckPill() {
                 });
         } else {
             newChecked.splice(currentIndex, 1);
-            console.log("언체크 " + noonValue.supplementsName);
+
             axios.delete("/api/supplements/uncheck", { data: params })
                 .then(function (res) {
                     console.log("성공");
-                    console.log(res.data);
 
 
                 })
@@ -103,11 +93,10 @@ export default function CheckPill() {
         let params = { nickname: nickname, supplementsName: pmValue.supplementsName };
         if (currentIndex === -1) {
             newChecked.push(pmValue.supplementsName);
-            console.log("체크 " + pmValue.supplementsName);
             axios.post("/api/supplements/check", params)
                 .then(function (res) {
                     console.log("성공");
-                    console.log(res.data);
+
 
                 })
                 .catch(function (err) {
@@ -116,7 +105,6 @@ export default function CheckPill() {
                 });
         } else {
             newChecked.splice(currentIndex, 1);
-            console.log("언체크 " + pmValue.supplementsName);
             axios.delete("/api/supplements/uncheck", { data: params })
                 .then(function (res) {
                     console.log("성공");
@@ -139,7 +127,6 @@ export default function CheckPill() {
             .then(function (res) {
                 console.log("성공");
                 setPillCheck(res.data);
-                console.log(res.data);
 
 
             })
@@ -149,18 +136,16 @@ export default function CheckPill() {
             });
 
     }
-    console.log(checked);
+
     function isCheck() {
         let body = { nickname: nickname };
         axios.get("/api/supplements/eatenlist", { params: body })
             .then(function (res) {
-                console.log("체크드성공");
 
                 for (var i = 0; i < res.data.length; i++) {
-                    if (checked[i + 1] != res.data[i].supplementsName) { checked.push(res.data[i].supplementsName); }
-                    console.log(res.data[i]);
+                    if (checked[i + 1] !== res.data[i].supplementsName) { checked.push(res.data[i].supplementsName); }
+
                 }
-                console.log(res.data[0].supplementsName);
 
 
             })
@@ -175,7 +160,7 @@ export default function CheckPill() {
 
 
     }, []);
-    console.log(checked);
+
     return (
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
 
@@ -193,11 +178,11 @@ export default function CheckPill() {
                     />
                     <Divider style={{ marginBottom: '5px' }} />
                     {pillCheck.map((amValue) => {
-                        const labelId = `checkbox-list-secondary-label-${amValue}`;
+                        const labelId = `checkbox-list-secondary-label-${amValue.id}`;
                         return (
                             <div>
                                 {
-                                    amValue.slot == "MORNING" ? <div>
+                                    amValue.slot === "MORNING" ? <div>
                                         <ListItem
                                             key={amValue}
                                             secondaryAction={
@@ -205,9 +190,9 @@ export default function CheckPill() {
 
                                                     edge="end"
                                                     onChange={handleToggleAm(amValue)}
-                                                    checked={checked.some(v => v == amValue.supplementsName) == true}
+                                                    checked={checked.some(v => v === amValue.supplementsName) === true}
                                                     inputProps={{ 'aria-labelledby': labelId }}
-                                                    defaultChecked
+
                                                     sx={{
                                                         color: 'orange',
                                                         '&.Mui-checked': {
@@ -246,12 +231,12 @@ export default function CheckPill() {
                     <Divider style={{ marginBottom: '5px' }} />
 
                     {pillCheck.map((noonValue) => {
-                        const labelId = `checkbox-list-secondary-label-${noonValue}`;
+                        const labelId = `checkbox-list-secondary-label-${noonValue.id}`;
                         return (
                             <div>
 
                                 {
-                                    noonValue.slot == "LUNCH" ? <div>
+                                    noonValue.slot === "LUNCH" ? <div>
                                         <ListItem
                                             key={noonValue}
                                             secondaryAction={
@@ -259,9 +244,9 @@ export default function CheckPill() {
 
                                                     edge="end"
                                                     onChange={handleToggleNoon(noonValue)}
-                                                    checked={checked.some(v => v == noonValue.supplementsName) == true}
+                                                    checked={checked.some(v => v === noonValue.supplementsName) === true}
                                                     inputProps={{ 'aria-labelledby': labelId }}
-                                                    defaultChecked
+
                                                     sx={{
                                                         color: 'orange',
                                                         '&.Mui-checked': {
@@ -300,12 +285,12 @@ export default function CheckPill() {
                     {
 
                         pillCheck.map((pmValue) => {
-                            const labelId = `checkbox-list-secondary-label-${pmValue}`;
+                            const labelId = `checkbox-list-secondary-label-${pmValue.id}`;
                             return (
                                 <div>
                                     {
 
-                                        pmValue.slot == "DINNER" ?
+                                        pmValue.slot === "DINNER" ?
                                             <div>
                                                 <ListItem
                                                     key={pmValue}
@@ -314,9 +299,9 @@ export default function CheckPill() {
 
                                                             edge="end"
                                                             onChange={handleTogglePm(pmValue)}
-                                                            checked={checked.some(v => v == pmValue.supplementsName) == true}
+                                                            checked={checked.some(v => v === pmValue.supplementsName) === true}
                                                             inputProps={{ 'aria-labelledby': labelId }}
-                                                            defaultChecked
+
                                                             sx={{
                                                                 color: 'orange',
                                                                 '&.Mui-checked': {
