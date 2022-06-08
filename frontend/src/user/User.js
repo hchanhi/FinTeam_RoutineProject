@@ -54,7 +54,7 @@ const User = (props) => {
         getUser();
         if (!isAuth(token)) {
             Swal.fire({
-                confirmButtonColor: '#2fbe9f',
+                confirmButtonColor: '#ffa500',
                 confirmButtonText: '확인',
                 text: '로그인 후 이용하실 수 있어요😥', // Alert 제목
 
@@ -86,7 +86,7 @@ const User = (props) => {
                 .then(function (response) {
                     if (response.data == false) {
                         Swal.fire({
-                            confirmButtonColor: '#2fbe9f',
+                            confirmButtonColor: '#ffa500',
 
                             confirmButtonText: '확인',
                             text: '중복된 닉네임입니다!😢', // Alert 제목
@@ -95,7 +95,7 @@ const User = (props) => {
 
                     } else {
                         Swal.fire({
-                            confirmButtonColor: '#2fbe9f',
+                            confirmButtonColor: '#ffa500',
 
                             confirmButtonText: '확인',
                             html: '닉네임이 수정되었습니다.<br>다시 로그인해주세요!😊', // Alert 제목
@@ -151,7 +151,7 @@ const User = (props) => {
                 .then(function (response) {
                     if (response.data == false) {
                         Swal.fire({
-                            confirmButtonColor: '#2fbe9f',
+                            confirmButtonColor: '#ffa500',
 
                             confirmButtonText: '확인',
                             text: '비밀번호가 틀렸습니다!😢', // Alert 제목
@@ -160,7 +160,7 @@ const User = (props) => {
 
                     } else {
                         Swal.fire({
-                            confirmButtonColor: '#2fbe9f',
+                            confirmButtonColor: '#ffa500',
 
                             confirmButtonText: '확인',
                             html: '비밀번호가 수정되었습니다.<br>다시 로그인해주세요!😊', // Alert 제목
@@ -211,7 +211,7 @@ const User = (props) => {
                         console.log(response.status, '성공');
                         Swal.fire({
 
-                            confirmButtonColor: '#2fbe9f',
+                            confirmButtonColor: '#ffa500',
 
                             confirmButtonText: '확인',
 

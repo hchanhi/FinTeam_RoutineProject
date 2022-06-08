@@ -113,7 +113,7 @@ const Resigter = (props) => {
 
     return (
 
-        <Container component="main" maxWidth="xs" style={{ height: '100vh' }}>
+        <Container component="main" maxWidth="xs" style={{ height: '100vh', textAlign: 'center' }}>
             <br />
             <br />
             <div style={{ textAlign: 'center', color: 'gray' }}><span>꾸준한 영양제 복용을 위하여</span></div>
@@ -172,14 +172,14 @@ const Resigter = (props) => {
                         fullWidth
                         variant="contained"
                         fontWeight="600"
-                        sx={{ mt: 3, mb: 3, ml: 7.5, backgroundColor: "orange", fontSize: 20, width: 180 }}
+                        sx={{ mt: 3, mb: 3, ml: 7.5, backgroundColor: "orange", fontSize: 20, width: 180, marginLeft: 0 }}
                     >
                         로그인
                     </Button>
-                    <br/>
-                        <Link to={'/findPassword'}>비밀번호를 잊어버리셨나요?</Link>
-                    <br/>
-                        <Link to={'/signup'}>계정이 없으신가요? 회원가입</Link>
+                    <br />
+                    <Link to={'/findPassword'}>비밀번호를 잊어버리셨나요?</Link>
+                    <br />
+                    <Link to={'/signup'}>계정이 없으신가요? 회원가입</Link>
 
                 </Box>
             </Box>
