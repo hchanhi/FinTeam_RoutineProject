@@ -3,10 +3,13 @@ import './AddPill.css';
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
-import { useState } from "react";
-import { getNickName, isAuth } from '../jwtCheck.js';
-import { initializeApp } from "firebase/app";
-import { getMessaging, getToken, onMessage } from "firebase/messaging";
+
+import {useState} from "react";
+import {getNickName, isAuth} from '../jwtCheck.js';
+import {initializeApp} from "firebase/app";
+import {getMessaging, getToken, onMessage} from "firebase/messaging";
+import messaging from "../App";
+
 
 function AddPill() {
     const token = JSON.parse(localStorage.getItem('accessToken'));
@@ -17,19 +20,6 @@ function AddPill() {
     let [nownumber, setNownumber] = useState(0);
     let [eatnumber, setEatnumber] = useState(0);
     let [eattime, setEattime] = useState('');
-
-    const config = {
-        apiKey: "AIzaSyDIeKgdotnu9zvRvYNKnVry8Nuw6r7s7_8",
-        authDomain: "pillgood-138b1.firebaseapp.com",
-        projectId: "pillgood-138b1",
-        storageBucket: "pillgood-138b1.appspot.com",
-        messagingSenderId: "63398292257",
-        appId: "1:63398292257:web:bdf80d64a9a75d249d6c60",
-        measurementId: "G-6KFN50FF08"
-    };
-    const app = initializeApp(config);
-
-    const messaging = getMessaging(app);
 
 
 
@@ -62,11 +52,6 @@ function AddPill() {
         subscribeTokenToTopic(Token, "DINNER");
     }
 
-
-    onMessage(messaging, (payload) => {
-        console.log('Message received. ', payload);
-        // ...
-    });
     // function selectDay(e){
     //     let copy = [...eatday,e];
     //     setEatday(copy);
