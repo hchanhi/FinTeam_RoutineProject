@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { isAuth } from "../jwtCheck";
+import { isAuth, getNickName } from "../jwtCheck";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 let Badge = styled.div`
 
@@ -50,13 +51,28 @@ let Text = styled.div`
 
 function Reward() {
     const token = JSON.parse(localStorage.getItem('accessToken'));
-
+    const nickname = getNickName(token);
     let [bd, setBd] = useState([true, false, true, true, true, false, false, false, false]);
-    let [rt, setRt] = useState([1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1]);
-
+    let [log, setLog] = useState([]);
     let navigate = useNavigate();
+    function pilllog() {
+        let body = { nickname: nickname };
+        axios.get("/api/supplements/takinglog", { params: body })
+            .then(function (res) {
+
+                console.log(res.data);
+                setLog(res.data);
+
+
+            })
+            .catch(function (err) {
+                console.log('실패');
+
+            });
+    }
 
     useEffect(() => {
+        pilllog();
         if (!isAuth(token)) {
             Swal.fire({
                 confirmButtonColor: '#2fbe9f',
@@ -86,9 +102,9 @@ function Reward() {
             <div >
                 <Wrapper >
                     {
-                        rt.map(function (a, i) {
+                        log.map(function (a, i) {
                             return (
-                                <h1 key={i}>{rt[i] === 1 ? <div style={{ width: '30px', height: '30px', marginLeft: '10px' }}>
+                                <h1 key={i}>{log[i] === 1 ? <div style={{ width: '30px', height: '30px', marginLeft: '10px' }}>
                                     <img src={require("../img/pill01.png").default} />
                                 </div> :
                                     <div style={{ width: '30px', height: '30px', marginLeft: '10px' }}>
