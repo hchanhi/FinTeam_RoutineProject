@@ -39,6 +39,7 @@ function Main() {
     useEffect(() => {
         mypill();
         getRecord();
+        getRanking();
     },[]);
 
     function clickHandler(e) {
@@ -59,7 +60,14 @@ function Main() {
     }
 
     function getRanking(){
-
+        axios.get("/api/supplements/maxranking")
+            .then(function(res){
+                setRanking(res.data);
+                console.log(res.data);
+            })
+            .catch(function(res){
+                console.log('실패');
+            })
     }
 
     return (
@@ -111,8 +119,19 @@ function Main() {
             <br/>
             <CheckPill />
             <br/>
+            <br/>
             <div>
-                <h2>랭킹</h2>
+                <h2>랭킹 (현재 연속 일수)</h2>
+                <br/>
+                {ranking.map(function(rank,index){
+                    return(
+                        <div>
+                            <span key={index}>{(index+1) == 1? '🥇': (index+1) == 2? '🥈' : '🥉'}</span>
+                            <span>{rank.user.nickname}</span>
+                            <span>{rank.continuity} 일</span>
+                        </div>
+                    );
+                })}
             </div>
         </Wrapper >
     );
