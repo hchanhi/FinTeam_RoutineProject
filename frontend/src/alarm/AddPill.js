@@ -1,15 +1,17 @@
-import {Form, Card, Button} from "react-bootstrap";
+import { Form, Card, Button } from "react-bootstrap";
 import './AddPill.css';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
+
 import {useState} from "react";
 import {getNickName, isAuth} from '../jwtCheck.js';
 import {initializeApp} from "firebase/app";
 import {getMessaging, getToken, onMessage} from "firebase/messaging";
 import messaging from "../App";
 
-function AddPill(){
+
+function AddPill() {
     const token = JSON.parse(localStorage.getItem('accessToken'));
     const nickname = getNickName(token);
 
@@ -65,27 +67,27 @@ function AddPill(){
     //     setEatday(copy);
     // }
 
-    let body ={
+    let body = {
         supplementsName: pillname,
-        quantity:nownumber,
-        singleDose:eatnumber,
-        nickname :nickname,
-        slot : eattime
-        }
+        quantity: nownumber,
+        singleDose: eatnumber,
+        nickname: nickname,
+        slot: eattime
+    };
 
     function addPill() {
         axios.post("api/supplements/add", body)
-            .then(function(res){
-            console.log('성공');
-            navigate('/mypill');
-                getToken(messaging, {vapidKey: 'BOUH7VnfqJhHUd9CXxw1_QwjB_lScFbFAgPb9P-JOcNE8VavuYuOgSw5s9dLiTZfS0yYGv5RI1dCkYSeLxxvmmI'})
+            .then(function (res) {
+                console.log('성공');
+                navigate('/mypill');
+                getToken(messaging, { vapidKey: 'BOUH7VnfqJhHUd9CXxw1_QwjB_lScFbFAgPb9P-JOcNE8VavuYuOgSw5s9dLiTZfS0yYGv5RI1dCkYSeLxxvmmI' })
                     .then((currentToken) => {
                         if (currentToken) {
-                            if(body.slot=='MORNING'){
+                            if (body.slot == 'MORNING') {
                                 Topic1(currentToken);
-                            } else if(body.slot=='LUNCH'){
+                            } else if (body.slot == 'LUNCH') {
                                 Topic2(currentToken);
-                            } else if(body.slot=='DINNER'){
+                            } else if (body.slot == 'DINNER') {
                                 Topic3(currentToken);
                             }
                             console.log('허가!');
@@ -98,31 +100,39 @@ function AddPill(){
                             // ...
                         }
                     }).catch((err) => {
-                    console.log('An error occurred while retrieving token. ', err);
-                    // ...
-                });
+                        console.log('An error occurred while retrieving token. ', err);
+                        // ...
+                    });
 
-        })
-        .catch(function(res){
-            console.log('실패');
-        })};
+            })
+            .catch(function (res) {
+                console.log('실패');
+            });
+    };
 
 
-    return(
+    return (
         <div className="page">
-            <br/>
-            <br/>
-            <br/>
+            <br />
+            <br />
+            <br />
+            <br />
+            <h3 style={{
+                textAlign: 'center', color: '#58CCFF', fontWeight: '600',
+                textShadow: '-1px -1px 0 #000, 1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000'
+            }} >영양제    등록하기</h3>
             <Card className="addCard">
                 <Card.Body>
-                    <Card.Title>영양제 등록하기</Card.Title>
+
                     <div>
                         <Form>
-                            <span>영양제 이름</span><input type="text" className="cardInput" onChange={(e)=>{setPillname(e.target.value)}}/><br/><br/>
-                            <span>총 수량(현재수량)</span><input type="number" className="cardInput" onChange={(e)=>{setNownumber(e.target.value)}}/><br/><br/>
-                            <span>1회 복용량</span><input type="number" className="cardInput" onChange={(e)=>{setEatnumber(e.target.value)}}/><br/><br/>
-                            <span>복용 시간</span>
-                            <div className="mb-3">
+                            <span>영양제 이름</span><input type="text" className="cardInput" onChange={(e) => { setPillname(e.target.value); }} /><br /><br />
+                            <span>총 수량(현재수량)</span><input type="number" className="cardInput" onChange={(e) => { setNownumber(e.target.value); }} /><br /><br />
+                            <span>1회 복용량</span><input type="number" className="cardInput" onChange={(e) => { setEatnumber(e.target.value); }} /><br /><br />
+                            <div style={{ marginBottom: '10px' }}>
+                                <span >복용 시간</span>
+                            </div>
+                            <div className="selectBtn">
                                 {/*{week.map(function (week,index){*/}
                                 {/*    return(*/}
                                 {/*        <div className="checkbox_area" key={index}>*/}
@@ -133,21 +143,26 @@ function AddPill(){
                                 {/*        </div>*/}
                                 {/*    );*/}
                                 {/*})}*/}
+                                <div>
+                                    <input type="radio" name="time" value="MORNING" onChange={(e) => { setEattime(e.target.value); }} /> 아침
+                                </div>
+                                <div>
+                                    <input type="radio" name="time" value="LUNCH" onChange={(e) => { setEattime(e.target.value); }} /> 점심
 
-                                <input type="radio" name="time" value="MORNING" onChange={(e)=>{setEattime(e.target.value)}} /> 아침
-                                <input type="radio" name="time" value="LUNCH" onChange={(e)=>{setEattime(e.target.value)}} /> 점심
-                                <input type="radio" name="time" value="DINNER" onChange={(e)=>{setEattime(e.target.value)}} /> 저녁
+                                </div>
+                                <div>
+                                    <input type="radio" name="time" value="DINNER" onChange={(e) => { setEattime(e.target.value); }} /> 저녁
+                                </div>
                             </div>
-                            <br/>
 
                         </Form>
                     </div>
                 </Card.Body>
             </Card>
-            <br/>
+            <br />
             <div className="btnArea">
-                <Button variant="primary" className="cardBtn" onClick={addPill}>등 록</Button>
-                <Button variant="danger" className="cardBtn" onClick={()=>{navigate(-1)}}>취 소</Button>
+                <Button variant="info" className="cardBtn" onClick={addPill}>등 록</Button>
+                <Button variant="warning" className="cardBtn" onClick={() => { navigate(-1); }}>취 소</Button>
             </div>
         </div>
     );
