@@ -2,7 +2,7 @@ import { React, useEffect, useState } from "react";
 
 import styled from "styled-components";
 import { Card } from "react-bootstrap";
-import pill from './img/example.png';
+import pill from './img/test.png';
 import './Main.css';
 import CheckPill from './CheckPill.js';
 import { getNickName, isAuth } from './jwtCheck.js';
@@ -22,7 +22,8 @@ function Main() {
     let [selectpill, setSelectpill] = useState([]);
     let [pillstate, setPillstate] = useState(0);
     let params = { nickname: nickname };
-
+    let [record, setRecord] = useState([]);
+    let [ranking, setRanking] = useState([]);
 
     function mypill() {
         if (isAuth(token) != false) {
@@ -37,7 +38,8 @@ function Main() {
     }
     useEffect(() => {
         mypill();
-    });
+        getRecord();
+    },[]);
 
     function clickHandler(e) {
         setPillstate(e);
@@ -45,6 +47,21 @@ function Main() {
     if (!(token)) {
         window.location.reload();
     }
+
+    function getRecord(){
+        axios.get("/api/supplements/record", {params})
+            .then(function(res){
+                setRecord(res.data);
+            })
+            .catch(function(res){
+                console.log('실패');
+            })
+    }
+
+    function getRanking(){
+
+    }
+
     return (
 
         < Wrapper style={{ marginTop: "30px" }}>
@@ -68,6 +85,8 @@ function Main() {
                             );
                         })}
                     </Card.Subtitle>
+
+                    <br/>
                     {selectpill.map(function (pill, index) {
                         return (
                             <div>
@@ -79,13 +98,22 @@ function Main() {
                             </div>
                         );
                     })}
+                    <br/>
+                    <div>
+                        <span>현재 연속 일수 : {record.continuity}</span><br/>
+                        <span>최고 연속 일수 : {record.maxContinuity}</span>
+                    </div>
 
 
 
                 </Card.Body>
             </Card>
+            <br/>
             <CheckPill />
-
+            <br/>
+            <div>
+                <h2>랭킹</h2>
+            </div>
         </Wrapper >
     );
 }
