@@ -6,7 +6,7 @@ import { getNickName, isAuth } from "../jwtCheck";
 import axios from "axios";
 import Swal from 'sweetalert2';
 import {getMessaging, getToken, onMessage} from "firebase/messaging";
-import {initializeApp} from "firebase/app";
+import messaging from "../App";
 
 function MyPill() {
     const token = JSON.parse(localStorage.getItem('accessToken'));
@@ -15,19 +15,6 @@ function MyPill() {
     let navigate = useNavigate();
     let [state, setState] = useState(false);
 
-
-
-    const config = {
-        apiKey: "AIzaSyDIeKgdotnu9zvRvYNKnVry8Nuw6r7s7_8",
-        authDomain: "pillgood-138b1.firebaseapp.com",
-        projectId: "pillgood-138b1",
-        storageBucket: "pillgood-138b1.appspot.com",
-        messagingSenderId: "63398292257",
-        appId: "1:63398292257:web:bdf80d64a9a75d249d6c60",
-        measurementId: "G-6KFN50FF08"
-    };
-    const app = initializeApp(config);
-    const messaging = getMessaging(app);
 
     onMessage(messaging, (payload) => {
         console.log('Message received. ', payload);

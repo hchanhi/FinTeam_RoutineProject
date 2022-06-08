@@ -7,6 +7,7 @@ import com.pg.service.PrincipalDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -77,7 +78,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 				.and()
 				.authorizeRequests()
-				.antMatchers("/").permitAll()
+				.antMatchers("/**").permitAll()
 				.antMatchers("/api/auth/**","/api/main/**","/api/mypage/**").permitAll()
 				.antMatchers("/api/user/**", "/api/users/{id}/**").permitAll()
 				.antMatchers("/api/user/checkUsernameAvailability", "/api/user/checkEmailAvailability").permitAll()
@@ -85,6 +86,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/user/**").permitAll()
 				.antMatchers("/fcm/**").permitAll()
 				.antMatchers("/static/**").permitAll()
+				.antMatchers("/firebase-messaging-sw.js").permitAll()
+				.antMatchers(HttpMethod.GET, "/mypill").permitAll()
 				// 위 경로 이외의 토큰을 사용하는 경우 접근할 수 있도록 한다.
 				.anyRequest().authenticated();
 		// JWT security filter 추가
