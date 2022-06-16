@@ -88,5 +88,5 @@ Spring Boot의 MVC패턴과 React.js를 기반으로 만든 영양제 복용 기
 
 - ## 프로젝트 시연 영상 
 
-  - ![pillgood](https://user-images.githubusercontent.com/79136087/174006243-bf1aaa7a-a867-4d63-bdab-9337dffb887d.gif)
+  ![pillgood](https://user-images.githubusercontent.com/79136087/174006243-bf1aaa7a-a867-4d63-bdab-9337dffb887d.gif)
 
