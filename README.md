@@ -92,6 +92,6 @@ Spring Boot의 MVC패턴과 React.js를 기반으로 만든 영양제 복용 기
 
 - 웹 푸시 기능
 
-![웹푸시](https://user-images.githubusercontent.com/79136087/174008498-747ea1d5-a375-4b10-b7b3-15661a4c958d.gif)
+  ![웹푸시](https://user-images.githubusercontent.com/79136087/174008498-747ea1d5-a375-4b10-b7b3-15661a4c958d.gif)
 
 
