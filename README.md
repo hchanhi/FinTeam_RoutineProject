@@ -63,41 +63,12 @@ Spring Boot의 MVC패턴과 React.js를 기반으로 만든 영양제 복용 기
   - 회원은 개인정보관리 페이지에서 패스워드 및 회원정보를 수정 할 수 있습니다. 이때 패스워드 변경 시 기존 패스워드를 한번 더 체크합니다.
 
 
-<details>
-  <summary>🔽 로그인</summary>
 
-![login](https://user-images.githubusercontent.com/79136087/170861912-bcbcfcd7-c153-4cc7-a176-a6abeb0b6d5d.gif)
-
-</details>
-
-<details>
-  <summary>🔽 비밀번호 찾기</summary>
-
-<img width="961" alt="image" src="https://user-images.githubusercontent.com/79136087/170861642-e0cdc700-893c-4797-9d7b-1a0cf8929859.png">
-<img width="556" alt="image" src="https://user-images.githubusercontent.com/79136087/170861682-7c3a718f-9866-4b02-a1aa-fbd817a9a931.png">
-<img width="776" alt="image" src="https://user-images.githubusercontent.com/79136087/170861706-2c6629a3-92c3-4d5c-94ce-2b4f82b142bf.png">
-
-
-</details>
-
-<details>
-  <summary>🔽 마이페이지</summary>
-
-![mypage](https://user-images.githubusercontent.com/79136087/170861917-e6857bb1-cce7-4a03-83db-706df1177a0f.gif)
-  
-</details>
 
 - ## 메인페이지
 
 - 메인페이지에서는 복용할 영양제의 남은 수량과 복용 갯수 및 시간 그리고 복용한 영양제를 체크할 수 있습니다.
-
-<details>
-    <summary>🔽 메인페이지</summary>
-
-
-<img width="949" alt="image" src="https://user-images.githubusercontent.com/79136087/170862049-554f47ad-fdca-40fc-964d-397cdbd4f117.png">
-  
-</details>
+- 사용자들의 영양제 복용일수 랭킹을 확인할 수 있습니다.
 
 
 - ## 웹 푸시
@@ -105,12 +76,6 @@ Spring Boot의 MVC패턴과 React.js를 기반으로 만든 영양제 복용 기
 - `Firebase Cloud messaging`을 사용해 사용자가 영양제를 등록할 때 선택한 아침, 점심, 저녁을 구독합니다. 
 - 이후 정해진 시간에 `Sprign Schedular`를 이용해 웹 푸쉬를 전송합니다. 
 
-<details>
-    <summary>🔽 웹 푸시</summary>
-
-![챌린지](https://user-images.githubusercontent.com/79136087/170862151-207186ab-14c8-45cf-bf27-05d77e2d3253.gif)
-
-</details>
 
 
 - ## 게이미피케이션
@@ -120,31 +85,5 @@ Spring Boot의 MVC패턴과 React.js를 기반으로 만든 영양제 복용 기
   - 또한 복용한 날과 복용하지 않은 날의 영양제의 이미지를 생성합니다.
   - 미리 설정된 정책에 맞춰 회원 별 뱃지를 획득할 수 있습니다. 
 
-<details>
-  <summary>🔽 TODO 공부방 생성</summary>
-
-![공부방 생성](https://user-images.githubusercontent.com/79136087/170862733-8cea1f48-3f78-43be-ae64-5fe1e7b28316.gif)
-
-</details>
-<details>
-  <summary>🔽 TODO 리스트 생성및 입장</summary>
-
-![공부방 입장 및 TODO 리스트 생성](https://user-images.githubusercontent.com/79136087/170862737-bd63b3e2-c456-4fb4-a23a-5db6d670df54.gif)
-
-</details>
-
-<details>
-  <summary>🔽 TODO 리스트 공유 및 참여 알림 메세지</summary>
-
-![TODO 리스트 공유 및 알림 메세지](https://user-images.githubusercontent.com/79136087/170862741-5c58d0bb-375d-4ad8-8f47-db51b6072a6d.gif)
-
-</details>
-
-<details>
-  <summary>🔽 실시간 채팅</summary>
-
-![실시간 채팅](https://user-images.githubusercontent.com/79136087/170862738-ba652191-d0b3-4e3d-8cfc-6846ec938c8e.gif)
-
-</details>
 
 
