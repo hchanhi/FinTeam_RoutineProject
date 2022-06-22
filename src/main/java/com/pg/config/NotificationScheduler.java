@@ -55,7 +55,6 @@ public class NotificationScheduler {
         pushAlarm(LUNCH_ALARM);
     }
 
-
     @Scheduled(cron = "0 0 19 * * ?")
     public void pushDinnerAlarm() throws FirebaseMessagingException {
         log.info("저녁 식사 알림");

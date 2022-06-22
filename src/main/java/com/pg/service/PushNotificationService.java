@@ -40,8 +40,7 @@ public class PushNotificationService {
     }
 
     private static String getAccessToken() throws IOException {
-        //21.6.23 아직까지도 공식 홈페이지에서 Deprecated 된 해당 문장을 수정하지 않고있다.
-        //22.01.04 공식 홈페이지에서 제대로 수정이 되었다.
+        // 새로운 버전에 대한 수정 필요
         GoogleCredential googleCredential = GoogleCredential
                 .fromStream(new ClassPathResource("/firebase/pillgood-sdk.json").getInputStream())
                 .createScoped(Arrays.asList(SCOPES));
