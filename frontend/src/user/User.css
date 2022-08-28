@@ -4,13 +4,12 @@
 
 .UserEditor span {
     margin-top: 1rem;
-    margin-left: 24%;
+    margin-left: 7%;
 }
 
 
 .UserEditor label {
     margin-right: 10px;
-    width: 40%;
     font-size: 16px;
 }
 
@@ -67,7 +66,7 @@
 .userFlex {
     display: flex;
     position: relative;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     margin-bottom: 40px;
 }
@@ -101,10 +100,9 @@ h2 {
 
 .message {
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 0.8rem;
     line-height: 24px;
     letter-spacing: -1px;
-    width: 70%;
     top: 50%;
     position: absolute;
 
@@ -161,5 +159,5 @@ h2 {
     color: #fff;
     font-weight: 600;
     font-size: 12px;
-    margin-top: 40px;
+
 }
