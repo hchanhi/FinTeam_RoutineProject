@@ -113,17 +113,16 @@ const Resigter = (props) => {
 
     return (
 
-        <Container component="main" maxWidth="xs" style={{ height: '100vh', textAlign: 'center' }}>
-            <br />
-            <br />
-            <div style={{ textAlign: 'center', color: 'gray' }}><span>꾸준한 영양제 복용을 위하여</span></div>
+        <Container component="main" maxWidth="xs" style={{  textAlign: 'center' ,  paddingBottom: '100px',}}>
+
+            <div style={{ textAlign: 'center', color: 'gray', marginTop:'40px' }}><span>꾸준한 영양제 복용을 위하여</span></div>
             <h1 style={{
                 textAlign: 'center', color: '#58CCFF', fontWeight: '600',
                 textShadow: '-1px -1px 0 #000, 1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000'
             }}>Pill Good</h1>
             <Box
                 sx={{
-                    marginTop: '150px',
+                    marginTop: '100px',
                     display: 'flex',
                     flexDirection: 'column',
                     borderRadius: '10px',
@@ -133,7 +132,7 @@ const Resigter = (props) => {
                 }}
             >
 
-                <Typography style={{ fontSize: '2rem' }} component="h3" variant="h3" color="gray" margin="0 auto" fontWeight="600">
+                <Typography style={{fontSize: '2rem' }} component="h3" variant="h3" color="gray" margin="0 auto" fontWeight="600">
                     로그인
                 </Typography>
                 <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 3 }}>
