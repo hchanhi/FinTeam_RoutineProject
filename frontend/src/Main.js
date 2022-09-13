@@ -11,7 +11,6 @@ let Wrapper = styled.div`
 margin: auto;
 marginTop: 50px;
 width: 90%;
-height: 100vh;
 `;
 
 
@@ -86,10 +85,9 @@ function Main() {
 
     return (
 
-        < Wrapper style={{ marginTop: "30px" }}>
-            <br></br>
-            <br></br>
-            <div style={{ textAlign: 'center', color: 'gray' }}><span>꾸준한 영양제 복용을 위한</span></div>
+        < Wrapper style={{ marginTop: "30px", paddingBottom:'70px' }}>
+
+            <div style={{ textAlign: 'center', color: 'gray', paddingTop:'60px' }}><span>꾸준한 영양제 복용을 위한</span></div>
             <h1 style={{
                 textAlign: 'center', color: '#58CCFF', fontWeight: '600',
                 textShadow: '-1px -1px 0 #000, 1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000'
@@ -119,7 +117,7 @@ function Main() {
                     <Card.Subtitle className="mb-2 text-muted">
                         {selectpill.map(function (pill, index) {
                             return (
-                                <span style={{ marginRight: '8px' }} key={index} className={`pillname ${pillstate === index ? 'selected' : ''}`} onClick={() => { clickHandler(index); }}>{pill.supplementsName}  </span>
+                                <span style={{ marginRight: '5px' }} key={index} className={`pillname ${pillstate === index ? 'selected' : ''}`} onClick={() => { clickHandler(index); }}>{pill.supplementsName}  </span>
                             );
                         })}
                     </Card.Subtitle>
@@ -150,7 +148,7 @@ function Main() {
             <CheckPill />
             <br />
             <br />
-            <div>
+            <div style={{ marginBottom:'50px' }}>
                 <h4 style={{ color: 'orange' }}>🏆 랭킹</h4>
                 <span style={{ fontSize: '15px', color: 'gray' }}>꾸준히 루틴을 완료한 필굿러들의 명예의 전당!  </span>
                 <Card className="rankCard">
@@ -167,10 +165,7 @@ function Main() {
                     </Card.Body>
                 </Card>
             </div>
-            <br />
-            <br />
-            <br />
-            <br />
+
         </Wrapper >
     );
 }
