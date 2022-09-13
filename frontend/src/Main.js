@@ -158,7 +158,7 @@ function Main() {
                                 <div style={{ fontSize: '20px' }}>
                                     <span key={index}>{(index + 1) === 1 ? '🥇 ' : (index + 1) === 2 ? '🥈 ' : (index + 1) === 3 ? '🥉 ' : (index + 1) + '위 '}</span>&nbsp;&nbsp;
                                     <span style={{ fontWeight: '600' }}>{rank.user.nickname}</span>&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <span style={{ fontSize: '15px', color: 'gray' }}>(연속일수 : {rank.continuity} 일)</span>
+                                    <span style={{ fontSize: '15px', color: 'gray' }}>(연속 일수 : {rank.continuity} 일)</span>
                                 </div>
                             );
                         })}
