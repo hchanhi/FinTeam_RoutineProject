@@ -292,7 +292,7 @@ const User = (props) => {
         },
         [newPas]
     );
-    return (<div style={{ height: '100vh', paddingTop: '130px' }}>
+    return (<div style={{ paddingTop: '90px',paddingBottom: '90px'  }}>
         <h3 style={{
             textAlign: 'center', color: '#58CCFF', fontWeight: '600',
             textShadow: '-1px -1px 0 #000, 1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000'
@@ -300,7 +300,7 @@ const User = (props) => {
         <br />
         <Container className="UserEditor"
             sx={{
-                height: 560,
+                height: 530,
                 width: 400,
                 display: 'flex',
                 flexDirection: 'column',
@@ -312,10 +312,11 @@ const User = (props) => {
 
 
             <br></br>
-            <Box component="form" sx={{ mt: 3 }}>
-                <div className="userFlex">
+            <Box component="form" sx={{ mt: 3}}>
+                <div className="userFlex" >
                     <label>이메일</label>
                     <input
+
                         defaultValue={user.email}
                         name="nickName"
                         type="text"
