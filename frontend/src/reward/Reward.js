@@ -100,12 +100,11 @@ function Reward() {
 
 
     return (
-        <div style={{ height: '100vh' }} >
-            <br />
-            <br /><br />
-            < br />
+        <div >
+
             <Text>
                 <h3 style={{
+                    paddingTop: "80px",
                     textAlign: 'center', color: '#58CCFF', fontWeight: '600',
                     textShadow: '-1px -1px 0 #000, 1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000'
                 }} >리 워 드</h3>
